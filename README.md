@@ -42,7 +42,7 @@ Para facilitar a sua vida, padronizar e explorar algumas habilidades suas, estam
 
 * Realizar o fork desse repositório.
 * Desenvolver a aplicação usando as melhores práticas de desenvolvimento e totalmente em inglês. 
-* Sobrescreva o README descrevendo como executar seu projeto e rodar os testes.
+* Sobrescreva o README falando sobre o que foi utilizado na arquitetura e libs - com uma pequena explicação das decisões adotadas.
 * Enviar seu pull request para o nosso repositório quando finalizar.
 
 * * *
@@ -51,8 +51,8 @@ Para facilitar a sua vida, padronizar e explorar algumas habilidades suas, estam
 
 * Qualidade do código.
 * Organização do projeto.
-* Arquitetura adotada.
-* Como estrutura suas views.
+* Arquitetura utilizada.
+* Boas práticas de desenvolvimento iOS.
 * Crash-safe code, consumo de memória e desempenho. 
 
 ***É uma avaliação, desenvolva o projeto com qualidade de produção. ;)**
