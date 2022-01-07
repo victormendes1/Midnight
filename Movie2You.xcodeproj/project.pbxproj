@@ -13,6 +13,7 @@
 		57F96DE12788DAF20009794A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F96DDF2788DAF20009794A /* Main.storyboard */; };
 		57F96DE32788DAF40009794A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F96DE22788DAF40009794A /* Assets.xcassets */; };
 		57F96DE62788DAF40009794A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F96DE42788DAF40009794A /* LaunchScreen.storyboard */; };
+		E3D01BE0C17FBF54CC5CE573 /* Pods_Movie2You.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A218750C2B560F2DEFD4F5 /* Pods_Movie2You.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		57F96DE22788DAF40009794A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F96DE52788DAF40009794A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57F96DE72788DAF40009794A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90BC71AEDC76496E05003D9D /* Pods-Movie2You.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie2You.release.xcconfig"; path = "Target Support Files/Pods-Movie2You/Pods-Movie2You.release.xcconfig"; sourceTree = "<group>"; };
+		95A218750C2B560F2DEFD4F5 /* Pods_Movie2You.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie2You.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30E07EC7FB25FF3B6F9431A /* Pods-Movie2You.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie2You.debug.xcconfig"; path = "Target Support Files/Pods-Movie2You/Pods-Movie2You.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3D01BE0C17FBF54CC5CE573 /* Pods_Movie2You.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				57F96DD82788DAF20009794A /* Movie2You */,
 				57F96DD72788DAF20009794A /* Products */,
+				B2E79E322802DE5449E17844 /* Pods */,
+				E7F899E865FA97677BD1E4EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = Movie2You;
 			sourceTree = "<group>";
 		};
+		B2E79E322802DE5449E17844 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A30E07EC7FB25FF3B6F9431A /* Pods-Movie2You.debug.xcconfig */,
+				90BC71AEDC76496E05003D9D /* Pods-Movie2You.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E7F899E865FA97677BD1E4EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95A218750C2B560F2DEFD4F5 /* Pods_Movie2You.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57F96DEA2788DAF40009794A /* Build configuration list for PBXNativeTarget "Movie2You" */;
 			buildPhases = (
+				089140BE522101D656512608 /* [CP] Check Pods Manifest.lock */,
 				57F96DD22788DAF20009794A /* Sources */,
 				57F96DD32788DAF20009794A /* Frameworks */,
 				57F96DD42788DAF20009794A /* Resources */,
+				27F78D176F0F2F0BE6291751 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		089140BE522101D656512608 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Movie2You-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27F78D176F0F2F0BE6291751 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movie2You/Pods-Movie2You-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movie2You/Pods-Movie2You-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movie2You/Pods-Movie2You-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		57F96DD22788DAF20009794A /* Sources */ = {
@@ -284,6 +353,7 @@
 		};
 		57F96DEB2788DAF40009794A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A30E07EC7FB25FF3B6F9431A /* Pods-Movie2You.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -297,6 +367,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,6 +383,7 @@
 		};
 		57F96DEC2788DAF40009794A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90BC71AEDC76496E05003D9D /* Pods-Movie2You.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -325,6 +397,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
