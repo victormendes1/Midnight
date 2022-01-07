@@ -1,5 +1,5 @@
 //
-//  MoviesModel.swift
+//  Movie.swift
 //  Movie2You
 //
 //  Created by Victor Mendes on 07/01/22.
@@ -16,7 +16,7 @@ struct Movie: Codable {
     let posterPath: String
     let popularity: Double
     let voteCount: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case genres, id
