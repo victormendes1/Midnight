@@ -11,12 +11,20 @@ import Moya
 public enum MovieService {
     case getMovies
     case getSimilarMovies
+    case getMovieBackground(String)
+    case getSimilarMoviesBackgrounds(String)
 }
 
 extension MovieService: TargetType {
     public var baseURL: URL {
-        guard let url = URL(string: "https://api.themoviedb.org/3/") else { fatalError() }
-        return url
+        switch self {
+        case .getMovies, .getSimilarMovies:
+            guard let url = URL(string: "https://api.themoviedb.org/3/") else { fatalError() }
+            return url
+        case .getMovieBackground, .getSimilarMoviesBackgrounds:
+            guard let url = URL(string: "https://image.tmdb.org/t/p/w500/") else { fatalError() }
+            return url
+        }
     }
     
     public var path: String {
@@ -25,12 +33,14 @@ extension MovieService: TargetType {
             return "movie/500"
         case .getSimilarMovies:
             return "movie/500/similar"
+        case let .getMovieBackground(backdropPath), let .getSimilarMoviesBackgrounds(backdropPath):
+            return backdropPath
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .getMovies, .getSimilarMovies:
+        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
             return .get
         }
     }
@@ -41,10 +51,12 @@ extension MovieService: TargetType {
         switch self {
         case .getMovies, .getSimilarMovies:
             params = ["api_key": "e3097c7c82fd9906e4643a522ac3cdb1"]
+        case .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
+            params = [:]
         }
         
         switch self {
-        case .getMovies, .getSimilarMovies:
+        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }

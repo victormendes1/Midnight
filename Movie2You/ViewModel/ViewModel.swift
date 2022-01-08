@@ -27,9 +27,25 @@ class ViewModel {
                 onSuccess: { response in
                     self.movies.onNext(response)
                     debugPrint(response)
+                    
+                }, onFailure: { error in
+                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                    self.loading.onNext(false)
+                    print(error)
+                })
+            .disposed(by: disposeBag)
+    }
+    
+    func requestMovieBackground(_ backdropPath: String) {
+        provider.rx.request(.getMovieBackground(backdropPath))
+        // - TODO: converter para imagem
+            .subscribe(
+                onSuccess: { response in
+                    debugPrint(response)
                     self.loading.onNext(false)
                 }, onFailure: { error in
                     self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                    self.loading.onNext(false)
                     print(error)
                 })
             .disposed(by: disposeBag)
@@ -43,9 +59,24 @@ class ViewModel {
                 onSuccess: { response in
                     self.similarMovies.onNext(response)
                     debugPrint(response)
+                }, onFailure: { error in
+                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                    self.loading.onNext(false)
+                    print(error)
+                })
+            .disposed(by: disposeBag)
+    }
+    
+    func requestSimilarMoviesBackground(_ backdropPath: String) {
+        provider.rx.request(.getSimilarMoviesBackgrounds(backdropPath))
+        // - TODO: converter para imagem
+            .subscribe(
+                onSuccess: { response in
+                    debugPrint(response)
                     self.loading.onNext(false)
                 }, onFailure: { error in
                     self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                    print(error)
                 })
             .disposed(by: disposeBag)
     }
