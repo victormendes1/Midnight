@@ -9,7 +9,8 @@ import Foundation
 
 struct Movie: Codable {
     let backdropPath: String
-    let genres: [Genre]
+    let genres: [Genre]?
+    let genreId: [Int]?
     let id: Int
     let originalTitle: String
     let releaseDate: String
@@ -20,6 +21,7 @@ struct Movie: Codable {
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case genres, id
+        case genreId = "genre_ids"
         case originalTitle = "original_title"
         case popularity
         case posterPath = "poster_path"
@@ -32,4 +34,12 @@ struct Movie: Codable {
 struct Genre: Codable {
     let id: Int
     let name: String
+}
+
+struct SimilarMovies: Codable {
+    let movies: [Movie]
+    
+    enum CodingKeys: String, CodingKey {
+        case movies = "results"
+    }
 }

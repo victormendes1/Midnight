@@ -14,6 +14,7 @@ target 'Movie2You' do
   #Networking
   pod 'Alamofire', '~> 5.5'
   pod 'Moya/RxSwift', '~> 15.0'
+  pod 'SwiftyJSON'
   
   #Dependency Injection
   pod "Resolver"

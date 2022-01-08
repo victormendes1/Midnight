@@ -7,24 +7,46 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
+import Moya
+import Resolver
 
 class ViewModel {
+    fileprivate let provider: MoyaProvider<MovieService> = Resolver.resolve()
     
-    public enum Error {
-        case internetError(String)
-        case serverMessage(String)
-    }
-    
-    public let movies: PublishSubject<[Movie]> = PublishSubject()
+    public let movies: PublishSubject<Movie> = PublishSubject()
+    public let similarMovies: PublishSubject<SimilarMovies> = PublishSubject()
     public let loading: PublishSubject<Bool> = PublishSubject()
     public let error: PublishSubject<Error> = PublishSubject()
-    
-    private let disposable = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     func requestMovies() {
         self.loading.onNext(true)
-        
+        provider.rx.request(.getMovies)
+            .tryToMap(Movie.self)
+            .subscribe(
+                onSuccess: { response in
+                    self.movies.onNext(response)
+                    debugPrint(response)
+                    self.loading.onNext(false)
+                }, onFailure: { error in
+                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                    print(error)
+                })
+            .disposed(by: disposeBag)
     }
     
+    func requestSimilarMovies() {
+        self.loading.onNext(true)
+        provider.rx.request(.getSimilarMovies)
+            .tryToMap(SimilarMovies.self)
+            .subscribe(
+                onSuccess: { response in
+                    self.similarMovies.onNext(response)
+                    debugPrint(response)
+                    self.loading.onNext(false)
+                }, onFailure: { error in
+                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                })
+            .disposed(by: disposeBag)
+    }
 }

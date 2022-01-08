@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import Moya
+import Resolver
 
 class ViewController: UIViewController {
-
+    fileprivate var viewModel: ViewModel = Resolver.resolve()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        //viewModel.requestMovies()
+        viewModel.requestSimilarMovies()
     }
-
-
 }
-
