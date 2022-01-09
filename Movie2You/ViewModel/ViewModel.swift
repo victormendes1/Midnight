@@ -13,8 +13,9 @@ import Resolver
 class ViewModel {
     fileprivate let provider: MoyaProvider<MovieService> = Resolver.resolve()
     
-    public let movies: PublishSubject<Movie> = PublishSubject()
+    public let movie: PublishSubject<Movie> = PublishSubject()
     public let similarMovies: PublishSubject<SimilarMovies> = PublishSubject()
+    public let listGenre: PublishSubject<Genres> = PublishSubject()
     public let loading: PublishSubject<Bool> = PublishSubject()
     public let error: PublishSubject<Error> = PublishSubject()
     private let disposeBag = DisposeBag()
@@ -25,9 +26,8 @@ class ViewModel {
             .tryToMap(Movie.self)
             .subscribe(
                 onSuccess: { response in
-                    self.movies.onNext(response)
+                    self.movie.onNext(response)
                     debugPrint(response)
-                    
                 }, onFailure: { error in
                     self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
                     self.loading.onNext(false)
@@ -58,7 +58,6 @@ class ViewModel {
             .subscribe(
                 onSuccess: { response in
                     self.similarMovies.onNext(response)
-                    debugPrint(response)
                 }, onFailure: { error in
                     self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
                     self.loading.onNext(false)
@@ -67,17 +66,14 @@ class ViewModel {
             .disposed(by: disposeBag)
     }
     
-    func requestSimilarMoviesBackground(_ backdropPath: String) {
-        provider.rx.request(.getSimilarMoviesBackgrounds(backdropPath))
-        // - TODO: converter para imagem
-            .subscribe(
-                onSuccess: { response in
-                    debugPrint(response)
-                    self.loading.onNext(false)
-                }, onFailure: { error in
-                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
-                    print(error)
-                })
+    func requestGenres() {
+        provider.rx.request(.getGenres)
+            .tryToMap(Genres.self)
+            .subscribe(onSuccess: { response in
+                self.listGenre.onNext(response)
+            }, onFailure: { error in
+                debugPrint(error)
+            })
             .disposed(by: disposeBag)
     }
 }

@@ -13,16 +13,17 @@ public enum MovieService {
     case getSimilarMovies
     case getMovieBackground(String)
     case getSimilarMoviesBackgrounds(String)
+    case getGenres
 }
 
 extension MovieService: TargetType {
     public var baseURL: URL {
         switch self {
-        case .getMovies, .getSimilarMovies:
-            guard let url = URL(string: "https://api.themoviedb.org/3/") else { fatalError() }
+        case .getMovies, .getSimilarMovies, .getGenres:
+            guard let url = URL(string: NetworkConstants.baseURL) else { fatalError() }
             return url
         case .getMovieBackground, .getSimilarMoviesBackgrounds:
-            guard let url = URL(string: "https://image.tmdb.org/t/p/w500/") else { fatalError() }
+            guard let url = URL(string: NetworkConstants.imagesBaseURL) else { fatalError() }
             return url
         }
     }
@@ -35,12 +36,14 @@ extension MovieService: TargetType {
             return "movie/500/similar"
         case let .getMovieBackground(backdropPath), let .getSimilarMoviesBackgrounds(backdropPath):
             return backdropPath
+        case .getGenres:
+            return "genre/movie/list"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
+        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
             return .get
         }
     }
@@ -49,20 +52,20 @@ extension MovieService: TargetType {
         var params: [String: Any] = [:]
         
         switch self {
-        case .getMovies, .getSimilarMovies:
-            params = ["api_key": "e3097c7c82fd9906e4643a522ac3cdb1"]
+        case .getMovies, .getSimilarMovies, .getGenres:
+            params = NetworkConstants.defaultRequestParams
         case .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
             params = [:]
         }
         
         switch self {
-        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
+        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
     public var headers: [String : String]? {
-        let header = ["Content-type": "application/json"]
+        let header = NetworkConstants.defaultRequestHeaders
         return header
     }
 }

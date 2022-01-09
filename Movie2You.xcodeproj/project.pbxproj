@@ -12,6 +12,11 @@
 		574A11B82788FBC200C41201 /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11B72788FBC200C41201 /* Registering.swift */; };
 		574A11BB278901BE00C41201 /* Extension_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BA278901BE00C41201 /* Extension_Service.swift */; };
 		574A11BE278904B700C41201 /* TypesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BD278904B700C41201 /* TypesErrors.swift */; };
+		574A11C32789FD9100C41201 /* SimilarMoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11C12789FD9100C41201 /* SimilarMoviesTableViewCell.swift */; };
+		574A11C42789FD9100C41201 /* SimilarMoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574A11C22789FD9100C41201 /* SimilarMoviesTableViewCell.xib */; };
+		574A11C9278A129900C41201 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11C8278A129800C41201 /* NetworkConstants.swift */; };
+		574A11CB278A229C00C41201 /* Extension_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11CA278A229B00C41201 /* Extension_UITableView.swift */; };
+		574A11CD278A2D3C00C41201 /* Extension_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11CC278A2D3B00C41201 /* Extension_String.swift */; };
 		57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DD92788DAF20009794A /* AppDelegate.swift */; };
 		57F96DDC2788DAF20009794A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DDB2788DAF20009794A /* SceneDelegate.swift */; };
 		57F96DDE2788DAF20009794A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DDD2788DAF20009794A /* MainViewController.swift */; };
@@ -28,6 +33,11 @@
 		574A11B72788FBC200C41201 /* Registering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registering.swift; sourceTree = "<group>"; };
 		574A11BA278901BE00C41201 /* Extension_Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Service.swift; sourceTree = "<group>"; };
 		574A11BD278904B700C41201 /* TypesErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesErrors.swift; sourceTree = "<group>"; };
+		574A11C12789FD9100C41201 /* SimilarMoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesTableViewCell.swift; sourceTree = "<group>"; };
+		574A11C22789FD9100C41201 /* SimilarMoviesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimilarMoviesTableViewCell.xib; sourceTree = "<group>"; };
+		574A11C8278A129800C41201 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		574A11CA278A229B00C41201 /* Extension_UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UITableView.swift; sourceTree = "<group>"; };
+		574A11CC278A2D3B00C41201 /* Extension_String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_String.swift; sourceTree = "<group>"; };
 		57F96DD62788DAF20009794A /* Movie2You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie2You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F96DD92788DAF20009794A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57F96DDB2788DAF20009794A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				574A11BA278901BE00C41201 /* Extension_Service.swift */,
+				574A11CA278A229B00C41201 /* Extension_UITableView.swift */,
+				574A11CC278A2D3B00C41201 /* Extension_String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -93,8 +105,26 @@
 				57F96DDD2788DAF20009794A /* MainViewController.swift */,
 				57F96DE42788DAF40009794A /* LaunchScreen.storyboard */,
 				57F96DDF2788DAF20009794A /* Main.storyboard */,
+				574A11C02789FD6500C41201 /* Cell */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		574A11C02789FD6500C41201 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				574A11C12789FD9100C41201 /* SimilarMoviesTableViewCell.swift */,
+				574A11C22789FD9100C41201 /* SimilarMoviesTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		574A11C7278A124200C41201 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				574A11C8278A129800C41201 /* NetworkConstants.swift */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 		57F96DCD2788DAF20009794A = {
@@ -124,6 +154,7 @@
 				574A11B62788FBA500C41201 /* Registering */,
 				574A11BC2789049F00C41201 /* Service */,
 				574A11B92789019C00C41201 /* Extension */,
+				574A11C7278A124200C41201 /* Support Files */,
 				57F96DE72788DAF40009794A /* Info.plist */,
 				57F96DF12788E6AD0009794A /* Assets */,
 				57F96DF02788E6930009794A /* Additional files */,
@@ -235,6 +266,7 @@
 			files = (
 				57F96DE62788DAF40009794A /* LaunchScreen.storyboard in Resources */,
 				57F96DE32788DAF40009794A /* Assets.xcassets in Resources */,
+				574A11C42789FD9100C41201 /* SimilarMoviesTableViewCell.xib in Resources */,
 				57F96DE12788DAF20009794A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,14 +320,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574A11C9278A129900C41201 /* NetworkConstants.swift in Sources */,
 				572C173B2788F119009D442F /* Service.swift in Sources */,
+				574A11CD278A2D3C00C41201 /* Extension_String.swift in Sources */,
 				574A11BB278901BE00C41201 /* Extension_Service.swift in Sources */,
 				572C17362788EEF6009D442F /* ViewModel.swift in Sources */,
 				57F96DEF2788E1BE0009794A /* Movie.swift in Sources */,
 				57F96DDE2788DAF20009794A /* MainViewController.swift in Sources */,
 				57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */,
+				574A11CB278A229C00C41201 /* Extension_UITableView.swift in Sources */,
 				574A11BE278904B700C41201 /* TypesErrors.swift in Sources */,
 				57F96DDC2788DAF20009794A /* SceneDelegate.swift in Sources */,
+				574A11C32789FD9100C41201 /* SimilarMoviesTableViewCell.swift in Sources */,
 				574A11B82788FBC200C41201 /* Registering.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
