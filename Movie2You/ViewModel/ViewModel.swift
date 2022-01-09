@@ -13,11 +13,11 @@ import Resolver
 class ViewModel {
     fileprivate let provider: MoyaProvider<MovieService> = Resolver.resolve()
     
-    public let movie: PublishSubject<Movie> = PublishSubject()
-    public let similarMovies: PublishSubject<SimilarMovies> = PublishSubject()
-    public let listGenre: PublishSubject<Genres> = PublishSubject()
-    public let loading: PublishSubject<Bool> = PublishSubject()
-    public let error: PublishSubject<Error> = PublishSubject()
+    public let movie = PublishSubject<Movie>()
+    public let similarMovies = PublishSubject<SimilarMovies>()
+    public let listGenre = PublishSubject<Genres>()
+    public let loading = PublishSubject<Bool>()
+    public let error = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
     
     func requestMovies() {
@@ -36,20 +36,19 @@ class ViewModel {
             .disposed(by: disposeBag)
     }
     
-    func requestMovieBackground(_ backdropPath: String) {
-        provider.rx.request(.getMovieBackground(backdropPath))
-        // - TODO: converter para imagem
-            .subscribe(
-                onSuccess: { response in
-                    debugPrint(response)
-                    self.loading.onNext(false)
-                }, onFailure: { error in
-                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
-                    self.loading.onNext(false)
-                    print(error)
-                })
-            .disposed(by: disposeBag)
-    }
+//    func requestMovieBackground(_ backdropPath: String) {
+//        provider.rx.request(.getMovieBackground(backdropPath))
+//        // - TODO: converter para imagem
+//            .subscribe(
+//                onSuccess: { response in
+//                    self.loading.onNext(false)
+//                }, onFailure: { error in
+//                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+//                    self.loading.onNext(false)
+//                    print(error)
+//                })
+//            .disposed(by: disposeBag)
+//    }
     
     func requestSimilarMovies() {
         self.loading.onNext(true)

@@ -23,7 +23,7 @@ extension MovieService: TargetType {
             guard let url = URL(string: NetworkConstants.baseURL) else { fatalError() }
             return url
         case .getMovieBackground, .getSimilarMoviesBackgrounds:
-            guard let url = URL(string: NetworkConstants.imagesBaseURL) else { fatalError() }
+            guard let url = URL(string: NetworkConstants.backdropBaseURL) else { fatalError() }
             return url
         }
     }

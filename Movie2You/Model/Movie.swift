@@ -32,7 +32,11 @@ struct Movie: Codable {
 
 extension Movie {
     func posterURL() -> URL? {
-       return URL(string: NetworkConstants.imagesBaseURL + posterPath)
+        URL(string: NetworkConstants.posterBaseURL + posterPath)
+    }
+    
+    func  backdropURL() -> URL? {
+        URL(string: NetworkConstants.backdropBaseURL + backdropPath)
     }
 }
 // MARK: - Genre

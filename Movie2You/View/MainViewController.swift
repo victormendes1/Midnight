@@ -10,10 +10,12 @@ import Moya
 import Resolver
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 class MainViewController: UIViewController {
     fileprivate var viewModel: ViewModel = Resolver.resolve()
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var imageBackgroundView: UIImageView!
     
     var similarMovies: PublishSubject<[Movie]> = PublishSubject()
     var genres: BehaviorSubject<[Genre]> = BehaviorSubject(value: [])
@@ -23,31 +25,40 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         tableView.register(type: SimilarMoviesTableViewCell.self)
         viewModel.requestGenres()
-        //viewModel.requestMovies()
+        viewModel.requestMovies()
         viewModel.requestSimilarMovies()
-        
+        view.addSubview(imageBackgroundView)
         configureBindings()
     }
     
+    // MARK: - Bindings
     func configureBindings() {
-        // MARK: - SimilarMovies
+        // SimilarMovies
         viewModel
             .similarMovies
             .map{ $0.movies }
             .bind(to: similarMovies)
             .disposed(by: disposeBag)
         
-        // MARK: - Genre
+        // Genre
         viewModel
             .listGenre
             .map{ $0.genres }
             .bind(to: genres)
             .disposed(by: disposeBag)
         
-        // MARK: - TableView
+        // Background
+        //        viewModel
+        //            .movie
+        //            .subscribe(onNext: { movie in
+        //                self.imageBackgroundView.kf.setImage(with: movie.backdropURL())
+        //            })
+        //            .disposed(by: disposeBag)
+        
+        // TableView
         similarMovies
-            .bind(to: tableView.rx.items) { tableview, row, movie  in
-                let cell: SimilarMoviesTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
+            .bind(to: tableView.rx.items) { tableView, row, movie  in
+                let cell: SimilarMoviesTableViewCell = tableView.dequeueReusableCell(IndexPath(row: row, section: 0))
                 self.genres
                     .subscribe(onNext: { genres in
                         cell.configure(movie, list: genres)
