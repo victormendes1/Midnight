@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import RxSwift
 import Moya
 import Resolver
@@ -18,12 +19,14 @@ class ViewModel {
     public let genres = PublishSubject<Genres>()
     
     public let allMovies = PublishSubject<[Movies]>()
+    var imageBackground = PublishSubject<UIImageView>()
+    
     public let loading = PublishSubject<Bool>()
     public let error = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
     
-    
     func requestMovies() {
+        // Movie
         self.loading.onNext(true)
         provider.rx.request(.getMovie)
             .tryToMap(Movie.self)
@@ -36,6 +39,7 @@ class ViewModel {
             })
             .disposed(by: disposeBag)
         
+        // Similar Movies
         provider.rx.request(.getSimilarMovies)
             .tryToMap(SimilarMovies.self)
             .subscribe(onSuccess: { movies in
@@ -47,6 +51,7 @@ class ViewModel {
             })
             .disposed(by: disposeBag)
         
+        // Genres
         provider.rx.request(.getGenres)
             .tryToMap(Genres.self)
             .subscribe(onSuccess: { genres in
@@ -56,6 +61,19 @@ class ViewModel {
             })
             .disposed(by: disposeBag)
         
+        // Main Background
+        movie
+            .subscribe(onNext:{ movie in
+                self.provider.rx.request(.getMovieBackground(movie.backdropPath))
+                    .subscribe(onSuccess: { response in
+                        let imageView: UIImageView = UIImageView(image: UIImage(data: response.data))
+                        self.imageBackground.onNext(imageView)
+                    })
+                    .disposed(by: self.disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
+        // Transforming data into a single type
         Observable.combineLatest(movie, similarMovies, genres)
             .subscribe(onNext: { value in
                 self.allMovies.onNext( mapToMovies(data: value))
@@ -63,18 +81,3 @@ class ViewModel {
             .disposed(by: disposeBag)
     }
 }
-
-
-//    func requestMovieBackground(_ backdropPath: String) {
-//        provider.rx.request(.getMovieBackground(backdropPath))
-//        // - TODO: converter para imagem
-//            .subscribe(
-//                onSuccess: { response in
-//                    self.loading.onNext(false)
-//                }, onFailure: { error in
-//                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
-//                    self.loading.onNext(false)
-//                    print(error)
-//                })
-//            .disposed(by: disposeBag)
-//    }

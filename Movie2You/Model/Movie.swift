@@ -27,26 +27,22 @@ extension Movies {
         URL(string: NetworkConstants.posterBaseURL + posterPath)
     }
     
-    func backdropURL() -> URL? {
-        URL(string: NetworkConstants.backdropBaseURL + backdropPath)
-    }
-    
     func getGenres() -> String {
         self.genreId?.compactMap { number -> String in
             self.genres?.genres.filter({ $0.id == number }).map({ $0.name}).joined() ?? ""
-        }.filter({ $0 != "" }).prefix(3).sorted(by: <).joined(separator: ", ") ?? ""
+        }.filter({ $0 != "" }).prefix(2).sorted(by: <).joined(separator: ", ") ?? ""
     }
     
-    var releaseYear: Int {
+    var releaseYear: String {
         get {
-            return Int(releaseDate.split(separator: "-")[0]) ?? 0
+            releaseDate.split(separator: "-").map({ String($0) }).first ?? ""
         }
     }
 }
 
 // MARK: - Model used to download the movie from the network
 struct Movie: Codable {
-    var backdropPath: String?
+    var backdropPath: String
     var genres: [Genre]?
     let genreId: [Int]?
     let id: Int
@@ -65,6 +61,13 @@ struct Movie: Codable {
         case posterPath = "poster_path"
         case releaseDate = "release_date"
         case voteCount = "vote_count"
+    }
+}
+
+extension Movie {
+    func backdropURL() -> URL {
+        guard let url = URL(string: NetworkConstants.backdropBaseURL + backdropPath) else { fatalError() }
+        return url
     }
 }
 

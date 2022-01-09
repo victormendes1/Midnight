@@ -23,7 +23,7 @@ class SimilarMoviesTableViewCell: UITableViewCell {
     func configure(_ movie: Movies) {
         movieBackgroundImage.kf.setImage(with: movie.posterURL())
         titleLabel.text = movie.originalTitle
-        releaseLabel.text = movie.releaseDate.onlyYear()
+        releaseLabel.text = movie.releaseYear
         genreLabel.text = movie.getGenres()
     }
 }

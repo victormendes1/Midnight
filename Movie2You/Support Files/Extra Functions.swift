@@ -11,7 +11,7 @@ func mapToMovies(data: (Movie, SimilarMovies, Genres)) -> [Movies] {
     let movies = data.1.movies.map { movie -> Movies in
          Movies(
             mainMovie: data.0,
-            backdropPath: movie.backdropPath ?? "Erro in Map", // TODO: - Remover
+            backdropPath: movie.backdropPath,
             genres: data.2,
             genreId: movie.genreId,
             id: movie.id,
