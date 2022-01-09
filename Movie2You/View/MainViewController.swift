@@ -17,34 +17,50 @@ class MainViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageBackgroundView: UIImageView!
     
-    var similarMovies: PublishSubject<[Movie]> = PublishSubject()
-    var genres: BehaviorSubject<[Genre]> = BehaviorSubject(value: [])
+    var allMovieData = PublishSubject<[MoviesData]>()
     let disposeBag = DisposeBag()
+    var similarMovies = PublishSubject<[Movie]>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(type: SimilarMoviesTableViewCell.self)
-        viewModel.requestGenres()
-        viewModel.requestMovies()
-        viewModel.requestSimilarMovies()
-        view.addSubview(imageBackgroundView)
+        requestAllData()
+        configureCell()
         configureBindings()
     }
     
     // MARK: - Bindings
     func configureBindings() {
-        // SimilarMovies
+        // Unificando os dados
+        Observable.combineLatest(viewModel.movie,
+                                 viewModel.similarMovies.map{ $0.movies },
+                                 viewModel.listGenre.map { $0.genres })
+            .subscribe(onNext: { data in
+                self.allMovieData.onNext(mapToMovieData(data))
+            })
+            .disposed(by: disposeBag)
+        
         viewModel
             .similarMovies
             .map{ $0.movies }
             .bind(to: similarMovies)
             .disposed(by: disposeBag)
         
-        // Genre
         viewModel
-            .listGenre
-            .map{ $0.genres }
-            .bind(to: genres)
+            .similarMovies
+            .map { $0.movies }
+            .bind(to: tableView.rx.items) { tableview, row, movies in
+                switch row {
+                case 0:
+                    let cell: MainMovieTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
+                    cell.configure(movies)
+                    return cell
+                    
+                default:
+                    let cell: SimilarMoviesTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
+                    cell.configure(movies)
+                    return cell
+                }
+            }
             .disposed(by: disposeBag)
         
         // Background
@@ -56,24 +72,32 @@ class MainViewController: UIViewController {
         //            .disposed(by: disposeBag)
         
         // TableView
-        similarMovies
-            .bind(to: tableView.rx.items) { tableView, row, movie  in
-                let cell: SimilarMoviesTableViewCell = tableView.dequeueReusableCell(IndexPath(row: row, section: 0))
-                self.genres
-                    .subscribe(onNext: { genres in
-                        cell.configure(movie, list: genres)
-                    })
-                    .disposed(by: self.disposeBag)
-                return cell
-            }
-            .disposed(by: disposeBag)
+//        allMovieData
+//            .bind(to: tableView.rx.items) { tableview, row, moviesData in
+//                switch row {
+//                case 0:
+//                    let cell: MainMovieTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
+//                    cell.configure(moviesData.mainMovie)
+//                    return cell
+//
+//                default:
+//                    let cell: SimilarMoviesTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
+//                    cell.titleLabel.text = "Cell - \(row)"
+//                    //cell.configure(moviesData.similarMovies[row], listGeners: moviesData.gender)
+//                    return cell
+//                }
+//            }
+//            .disposed(by: disposeBag)
+    }
+    
+    private func requestAllData() {
+        viewModel.requestGenres()
+        viewModel.requestMovie()
+        viewModel.requestSimilarMovies()
+    }
+    
+    private func configureCell() {
+        tableView.register(type: SimilarMoviesTableViewCell.self)
+        tableView.register(type: MainMovieTableViewCell.self)
     }
 }
-
-extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let imageView = UIImageView(image: UIImage(systemName: "circle"))
-        return imageView
-    }
-}
-

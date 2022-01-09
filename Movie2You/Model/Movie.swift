@@ -35,8 +35,14 @@ extension Movie {
         URL(string: NetworkConstants.posterBaseURL + posterPath)
     }
     
-    func  backdropURL() -> URL? {
+    func backdropURL() -> URL? {
         URL(string: NetworkConstants.backdropBaseURL + backdropPath)
+    }
+    
+    func getGenres() -> String? {
+        self.genreId?.compactMap { number -> String in
+            self.genres?.filter({ $0.id == number }).map({ $0.name }).joined() ?? "Erro"
+        }.filter({ $0 != "" }).prefix(3).joined(separator: ", ")
     }
 }
 // MARK: - Genre

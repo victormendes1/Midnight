@@ -20,14 +20,13 @@ class ViewModel {
     public let error = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
     
-    func requestMovies() {
+    func requestMovie() {
         self.loading.onNext(true)
         provider.rx.request(.getMovies)
             .tryToMap(Movie.self)
             .subscribe(
                 onSuccess: { response in
                     self.movie.onNext(response)
-                    debugPrint(response)
                 }, onFailure: { error in
                     self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
                     self.loading.onNext(false)
