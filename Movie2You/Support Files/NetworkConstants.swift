@@ -13,6 +13,4 @@ struct NetworkConstants {
     static let baseURL = "https://api.themoviedb.org/3"
     static let posterBaseURL = "https://image.tmdb.org/t/p/w300"
     static let backdropBaseURL = "https://image.tmdb.org/t/p/w500"
-    //static let queryParameterKey = "query"
-    //static let pageParameterKey = "page"
 }

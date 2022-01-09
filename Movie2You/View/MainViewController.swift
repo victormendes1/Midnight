@@ -17,44 +17,27 @@ class MainViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var imageBackgroundView: UIImageView!
     
-    var allMovieData = PublishSubject<[MoviesData]>()
+    var movies = PublishSubject<[Movies]>()
     let disposeBag = DisposeBag()
-    var similarMovies = PublishSubject<[Movie]>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestAllData()
+        viewModel.requestMovies()
         configureCell()
         configureBindings()
     }
     
     // MARK: - Bindings
     func configureBindings() {
-        // Unificando os dados
-        Observable.combineLatest(viewModel.movie,
-                                 viewModel.similarMovies.map{ $0.movies },
-                                 viewModel.listGenre.map { $0.genres })
-            .subscribe(onNext: { data in
-                self.allMovieData.onNext(mapToMovieData(data))
-            })
-            .disposed(by: disposeBag)
-        
         viewModel
-            .similarMovies
-            .map{ $0.movies }
-            .bind(to: similarMovies)
-            .disposed(by: disposeBag)
-        
-        viewModel
-            .similarMovies
-            .map { $0.movies }
+            .allMovies
             .bind(to: tableView.rx.items) { tableview, row, movies in
                 switch row {
                 case 0:
                     let cell: MainMovieTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
-                    cell.configure(movies)
-                    return cell
-                    
+                    guard let movie = movies.mainMovie else { fatalError() }
+                        cell.configure(movie)
+                        return cell
                 default:
                     let cell: SimilarMoviesTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
                     cell.configure(movies)
@@ -70,32 +53,8 @@ class MainViewController: UIViewController {
         //                self.imageBackgroundView.kf.setImage(with: movie.backdropURL())
         //            })
         //            .disposed(by: disposeBag)
+    }
         
-        // TableView
-//        allMovieData
-//            .bind(to: tableView.rx.items) { tableview, row, moviesData in
-//                switch row {
-//                case 0:
-//                    let cell: MainMovieTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
-//                    cell.configure(moviesData.mainMovie)
-//                    return cell
-//
-//                default:
-//                    let cell: SimilarMoviesTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
-//                    cell.titleLabel.text = "Cell - \(row)"
-//                    //cell.configure(moviesData.similarMovies[row], listGeners: moviesData.gender)
-//                    return cell
-//                }
-//            }
-//            .disposed(by: disposeBag)
-    }
-    
-    private func requestAllData() {
-        viewModel.requestGenres()
-        viewModel.requestMovie()
-        viewModel.requestSimilarMovies()
-    }
-    
     private func configureCell() {
         tableView.register(type: SimilarMoviesTableViewCell.self)
         tableView.register(type: MainMovieTableViewCell.self)

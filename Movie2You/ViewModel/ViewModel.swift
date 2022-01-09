@@ -15,26 +15,56 @@ class ViewModel {
     
     public let movie = PublishSubject<Movie>()
     public let similarMovies = PublishSubject<SimilarMovies>()
-    public let listGenre = PublishSubject<Genres>()
+    public let genres = PublishSubject<Genres>()
+    
+    public let allMovies = PublishSubject<[Movies]>()
     public let loading = PublishSubject<Bool>()
     public let error = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
     
-    func requestMovie() {
+    
+    func requestMovies() {
         self.loading.onNext(true)
-        provider.rx.request(.getMovies)
+        provider.rx.request(.getMovie)
             .tryToMap(Movie.self)
-            .subscribe(
-                onSuccess: { response in
-                    self.movie.onNext(response)
-                }, onFailure: { error in
-                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
-                    self.loading.onNext(false)
-                    print(error)
-                })
+            .subscribe(onSuccess: { movie in
+                self.movie.onNext(movie)
+            }, onFailure: { error in
+                self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                self.loading.onNext(false)
+                print(error)
+            })
+            .disposed(by: disposeBag)
+        
+        provider.rx.request(.getSimilarMovies)
+            .tryToMap(SimilarMovies.self)
+            .subscribe(onSuccess: { movies in
+                self.similarMovies.onNext(movies)
+            }, onFailure: { error in
+                self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
+                self.loading.onNext(false)
+                print(error)
+            })
+            .disposed(by: disposeBag)
+        
+        provider.rx.request(.getGenres)
+            .tryToMap(Genres.self)
+            .subscribe(onSuccess: { genres in
+                self.genres.onNext(genres)
+            }, onFailure: { error in
+                debugPrint(error)
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(movie, similarMovies, genres)
+            .subscribe(onNext: { value in
+                self.allMovies.onNext( mapToMovies(data: value))
+            })
             .disposed(by: disposeBag)
     }
-    
+}
+
+
 //    func requestMovieBackground(_ backdropPath: String) {
 //        provider.rx.request(.getMovieBackground(backdropPath))
 //        // - TODO: converter para imagem
@@ -48,30 +78,3 @@ class ViewModel {
 //                })
 //            .disposed(by: disposeBag)
 //    }
-    
-    func requestSimilarMovies() {
-        self.loading.onNext(true)
-        provider.rx.request(.getSimilarMovies)
-            .tryToMap(SimilarMovies.self)
-            .subscribe(
-                onSuccess: { response in
-                    self.similarMovies.onNext(response)
-                }, onFailure: { error in
-                    self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
-                    self.loading.onNext(false)
-                    print(error)
-                })
-            .disposed(by: disposeBag)
-    }
-    
-    func requestGenres() {
-        provider.rx.request(.getGenres)
-            .tryToMap(Genres.self)
-            .subscribe(onSuccess: { response in
-                self.listGenre.onNext(response)
-            }, onFailure: { error in
-                debugPrint(error)
-            })
-            .disposed(by: disposeBag)
-    }
-}

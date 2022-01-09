@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 public enum MovieService {
-    case getMovies
+    case getMovie
     case getSimilarMovies
     case getMovieBackground(String)
     case getSimilarMoviesBackgrounds(String)
@@ -19,7 +19,7 @@ public enum MovieService {
 extension MovieService: TargetType {
     public var baseURL: URL {
         switch self {
-        case .getMovies, .getSimilarMovies, .getGenres:
+        case .getMovie, .getSimilarMovies, .getGenres:
             guard let url = URL(string: NetworkConstants.baseURL) else { fatalError() }
             return url
         case .getMovieBackground, .getSimilarMoviesBackgrounds:
@@ -30,7 +30,7 @@ extension MovieService: TargetType {
     
     public var path: String {
         switch self {
-        case .getMovies:
+        case .getMovie:
             return "movie/500"
         case .getSimilarMovies:
             return "movie/500/similar"
@@ -43,7 +43,7 @@ extension MovieService: TargetType {
     
     public var method: Moya.Method {
         switch self {
-        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
+        case .getMovie, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
             return .get
         }
     }
@@ -52,14 +52,14 @@ extension MovieService: TargetType {
         var params: [String: Any] = [:]
         
         switch self {
-        case .getMovies, .getSimilarMovies, .getGenres:
+        case .getMovie, .getSimilarMovies, .getGenres:
             params = NetworkConstants.defaultRequestParams
         case .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
             params = [:]
         }
         
         switch self {
-        case .getMovies, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
+        case .getMovie, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }

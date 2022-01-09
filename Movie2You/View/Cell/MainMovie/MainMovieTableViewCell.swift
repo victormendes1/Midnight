@@ -13,7 +13,6 @@ class MainMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
