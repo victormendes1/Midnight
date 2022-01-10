@@ -204,7 +204,7 @@
 				574A11C7278A124200C41201 /* Support Files */,
 				57F96DE72788DAF40009794A /* Info.plist */,
 				57F96DF12788E6AD0009794A /* Assets */,
-				57F96DF02788E6930009794A /* Additional files */,
+				57F96DF02788E6930009794A /* Additional Files */,
 			);
 			path = Movie2You;
 			sourceTree = "<group>";
@@ -217,14 +217,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		57F96DF02788E6930009794A /* Additional files */ = {
+		57F96DF02788E6930009794A /* Additional Files */ = {
 			isa = PBXGroup;
 			children = (
 				57F96DD92788DAF20009794A /* AppDelegate.swift */,
 				57F96DDB2788DAF20009794A /* SceneDelegate.swift */,
 				574A11D4278A78B200C41201 /* Fonts */,
 			);
-			path = "Additional files";
+			path = "Additional Files";
 			sourceTree = "<group>";
 		};
 		57F96DF12788E6AD0009794A /* Assets */ = {

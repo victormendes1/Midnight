@@ -21,19 +21,27 @@ class MainMovieTableViewCell: UITableViewCell {
         super.awakeFromNib()
         configureBindings()
     }
-
+    
     func configure(_ movie: Movie) {
         titleLabel.text = movie.originalTitle
-        likeLabel.text = "\(movie.voteCount) Likes"
-        viewsLabel.text = "\(movie.popularity)K Views"
+        likeLabel.text = "\(movie.voteCount)K Likes"
+        viewsLabel.text = "\(movie.popularity) Views"
     }
     
     func configureBindings() {
         likeButton.rx
             .tap
-            .subscribe(onNext: {
-                self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) //TODO: - Adicionar animação e finalizar essa função.
-            })
+            .subscribe(onNext: likeClick)
             .disposed(by: disposeBag)
+    }
+    
+    private func likeClick() {
+        let heartFill = UIImage(systemName: "heart.fill")
+        let heartEmpty = UIImage(systemName: "heart")
+        if likeButton.currentImage == heartEmpty {
+            likeButton.setImage(heartFill, for: .normal)
+        } else {
+            likeButton.setImage(heartEmpty, for: .normal)
+        }
     }
 }

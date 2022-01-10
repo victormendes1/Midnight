@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
             .imageBackground
             .subscribe(onNext: { imageView in
                 self.imageBackgroundView = imageView
-                self.imageBackgroundView.contentMode = .scaleAspectFit
+                self.imageBackgroundView.contentMode = .redraw
                 self.tableView.tableHeaderView = self.imageBackgroundView
             })
             .disposed(by: disposeBag)
