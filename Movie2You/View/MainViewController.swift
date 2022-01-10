@@ -33,8 +33,11 @@ class MainViewController: UIViewController {
             .imageBackground
             .subscribe(onNext: { imageView in
                 self.imageBackgroundView = imageView
-                self.imageBackgroundView.contentMode = .redraw
+                self.imageBackgroundView.clipsToBounds = true
+                self.imageBackgroundView.contentMode = .top
                 self.tableView.tableHeaderView = self.imageBackgroundView
+                self.tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 400)
+                self.tableView.tableHeaderView?.layoutIfNeeded()
             })
             .disposed(by: disposeBag)
         
@@ -46,10 +49,12 @@ class MainViewController: UIViewController {
                 case 0:
                     let cell: MainMovieTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
                     guard let movie = movies.mainMovie else { fatalError() }
+                    cell.selectionStyle = .none
                     cell.configure(movie)
                     return cell
                 default:
                     let cell: SimilarMoviesTableViewCell = tableview.dequeueReusableCell(IndexPath(row: row, section: 0))
+                    cell.selectionStyle = .none
                     cell.configure(movies)
                     return cell
                 }
@@ -60,5 +65,6 @@ class MainViewController: UIViewController {
     private func configureCell() {
         tableView.register(type: SimilarMoviesTableViewCell.self)
         tableView.register(type: MainMovieTableViewCell.self)
+        tableView.contentInsetAdjustmentBehavior = .never
     }
 }

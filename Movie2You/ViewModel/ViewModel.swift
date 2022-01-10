@@ -64,7 +64,7 @@ class ViewModel {
         // Main Background
         movie
             .subscribe(onNext:{ movie in
-                self.provider.rx.request(.getMovieBackground(movie.backdropPath))
+                self.provider.rx.request(.getMovieBackground(movie.posterPath))
                     .subscribe(onSuccess: { response in
                         let imageView: UIImageView = UIImageView(image: UIImage(data: response.data))
                         self.imageBackground.onNext(imageView)

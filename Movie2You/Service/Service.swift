@@ -31,9 +31,9 @@ extension MovieService: TargetType {
     public var path: String {
         switch self {
         case .getMovie:
-            return "movie/500"
+            return "movie/285"
         case .getSimilarMovies:
-            return "movie/500/similar"
+            return "movie/285/similar"
         case let .getMovieBackground(backdropPath), let .getSimilarMoviesBackgrounds(backdropPath):
             return backdropPath
         case .getGenres:

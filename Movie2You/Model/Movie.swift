@@ -64,13 +64,6 @@ struct Movie: Codable {
     }
 }
 
-extension Movie {
-    func backdropURL() -> URL {
-        guard let url = URL(string: NetworkConstants.backdropBaseURL + backdropPath) else { fatalError() }
-        return url
-    }
-}
-
 struct SimilarMovies: Codable {
     let movies: [Movie]
     
