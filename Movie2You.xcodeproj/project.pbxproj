@@ -24,6 +24,7 @@
 		574A11DD278A796100C41201 /* BeVietnamPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D8278A796100C41201 /* BeVietnamPro-Medium.ttf */; };
 		574A11DE278A796100C41201 /* BeVietnamPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D9278A796100C41201 /* BeVietnamPro-Black.ttf */; };
 		574A11E4278B399A00C41201 /* Extra Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11E3278B399A00C41201 /* Extra Functions.swift */; };
+		57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57753274278C828E00921D77 /* StretchyHeaderView.swift */; };
 		57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DD92788DAF20009794A /* AppDelegate.swift */; };
 		57F96DDC2788DAF20009794A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DDB2788DAF20009794A /* SceneDelegate.swift */; };
 		57F96DDE2788DAF20009794A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DDD2788DAF20009794A /* MainViewController.swift */; };
@@ -52,6 +53,7 @@
 		574A11D8278A796100C41201 /* BeVietnamPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-Medium.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-Medium.ttf"; sourceTree = "<group>"; };
 		574A11D9278A796100C41201 /* BeVietnamPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-Black.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-Black.ttf"; sourceTree = "<group>"; };
 		574A11E3278B399A00C41201 /* Extra Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extra Functions.swift"; sourceTree = "<group>"; };
+		57753274278C828E00921D77 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StretchyHeaderView.swift; path = "Movie2You/Support Files/StretchyHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		57F96DD62788DAF20009794A /* Movie2You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie2You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F96DD92788DAF20009794A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57F96DDB2788DAF20009794A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				574A11C8278A129800C41201 /* NetworkConstants.swift */,
 				574A11E3278B399A00C41201 /* Extra Functions.swift */,
+				57753274278C828E00921D77 /* StretchyHeaderView.swift */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			files = (
 				574A11E4278B399A00C41201 /* Extra Functions.swift in Sources */,
 				574A11C9278A129900C41201 /* NetworkConstants.swift in Sources */,
+				57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */,
 				572C173B2788F119009D442F /* Service.swift in Sources */,
 				574A11BB278901BE00C41201 /* Service + Extension.swift in Sources */,
 				572C17362788EEF6009D442F /* ViewModel.swift in Sources */,
@@ -552,7 +556,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -582,7 +586,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

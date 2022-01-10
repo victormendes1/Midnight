@@ -25,8 +25,9 @@ class ViewModel {
     public let error = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
     
+    // Download all necessary content
     func requestMovies() {
-        // Movie
+        // Main Movie
         self.loading.onNext(true)
         provider.rx.request(.getMovie)
             .tryToMap(Movie.self)

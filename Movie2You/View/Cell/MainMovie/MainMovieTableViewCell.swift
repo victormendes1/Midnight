@@ -31,11 +31,11 @@ class MainMovieTableViewCell: UITableViewCell {
     func configureBindings() {
         likeButton.rx
             .tap
-            .subscribe(onNext: likeClick)
+            .subscribe(onNext: clickLiked)
             .disposed(by: disposeBag)
     }
     
-    private func likeClick() {
+    private func clickLiked() {
         let heartFill = UIImage(systemName: "heart.fill")
         let heartEmpty = UIImage(systemName: "heart")
         if likeButton.currentImage == heartEmpty {

@@ -39,7 +39,6 @@ extension Movies {
         }
     }
 }
-
 // MARK: - Model used to download the movie from the network
 struct Movie: Codable {
     var backdropPath: String
@@ -63,7 +62,7 @@ struct Movie: Codable {
         case voteCount = "vote_count"
     }
 }
-
+// MARK: - Genre
 struct SimilarMovies: Codable {
     let movies: [Movie]
     
@@ -71,7 +70,6 @@ struct SimilarMovies: Codable {
         case movies = "results"
     }
 }
-
 // MARK: - Genre
 struct Genres: Codable {
     let genres: [Genre]
