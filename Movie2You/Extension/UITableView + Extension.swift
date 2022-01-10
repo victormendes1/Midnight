@@ -1,5 +1,5 @@
 //
-//  Extension_UITableView.swift
+//  UITableView + Extension.swift
 //  Movie2You
 //
 //  Created by Victor Mendes on 08/01/22.

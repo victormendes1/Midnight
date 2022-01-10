@@ -10,13 +10,12 @@
 		572C17362788EEF6009D442F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C17352788EEF6009D442F /* ViewModel.swift */; };
 		572C173B2788F119009D442F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C173A2788F119009D442F /* Service.swift */; };
 		574A11B82788FBC200C41201 /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11B72788FBC200C41201 /* Registering.swift */; };
-		574A11BB278901BE00C41201 /* Extension_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BA278901BE00C41201 /* Extension_Service.swift */; };
+		574A11BB278901BE00C41201 /* Service + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BA278901BE00C41201 /* Service + Extension.swift */; };
 		574A11BE278904B700C41201 /* TypesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BD278904B700C41201 /* TypesErrors.swift */; };
 		574A11C32789FD9100C41201 /* SimilarMoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11C12789FD9100C41201 /* SimilarMoviesTableViewCell.swift */; };
 		574A11C42789FD9100C41201 /* SimilarMoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574A11C22789FD9100C41201 /* SimilarMoviesTableViewCell.xib */; };
 		574A11C9278A129900C41201 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11C8278A129800C41201 /* NetworkConstants.swift */; };
-		574A11CB278A229C00C41201 /* Extension_UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11CA278A229B00C41201 /* Extension_UITableView.swift */; };
-		574A11CD278A2D3C00C41201 /* Extension_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11CC278A2D3B00C41201 /* Extension_String.swift */; };
+		574A11CB278A229C00C41201 /* UITableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11CA278A229B00C41201 /* UITableView + Extension.swift */; };
 		574A11D2278A72BB00C41201 /* MainMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11D0278A72BB00C41201 /* MainMovieTableViewCell.swift */; };
 		574A11D3278A72BB00C41201 /* MainMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D1278A72BB00C41201 /* MainMovieTableViewCell.xib */; };
 		574A11DA278A796100C41201 /* BeVietnamPro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D5278A796100C41201 /* BeVietnamPro-ExtraBold.ttf */; };
@@ -39,13 +38,12 @@
 		572C17352788EEF6009D442F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		572C173A2788F119009D442F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		574A11B72788FBC200C41201 /* Registering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registering.swift; sourceTree = "<group>"; };
-		574A11BA278901BE00C41201 /* Extension_Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Service.swift; sourceTree = "<group>"; };
+		574A11BA278901BE00C41201 /* Service + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service + Extension.swift"; sourceTree = "<group>"; };
 		574A11BD278904B700C41201 /* TypesErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesErrors.swift; sourceTree = "<group>"; };
 		574A11C12789FD9100C41201 /* SimilarMoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesTableViewCell.swift; sourceTree = "<group>"; };
 		574A11C22789FD9100C41201 /* SimilarMoviesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimilarMoviesTableViewCell.xib; sourceTree = "<group>"; };
 		574A11C8278A129800C41201 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
-		574A11CA278A229B00C41201 /* Extension_UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UITableView.swift; sourceTree = "<group>"; };
-		574A11CC278A2D3B00C41201 /* Extension_String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_String.swift; sourceTree = "<group>"; };
+		574A11CA278A229B00C41201 /* UITableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extension.swift"; sourceTree = "<group>"; };
 		574A11D0278A72BB00C41201 /* MainMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovieTableViewCell.swift; sourceTree = "<group>"; };
 		574A11D1278A72BB00C41201 /* MainMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMovieTableViewCell.xib; sourceTree = "<group>"; };
 		574A11D5278A796100C41201 /* BeVietnamPro-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-ExtraBold.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -99,9 +97,8 @@
 		574A11B92789019C00C41201 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				574A11BA278901BE00C41201 /* Extension_Service.swift */,
-				574A11CA278A229B00C41201 /* Extension_UITableView.swift */,
-				574A11CC278A2D3B00C41201 /* Extension_String.swift */,
+				574A11BA278901BE00C41201 /* Service + Extension.swift */,
+				574A11CA278A229B00C41201 /* UITableView + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -377,13 +374,12 @@
 				574A11E4278B399A00C41201 /* Extra Functions.swift in Sources */,
 				574A11C9278A129900C41201 /* NetworkConstants.swift in Sources */,
 				572C173B2788F119009D442F /* Service.swift in Sources */,
-				574A11CD278A2D3C00C41201 /* Extension_String.swift in Sources */,
-				574A11BB278901BE00C41201 /* Extension_Service.swift in Sources */,
+				574A11BB278901BE00C41201 /* Service + Extension.swift in Sources */,
 				572C17362788EEF6009D442F /* ViewModel.swift in Sources */,
 				57F96DEF2788E1BE0009794A /* Movie.swift in Sources */,
 				57F96DDE2788DAF20009794A /* MainViewController.swift in Sources */,
 				57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */,
-				574A11CB278A229C00C41201 /* Extension_UITableView.swift in Sources */,
+				574A11CB278A229C00C41201 /* UITableView + Extension.swift in Sources */,
 				574A11BE278904B700C41201 /* TypesErrors.swift in Sources */,
 				57F96DDC2788DAF20009794A /* SceneDelegate.swift in Sources */,
 				574A11D2278A72BB00C41201 /* MainMovieTableViewCell.swift in Sources */,
