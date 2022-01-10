@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 func mapToMovies(data: (Movie, SimilarMovies, Genres)) -> [Movies] {
     let movies = data.1.movies.map { movie -> Movies in
          Movies(
@@ -22,4 +22,20 @@ func mapToMovies(data: (Movie, SimilarMovies, Genres)) -> [Movies] {
             voteCount: movie.voteCount)
     }
     return movies
+}
+
+func addShadowTop(_ imageView: StretchyHeaderView, place: UIView) {
+    let shadow = CAGradientLayer()
+    shadow.colors = [UIColor.black.withAlphaComponent(0.8).cgColor , UIColor.clear.cgColor]
+    let viewTop = UIView(frame: CGRect(x: 0, y: 0, width: imageView.bounds.width, height: 80))
+    shadow.frame = viewTop.frame
+    viewTop.layer.addSublayer(shadow)
+    place.addSubview(viewTop)
+}
+
+func addShadowBottom(_ imageView: StretchyHeaderView) {
+    let shadow = CAGradientLayer()
+    shadow.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.black.cgColor] // TODO: - Melhorar a forma em que aplico essas cores
+    shadow.frame = imageView.frame
+    imageView.layer.addSublayer(shadow)    
 }

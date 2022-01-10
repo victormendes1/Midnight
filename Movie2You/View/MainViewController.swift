@@ -10,7 +10,6 @@ import Moya
 import Resolver
 import RxSwift
 import RxCocoa
-import Kingfisher
 
 class MainViewController: UIViewController {
     fileprivate var viewModel: ViewModel = Resolver.resolve()
@@ -65,26 +64,9 @@ class MainViewController: UIViewController {
     private func configureHeaderView(_ imageView: UIImageView) {
         let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 450))
         headerView.imageView.image = imageView.image
-        // teste image
-        
-        // teste image
-        let shadowBelow = CAGradientLayer()
-        shadowBelow.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-//        shadowBelow.frame = headerView.frame
-//        headerView.layer.addSublayer(shadowBelow)
-//        self.tableView.layer.addSublayer(shadowBelow)
-//
-         //headerView.addBlackGradientLayerInForeground(frame: self.view.frame, colors: [.black, .clear, .black])
-        let vi = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 30))
-        shadowBelow.frame = vi.frame
-        //vi.backgroundColor = .blue
-        vi.layer.addSublayer(shadowBelow)
-        view.addSubview(vi)
-        //view.bringSubviewToFront(vi)
-        
-        self.tableView.tableHeaderView = headerView // <- add
-        //self.tableView.tableHeaderView?.addBlackGradientLayerInBackground(frame: self.view.frame, colors: [.black, .yellow, .black])
-        
+        addShadowTop(headerView, place: self.view)
+        addShadowBottom(headerView)
+        self.tableView.tableHeaderView = headerView
     }
 }
 // MARK: - Extension
