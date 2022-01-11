@@ -10,6 +10,9 @@
 		572C17362788EEF6009D442F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C17352788EEF6009D442F /* ViewModel.swift */; };
 		572C173B2788F119009D442F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C173A2788F119009D442F /* Service.swift */; };
 		57342069278D05E6005FAA4B /* Button + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57342068278D05E6005FAA4B /* Button + Extension.swift */; };
+		5734206B278D3952005FAA4B /* Error + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734206A278D3952005FAA4B /* Error + Extension.swift */; };
+		5742A48F278DA2470013472C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5742A48E278DA1280013472C /* Poppins-Bold.ttf */; };
+		5742A490278DA24B0013472C /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5742A48D278DA1280013472C /* Poppins-ExtraBold.ttf */; };
 		574A11B82788FBC200C41201 /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11B72788FBC200C41201 /* Registering.swift */; };
 		574A11BB278901BE00C41201 /* Service + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BA278901BE00C41201 /* Service + Extension.swift */; };
 		574A11BE278904B700C41201 /* TypesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BD278904B700C41201 /* TypesErrors.swift */; };
@@ -19,11 +22,6 @@
 		574A11CB278A229C00C41201 /* UITableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11CA278A229B00C41201 /* UITableView + Extension.swift */; };
 		574A11D2278A72BB00C41201 /* MainMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11D0278A72BB00C41201 /* MainMovieTableViewCell.swift */; };
 		574A11D3278A72BB00C41201 /* MainMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D1278A72BB00C41201 /* MainMovieTableViewCell.xib */; };
-		574A11DA278A796100C41201 /* BeVietnamPro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D5278A796100C41201 /* BeVietnamPro-ExtraBold.ttf */; };
-		574A11DB278A796100C41201 /* BeVietnamPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D6278A796100C41201 /* BeVietnamPro-Regular.ttf */; };
-		574A11DC278A796100C41201 /* BeVietnamPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D7278A796100C41201 /* BeVietnamPro-SemiBold.ttf */; };
-		574A11DD278A796100C41201 /* BeVietnamPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D8278A796100C41201 /* BeVietnamPro-Medium.ttf */; };
-		574A11DE278A796100C41201 /* BeVietnamPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D9278A796100C41201 /* BeVietnamPro-Black.ttf */; };
 		574A11E4278B399A00C41201 /* Extra Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11E3278B399A00C41201 /* Extra Functions.swift */; };
 		57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57753274278C828E00921D77 /* StretchyHeaderView.swift */; };
 		57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DD92788DAF20009794A /* AppDelegate.swift */; };
@@ -40,6 +38,9 @@
 		572C17352788EEF6009D442F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		572C173A2788F119009D442F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		57342068278D05E6005FAA4B /* Button + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button + Extension.swift"; sourceTree = "<group>"; };
+		5734206A278D3952005FAA4B /* Error + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error + Extension.swift"; sourceTree = "<group>"; };
+		5742A48D278DA1280013472C /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		5742A48E278DA1280013472C /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		574A11B72788FBC200C41201 /* Registering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registering.swift; sourceTree = "<group>"; };
 		574A11BA278901BE00C41201 /* Service + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service + Extension.swift"; sourceTree = "<group>"; };
 		574A11BD278904B700C41201 /* TypesErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesErrors.swift; sourceTree = "<group>"; };
@@ -49,11 +50,6 @@
 		574A11CA278A229B00C41201 /* UITableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extension.swift"; sourceTree = "<group>"; };
 		574A11D0278A72BB00C41201 /* MainMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovieTableViewCell.swift; sourceTree = "<group>"; };
 		574A11D1278A72BB00C41201 /* MainMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMovieTableViewCell.xib; sourceTree = "<group>"; };
-		574A11D5278A796100C41201 /* BeVietnamPro-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-ExtraBold.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-ExtraBold.ttf"; sourceTree = "<group>"; };
-		574A11D6278A796100C41201 /* BeVietnamPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-Regular.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf"; sourceTree = "<group>"; };
-		574A11D7278A796100C41201 /* BeVietnamPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-SemiBold.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-SemiBold.ttf"; sourceTree = "<group>"; };
-		574A11D8278A796100C41201 /* BeVietnamPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-Medium.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-Medium.ttf"; sourceTree = "<group>"; };
-		574A11D9278A796100C41201 /* BeVietnamPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BeVietnamPro-Black.ttf"; path = "../../../../../../Desktop/Be_Vietnam_Pro/BeVietnamPro-Black.ttf"; sourceTree = "<group>"; };
 		574A11E3278B399A00C41201 /* Extra Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extra Functions.swift"; sourceTree = "<group>"; };
 		57753274278C828E00921D77 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StretchyHeaderView.swift; path = "Movie2You/Support Files/StretchyHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		57F96DD62788DAF20009794A /* Movie2You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie2You.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +100,7 @@
 				574A11BA278901BE00C41201 /* Service + Extension.swift */,
 				574A11CA278A229B00C41201 /* UITableView + Extension.swift */,
 				57342068278D05E6005FAA4B /* Button + Extension.swift */,
+				5734206A278D3952005FAA4B /* Error + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -168,11 +165,8 @@
 		574A11D4278A78B200C41201 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				574A11D9278A796100C41201 /* BeVietnamPro-Black.ttf */,
-				574A11D5278A796100C41201 /* BeVietnamPro-ExtraBold.ttf */,
-				574A11D8278A796100C41201 /* BeVietnamPro-Medium.ttf */,
-				574A11D6278A796100C41201 /* BeVietnamPro-Regular.ttf */,
-				574A11D7278A796100C41201 /* BeVietnamPro-SemiBold.ttf */,
+				5742A48E278DA1280013472C /* Poppins-Bold.ttf */,
+				5742A48D278DA1280013472C /* Poppins-ExtraBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -316,14 +310,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				574A11D3278A72BB00C41201 /* MainMovieTableViewCell.xib in Resources */,
+				5742A48F278DA2470013472C /* Poppins-Bold.ttf in Resources */,
 				57F96DE62788DAF40009794A /* LaunchScreen.storyboard in Resources */,
-				574A11DB278A796100C41201 /* BeVietnamPro-Regular.ttf in Resources */,
+				5742A490278DA24B0013472C /* Poppins-ExtraBold.ttf in Resources */,
 				57F96DE32788DAF40009794A /* Assets.xcassets in Resources */,
-				574A11DE278A796100C41201 /* BeVietnamPro-Black.ttf in Resources */,
 				574A11C42789FD9100C41201 /* SimilarMoviesTableViewCell.xib in Resources */,
-				574A11DC278A796100C41201 /* BeVietnamPro-SemiBold.ttf in Resources */,
-				574A11DA278A796100C41201 /* BeVietnamPro-ExtraBold.ttf in Resources */,
-				574A11DD278A796100C41201 /* BeVietnamPro-Medium.ttf in Resources */,
 				57F96DE12788DAF20009794A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +370,7 @@
 			files = (
 				574A11E4278B399A00C41201 /* Extra Functions.swift in Sources */,
 				574A11C9278A129900C41201 /* NetworkConstants.swift in Sources */,
+				5734206B278D3952005FAA4B /* Error + Extension.swift in Sources */,
 				57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */,
 				572C173B2788F119009D442F /* Service.swift in Sources */,
 				574A11BB278901BE00C41201 /* Service + Extension.swift in Sources */,

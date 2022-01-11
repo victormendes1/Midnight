@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+
 func mapToMovies(data: (Movie, SimilarMovies, Genres)) -> [Movies] {
     let movies = data.1.movies.map { movie -> Movies in
         Movies(
@@ -22,6 +23,12 @@ func mapToMovies(data: (Movie, SimilarMovies, Genres)) -> [Movies] {
             voteCount: movie.voteCount)
     }
     return movies
+}
+
+func getEnvironmentVar(_ name: String) -> String {
+    guard let rawValue = getenv(name) else { return "No key found" }
+    let toString = String(utf8String: rawValue) ?? "Could not convert key"
+    return toString
 }
 
 func addShadowTop(_ imageView: StretchyHeaderView, place: UIView, leftButton: UIButton? = nil) {
@@ -41,4 +48,10 @@ func addShadowBottom(_ imageView: StretchyHeaderView) {
     shadow.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.black.cgColor] // TODO: - Melhorar a forma em que aplico essas cores
     shadow.frame = imageView.frame
     imageView.layer.addSublayer(shadow)
+}
+
+func showAlert(_ title: String, _ message: String, _ view: UIViewController) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    view.present(alert, animated: true)
 }

@@ -10,7 +10,7 @@ import RxSwift
 import Moya
 
 extension Single where Element == Response {
-    func tryToMap<D: Decodable>(_ type: D.Type) -> Single<D> {
+    func mapTo<D: Decodable>(_ type: D.Type) -> Single<D> {
         return self.asObservable().map { response in
             if (200...299).contains(response.statusCode) {
                 let decoder = JSONDecoder()
@@ -21,16 +21,16 @@ extension Single where Element == Response {
                 }
             }
             if response.statusCode == 401 {
-                throw RequestError.authorizationError()
+                throw ResultError.authorizationError()
             }
             if (402...499).contains(response.statusCode) {
-                throw RequestError.invalidRequest()
+                throw ResultError.invalidRequest()
             }
             
             if (500...599).contains(response.statusCode) {
-                throw RequestError.serverError()
+                throw ResultError.serverError()
             }
-            throw RequestError.unknownError()
+            throw ResultError.unknownError()
         }.asSingle()
     }
 }
