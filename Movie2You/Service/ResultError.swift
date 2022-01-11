@@ -1,5 +1,5 @@
 //
-//  TypesErrors.swift
+//  ResultError.swift
 //  Movie2You
 //
 //  Created by Victor Mendes on 07/01/22.
@@ -7,6 +7,7 @@
 
 import Foundation
 
+// ResultErroris ia property to handle possible errors and to be able to display the title and message
 public struct ResultError: Decodable, Error {
     let title: String
     let message: String

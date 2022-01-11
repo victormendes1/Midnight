@@ -9,6 +9,7 @@ import Foundation
 import Resolver
 import Moya
 
+//Used to bind class
 extension Resolver: ResolverRegistering {
     public static func registerAllServices() {
         register { MoyaProvider<MovieService>() }

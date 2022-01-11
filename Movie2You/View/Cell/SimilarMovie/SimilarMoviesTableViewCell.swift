@@ -20,7 +20,7 @@ class SimilarMoviesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         movieBackgroundImage.alpha = 0
     }
-    
+    // MARK: - Configure
     func configure(_ movie: Movies) {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
             self.movieBackgroundImage.alpha = 1

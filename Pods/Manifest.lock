@@ -11,9 +11,6 @@ PODS:
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
-  - RxGesture (4.0.3):
-    - RxCocoa (~> 6.0)
-    - RxSwift (~> 6.0)
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
@@ -25,7 +22,6 @@ DEPENDENCIES:
   - Moya/RxSwift (~> 15.0)
   - Resolver
   - RxCocoa (= 6.2.0)
-  - RxGesture
   - RxSwift (= 6.2.0)
 
 SPEC REPOS:
@@ -36,7 +32,6 @@ SPEC REPOS:
     - Moya
     - Resolver
     - RxCocoa
-    - RxGesture
     - RxRelay
     - RxSwift
 
@@ -47,10 +42,9 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Resolver: 68984624572763018fd8ec7b8e3e8df0e3b6bba5
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
-  RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
 
-PODFILE CHECKSUM: 6e8086b1c1ba545c19fd0ccb08e982eb6efed46f
+PODFILE CHECKSUM: 6153b8d0aacaa9ff10e440db9a8276f18539fb25
 
 COCOAPODS: 1.11.2

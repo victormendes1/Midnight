@@ -15,7 +15,7 @@ public enum MovieService {
     case getSimilarMoviesBackgrounds(String)
     case getGenres
 }
-
+// MARK: - Extension
 extension MovieService: TargetType {
     public var baseURL: URL {
         switch self {

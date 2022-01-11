@@ -22,25 +22,26 @@ class MainMovieTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureBindings()
-        configureAnimation()
+        configureFrameAnimation()
     }
-    
+    // MARK: - Configure
     func configure(_ movie: Movie) {
         titleLabel.text = movie.originalTitle
         likeLabel.text = "\(movie.voteCount)K Likes"
         viewsLabel.text = "\(movie.popularity) Views"
     }
-    
+    // MARK: - Bindings
     func configureBindings() {
         likeButton.rx
             .tap
             .subscribe(onNext: {
-                self.clickLiked()
+                self.changeLikeButtonState()
             })
             .disposed(by: disposeBag)
     }
-    
-    private func clickLiked() {
+    // MARK: - Private Functions
+    //
+    private func changeLikeButtonState() {
         let heartFill = UIImage(systemName: "heart.fill")
         let heartEmpty = UIImage(systemName: "heart")
         if likeButton.currentImage == heartFill {
@@ -52,7 +53,7 @@ class MainMovieTableViewCell: UITableViewCell {
         }
     }
     
-    private func configureAnimation() {
+    private func configureFrameAnimation() {
         likeButtonView.frame = CGRect(x: -13, y: 59, width: 80, height: 80)
         contentView.addSubview(likeButtonView)
     }

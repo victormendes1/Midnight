@@ -76,7 +76,7 @@ class MainViewController: UIViewController {
         let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 420))
         headerView.alpha = 0
         headerView.imageView.image = imageView.image
-        addShadowTop(headerView, place: self.view, leftButton: backButton)
+        addShadowTop(place: self.view, leftButton: backButton)
         addShadowBottom(headerView)
         self.tableView.tableHeaderView = headerView
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {

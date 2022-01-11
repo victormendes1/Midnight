@@ -7,6 +7,7 @@
 
 import UIKit
 
+// This class is responsible for making the TableView header extensible (parallax effect)
 class StretchyHeaderView: UIView {
     var imageViewHeight = NSLayoutConstraint()
     var imageViewBottom = NSLayoutConstraint()

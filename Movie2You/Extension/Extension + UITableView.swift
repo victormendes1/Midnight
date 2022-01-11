@@ -1,5 +1,5 @@
 //
-//  UITableView + Extension.swift
+//  Extension + UITableView.swift
 //  Movie2You
 //
 //  Created by Victor Mendes on 08/01/22.
@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Extensions to improve the way to register cell in tableview and how to use 'dequeueReusableCell'
 extension UITableView {
     func register(type: UITableViewCell.Type) {
         let identifier = type.reuseIdentifier

@@ -1,5 +1,5 @@
 //
-//  Button + Extension.swift
+//  Extension + Button.swift
 //  Movie2You
 //
 //  Created by Victor Mendes on 10/01/22.
@@ -7,6 +7,7 @@
 
 import UIKit
 
+//This property creates a custom button and so the View doesn't get cluttered I created an extension
 extension UIButton {
     var customBackButton: UIButton {
         let button = UIButton(frame: CGRect(x: 16, y: 45, width: 30, height: 30))

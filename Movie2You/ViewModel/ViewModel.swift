@@ -26,7 +26,7 @@ class ViewModel {
     
     // Download all necessary content
     func requestMovies() {
-        // Main Movie
+        // Requesting Main Movie
         provider.rx.request(.getMovie)
             .mapTo(Movie.self)
             .subscribe(onSuccess: { movie in
@@ -36,7 +36,7 @@ class ViewModel {
             })
             .disposed(by: disposeBag)
         
-        // Similar Movies
+        // Requesting Similar Movies
         provider.rx.request(.getSimilarMovies)
             .mapTo(SimilarMovies.self)
             .subscribe(onSuccess: { movies in
@@ -46,7 +46,7 @@ class ViewModel {
             })
             .disposed(by: disposeBag)
         
-        // Genres
+        // Requesting Genres
         provider.rx.request(.getGenres)
             .mapTo(Genres.self)
             .subscribe(onSuccess: { genres in
@@ -56,7 +56,7 @@ class ViewModel {
             })
             .disposed(by: disposeBag)
         
-        // Main Background
+        // Requesting Main Background
         movie
             .subscribe(onNext:{ movie in
                 self.provider.rx.request(.getMovieBackground(movie.posterPath))
