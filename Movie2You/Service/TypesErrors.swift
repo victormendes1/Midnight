@@ -7,23 +7,23 @@
 
 import Foundation
 
-public struct RequestError: Decodable, Error {
-    let status: String
+public struct ResultError: Decodable, Error {
+    let title: String
     let message: String
     
-    static func unknownError() -> RequestError {
-        return RequestError(status: "Erro desconhecido", message: "Ops! Não foi possível processar a sua solicitação")
+    static func unknownError() -> ResultError {
+        return ResultError(title: "Erro desconhecido", message: "Ops! Não foi possível processar a sua solicitação")
     }
     
-    static func authorizationError() -> RequestError {
-        return RequestError(status: "Sem autorização", message: "Ops! Parece que você não possui autorizção")
+    static func authorizationError() -> ResultError {
+        return ResultError(title: "Sem autorização", message: "Ops! Parece que você não possui autorizção")
     }
     
-    static func invalidRequest() -> RequestError {
-        return RequestError(status: "Solicitação invalida", message: "Ops! Não foi possível processar a sua solicitação, tente mais tarde.")
+    static func invalidRequest() -> ResultError {
+        return ResultError(title: "Solicitação invalida", message: "Ops! Não foi possível processar a sua solicitação, tente mais tarde.")
     }
     
-    static func serverError() -> RequestError {
-        return RequestError(status: "Erro no servidor", message: "Ops! Não foi possível processar a sua solicitação.")
+    static func serverError() -> ResultError {
+        return ResultError(title: "Erro no servidor", message: "Ops! Não foi possível processar a sua solicitação.")
     }
 }

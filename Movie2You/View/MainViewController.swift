@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
     fileprivate var viewModel: ViewModel = Resolver.resolve()
     
     @IBOutlet var tableView: UITableView!
+    
     let backButton = UIButton().customBackButton
-
     var movies = PublishSubject<[Movies]>()
     let disposeBag = DisposeBag()
     
@@ -54,6 +54,15 @@ class MainViewController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        // Possible Errors
+        viewModel
+            .errorDispatches
+            .subscribe(onNext: { error in
+                showAlert(error.title, error.message, self)
+            })
+            .disposed(by: disposeBag)
+        
     }
     // MARK: - Private Functions
     private func initialSetting() {

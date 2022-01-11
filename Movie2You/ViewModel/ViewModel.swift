@@ -19,46 +19,40 @@ class ViewModel {
     public let genres = PublishSubject<Genres>()
     
     public let allMovies = PublishSubject<[Movies]>()
+    public let errorDispatches = PublishSubject<ResultError>()
     var imageBackground = PublishSubject<UIImageView>()
     
-    public let loading = PublishSubject<Bool>()
-    public let error = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
     
     // Download all necessary content
     func requestMovies() {
         // Main Movie
-        self.loading.onNext(true)
         provider.rx.request(.getMovie)
-            .tryToMap(Movie.self)
+            .mapTo(Movie.self)
             .subscribe(onSuccess: { movie in
                 self.movie.onNext(movie)
             }, onFailure: { error in
-                self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
-                self.loading.onNext(false)
-                print(error)
+                self.errorDispatches.onNext(error.asResultError)
             })
             .disposed(by: disposeBag)
         
         // Similar Movies
         provider.rx.request(.getSimilarMovies)
-            .tryToMap(SimilarMovies.self)
+            .mapTo(SimilarMovies.self)
             .subscribe(onSuccess: { movies in
                 self.similarMovies.onNext(movies)
             }, onFailure: { error in
-                self.error.onNext(error) //TODO: - Esse erro vai ser apresentado na tela como popup
-                self.loading.onNext(false)
-                print(error)
+                self.errorDispatches.onNext(error.asResultError)
             })
             .disposed(by: disposeBag)
         
         // Genres
         provider.rx.request(.getGenres)
-            .tryToMap(Genres.self)
+            .mapTo(Genres.self)
             .subscribe(onSuccess: { genres in
                 self.genres.onNext(genres)
             }, onFailure: { error in
-                debugPrint(error)
+                self.errorDispatches.onNext(error.asResultError)
             })
             .disposed(by: disposeBag)
         
@@ -69,6 +63,8 @@ class ViewModel {
                     .subscribe(onSuccess: { response in
                         let imageView: UIImageView = UIImageView(image: UIImage(data: response.data))
                         self.imageBackground.onNext(imageView)
+                    }, onFailure: { error in
+                        self.errorDispatches.onNext(error.asResultError)
                     })
                     .disposed(by: self.disposeBag)
             })
