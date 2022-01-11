@@ -9,13 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Lottie
-import RxGesture
 
 class MainMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
-
+    @IBOutlet weak var likeButton: UIButton!
+    
     private let disposeBag = DisposeBag()
     private let likeButtonView = AnimationView(name: "likedAnimation")
     
@@ -32,20 +32,28 @@ class MainMovieTableViewCell: UITableViewCell {
     }
     
     func configureBindings() {
-        likeButtonView.rx
-            .tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { _ in
-                self.likeButtonView.play()
-                //self.likeButtonView.play(fromFrame: 25, toFrame: 0, loopMode: .none)
+        likeButton.rx
+            .tap
+            .subscribe(onNext: {
+                self.clickLiked()
             })
             .disposed(by: disposeBag)
     }
     
+    private func clickLiked() {
+        let heartFill = UIImage(systemName: "heart.fill")
+        let heartEmpty = UIImage(systemName: "heart")
+        if likeButton.currentImage == heartFill {
+            likeButton.setImage(heartEmpty, for: .normal)
+            likeButtonView.play(fromFrame: 3, toFrame: 0)
+        } else {
+            likeButton.setImage(heartFill, for: .normal)
+            likeButtonView.play()
+        }
+    }
+    
     private func configureAnimation() {
-        likeButtonView.frame = CGRect(x: 290, y: -30, width: 120, height: 120)
+        likeButtonView.frame = CGRect(x: -13, y: 59, width: 80, height: 80)
         contentView.addSubview(likeButtonView)
-        
-        likeButtonView.play(fromFrame: 0, toFrame: 0, loopMode: .none)
     }
 }

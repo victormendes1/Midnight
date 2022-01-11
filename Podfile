@@ -10,7 +10,6 @@ target 'Movie2You' do
   # Reactive
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
-  pod "RxGesture"
   
   # Networking
   pod 'Alamofire', '~> 5.5'
