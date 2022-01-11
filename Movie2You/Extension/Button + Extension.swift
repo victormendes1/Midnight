@@ -9,11 +9,11 @@ import UIKit
 
 extension UIButton {
     var customBackButton: UIButton {
-        let button = UIButton(frame: CGRect(x: 16, y: 45, width: 35, height: 35))
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 80, weight: .black, scale: .large)
-        let largeBackwardCircle = UIImage(systemName: "chevron.backward.circle.fill", withConfiguration: largeConfig)
-        button.tintColor = .darkGray
-        button.setImage(largeBackwardCircle, for: .normal)
+        let button = UIButton(frame: CGRect(x: 16, y: 45, width: 30, height: 30))
+        let arrowImage = UIImage(named: "white_back_arrow")
+        button.backgroundColor = .black.withAlphaComponent(0.7)
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.setImage(arrowImage, for: .normal)
         return button
     }
 }

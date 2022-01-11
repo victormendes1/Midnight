@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+
 func mapToMovies(data: (Movie, SimilarMovies, Genres)) -> [Movies] {
     let movies = data.1.movies.map { movie -> Movies in
         Movies(
