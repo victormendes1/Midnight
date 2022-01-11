@@ -86,7 +86,7 @@ class MainViewController: UIViewController {
 }
 // MARK: - Extension
 extension MainViewController: UIScrollViewDelegate, UITableViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {                  // TODO: - Verificar o scroll
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let headerView = self.tableView.tableHeaderView as? StretchyHeaderView else { return }
         headerView.scrollViewDidScroll(scrollView: tableView)
     }

@@ -23,6 +23,7 @@
 		574A11D2278A72BB00C41201 /* MainMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11D0278A72BB00C41201 /* MainMovieTableViewCell.swift */; };
 		574A11D3278A72BB00C41201 /* MainMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574A11D1278A72BB00C41201 /* MainMovieTableViewCell.xib */; };
 		574A11E4278B399A00C41201 /* Extra Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11E3278B399A00C41201 /* Extra Functions.swift */; };
+		576B4173278DDF0B004D01C7 /* likedAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 576B4172278DDF0B004D01C7 /* likedAnimation.json */; };
 		57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57753274278C828E00921D77 /* StretchyHeaderView.swift */; };
 		57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DD92788DAF20009794A /* AppDelegate.swift */; };
 		57F96DDC2788DAF20009794A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F96DDB2788DAF20009794A /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		574A11D0278A72BB00C41201 /* MainMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovieTableViewCell.swift; sourceTree = "<group>"; };
 		574A11D1278A72BB00C41201 /* MainMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMovieTableViewCell.xib; sourceTree = "<group>"; };
 		574A11E3278B399A00C41201 /* Extra Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extra Functions.swift"; sourceTree = "<group>"; };
+		576B4172278DDF0B004D01C7 /* likedAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = likedAnimation.json; sourceTree = "<group>"; };
 		57753274278C828E00921D77 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StretchyHeaderView.swift; path = "Movie2You/Support Files/StretchyHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		57F96DD62788DAF20009794A /* Movie2You.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie2You.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F96DD92788DAF20009794A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				57F96DE22788DAF40009794A /* Assets.xcassets */,
+				576B4172278DDF0B004D01C7 /* likedAnimation.json */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				5742A48F278DA2470013472C /* Poppins-Bold.ttf in Resources */,
 				57F96DE62788DAF40009794A /* LaunchScreen.storyboard in Resources */,
 				5742A490278DA24B0013472C /* Poppins-ExtraBold.ttf in Resources */,
+				576B4173278DDF0B004D01C7 /* likedAnimation.json in Resources */,
 				57F96DE32788DAF40009794A /* Assets.xcassets in Resources */,
 				574A11C42789FD9100C41201 /* SimilarMoviesTableViewCell.xib in Resources */,
 				57F96DE12788DAF20009794A /* Main.storyboard in Resources */,
