@@ -22,7 +22,7 @@ class SimilarMoviesTableViewCell: UITableViewCell {
     }
     
     func configure(_ movie: Movies) {
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
             self.movieBackgroundImage.alpha = 1
         })
         movieBackgroundImage.kf.setImage(with: movie.posterURL())

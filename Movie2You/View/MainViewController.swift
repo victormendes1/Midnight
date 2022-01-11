@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     let backButton = UIButton().customBackButton
-
+    
     var movies = PublishSubject<[Movies]>()
     let disposeBag = DisposeBag()
     
@@ -65,10 +65,14 @@ class MainViewController: UIViewController {
     
     private func configureHeaderView(_ imageView: UIImageView) {
         let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 420))
+        headerView.alpha = 0
         headerView.imageView.image = imageView.image
         addShadowTop(headerView, place: self.view, leftButton: backButton)
         addShadowBottom(headerView)
         self.tableView.tableHeaderView = headerView
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            headerView.alpha = 1
+        })
     }
 }
 // MARK: - Extension
