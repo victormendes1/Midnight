@@ -11,7 +11,7 @@ import Foundation
 struct Movies {
     var mainMovie: Movie?
     var movies: [Movie]?
-    let backdropPath: String
+    var backdropPath: String?
     var genres: Genres?
     let genreId: [Int]?
     let id: Int
@@ -41,7 +41,7 @@ extension Movies {
 }
 // MARK: - Model used to download the movie from the network
 struct Movie: Codable {
-    var backdropPath: String
+    var backdropPath: String?
     var genres: [Genre]?
     let genreId: [Int]?
     let id: Int
