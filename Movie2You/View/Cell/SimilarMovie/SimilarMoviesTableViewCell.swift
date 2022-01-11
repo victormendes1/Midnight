@@ -18,9 +18,13 @@ class SimilarMoviesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        movieBackgroundImage.alpha = 0
     }
     
     func configure(_ movie: Movies) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.movieBackgroundImage.alpha = 1
+        })
         movieBackgroundImage.kf.setImage(with: movie.posterURL())
         titleLabel.text = movie.originalTitle
         releaseLabel.text = movie.releaseYear
