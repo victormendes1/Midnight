@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		572C17362788EEF6009D442F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C17352788EEF6009D442F /* ViewModel.swift */; };
 		572C173B2788F119009D442F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C173A2788F119009D442F /* Service.swift */; };
+		57342069278D05E6005FAA4B /* Button + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57342068278D05E6005FAA4B /* Button + Extension.swift */; };
 		574A11B82788FBC200C41201 /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11B72788FBC200C41201 /* Registering.swift */; };
 		574A11BB278901BE00C41201 /* Service + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BA278901BE00C41201 /* Service + Extension.swift */; };
 		574A11BE278904B700C41201 /* TypesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A11BD278904B700C41201 /* TypesErrors.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		572C17352788EEF6009D442F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		572C173A2788F119009D442F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		57342068278D05E6005FAA4B /* Button + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button + Extension.swift"; sourceTree = "<group>"; };
 		574A11B72788FBC200C41201 /* Registering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registering.swift; sourceTree = "<group>"; };
 		574A11BA278901BE00C41201 /* Service + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service + Extension.swift"; sourceTree = "<group>"; };
 		574A11BD278904B700C41201 /* TypesErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesErrors.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				574A11BA278901BE00C41201 /* Service + Extension.swift */,
 				574A11CA278A229B00C41201 /* UITableView + Extension.swift */,
+				57342068278D05E6005FAA4B /* Button + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				574A11BB278901BE00C41201 /* Service + Extension.swift in Sources */,
 				572C17362788EEF6009D442F /* ViewModel.swift in Sources */,
 				57F96DEF2788E1BE0009794A /* Movie.swift in Sources */,
+				57342069278D05E6005FAA4B /* Button + Extension.swift in Sources */,
 				57F96DDE2788DAF20009794A /* MainViewController.swift in Sources */,
 				57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */,
 				574A11CB278A229C00C41201 /* UITableView + Extension.swift in Sources */,
