@@ -69,6 +69,7 @@ class MainViewController: UIViewController {
         tableView.register(type: SimilarMoviesTableViewCell.self)
         tableView.register(type: MainMovieTableViewCell.self)
         tableView.contentInsetAdjustmentBehavior = .never
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 1.9))
         tableView.delegate = self
     }
     
