@@ -73,7 +73,7 @@ class MainViewController: UIViewController {
     }
     
     private func configureHeaderView(_ imageView: UIImageView) {
-        let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 420))
+        let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 1.9))
         headerView.alpha = 0
         headerView.imageView.image = imageView.image
         addShadowTop(place: self.view, leftButton: backButton)

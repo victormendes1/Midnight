@@ -15,7 +15,7 @@ class MainMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
-    
+    @IBOutlet weak var likeView: UIView!
     private let disposeBag = DisposeBag()
     private let likeButtonView = AnimationView(name: "likedAnimation")
     
@@ -26,6 +26,7 @@ class MainMovieTableViewCell: UITableViewCell {
     }
     // MARK: - Configure
     func configure(_ movie: Movie) {
+        likeView.backgroundColor = .clear
         titleLabel.text = movie.originalTitle
         likeLabel.text = "\(movie.voteCount)K Likes"
         viewsLabel.text = "\(movie.popularity) Views"
@@ -54,7 +55,7 @@ class MainMovieTableViewCell: UITableViewCell {
     }
     
     private func configureFrameAnimation() {
-        likeButtonView.frame = CGRect(x: -13, y: 59, width: 80, height: 80)
-        contentView.addSubview(likeButtonView)
+        likeButtonView.frame = likeView.frame
+        likeView.addSubview(likeButtonView)
     }
 }
