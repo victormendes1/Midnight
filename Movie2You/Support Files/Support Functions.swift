@@ -53,7 +53,7 @@ func addShadowTop(place: UIView, leftButton: UIButton? = nil) {
 //Function responsible for adding shadow at the bottom of the Header View
 func addShadowBottom(_ headerView: StretchyHeaderView) {
     let shadow = CAGradientLayer()
-    shadow.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.black.cgColor] // TODO: - Melhorar a forma em que aplico essas cores
+    shadow.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor, #colorLiteral(red: 0.04129081964, green: 0.04129078984, blue: 0.04129078984, alpha: 1).cgColor] // TODO: - Melhorar a forma em que aplico essas cores
     shadow.frame = headerView.frame
     headerView.layer.addSublayer(shadow)
 }
