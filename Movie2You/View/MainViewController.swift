@@ -69,12 +69,12 @@ class MainViewController: UIViewController {
         tableView.register(type: SimilarMoviesTableViewCell.self)
         tableView.register(type: MainMovieTableViewCell.self)
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 1.9))
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 2.1))
         tableView.delegate = self
     }
     
     private func configureHeaderView(_ imageView: UIImageView) {
-        let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 1.9))
+        let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 2.1))
         headerView.alpha = 0
         headerView.imageView.image = imageView.image
         addShadowTop(place: self.view, leftButton: backButton)
