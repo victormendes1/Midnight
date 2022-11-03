@@ -10,7 +10,10 @@ target 'Movie2You' do
   # Reactive
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
-  
+ 
+  # AutoLayout
+  pod 'SnapKit', '~> 5.6.0'
+ 
   # Networking
   pod 'Alamofire', '~> 5.5'
   pod 'Moya/RxSwift', '~> 15.0'

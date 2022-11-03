@@ -9,17 +9,35 @@ import Foundation
 
 // MARK: - Model used to show on main screen
 struct Movies {
-    var mainMovie: Movie?
-    var movies: [Movie]?
-    var backdropPath: String?
-    var genres: Genres?
-    let genreId: [Int]?
+    var mainMovie: Movie
+    var movies: [Movie]
+    var backdropPath: String
+    var genres: Genres
+    let genreId: [Int]
     let id: Int
     let originalTitle: String
     let releaseDate: String
     let posterPath: String
     let popularity: Double
     let voteCount: Int
+    
+    init (mainMovie: Movie = Movie(), movies: [Movie] = [], backdropPath: String = "", genres: Genres = Genres(), genreId: [Int] = [], id: Int = .zero, originalTitle: String = "", releaseDate: String = "", posterPath: String = "", popularity: Double = .zero, voteCount: Int = .zero) {
+        self.mainMovie = mainMovie
+        self.movies = movies
+        self.backdropPath = backdropPath
+        self.genres = genres
+        self.genreId = genreId
+        self.id = id
+        self.originalTitle = originalTitle
+        self.releaseDate = releaseDate
+        self.posterPath = posterPath
+        self.popularity = popularity
+        self.voteCount = voteCount
+    }
+    
+    
+    
+    
 }
 
 extension Movies {
@@ -28,15 +46,13 @@ extension Movies {
     }
     
     func getGenres() -> String {
-        self.genreId?.compactMap { number -> String in
-            self.genres?.genres.filter({ $0.id == number }).map({ $0.name}).joined() ?? ""
-        }.filter({ $0 != "" }).prefix(2).sorted(by: <).joined(separator: ", ") ?? ""
+        self.genreId.compactMap { number -> String in
+            self.genres.genres.filter({ $0.id == number }).map({ $0.name}).joined()
+        }.filter({ $0 != "" }).prefix(2).sorted(by: <).joined(separator: ", ")
     }
     
     var releaseYear: String {
-        get {
-            releaseDate.split(separator: "-").map({ String($0) }).first ?? ""
-        }
+        releaseDate.split(separator: "-").map({ String($0) }).first ?? ""
     }
 }
 // MARK: - Model used to download the movie from the network
@@ -51,6 +67,18 @@ struct Movie: Codable {
     let popularity: Double
     let voteCount: Int
     
+    init(backdropPath: String = "", genres: [Genre] = [], genreId: [Int] = [], id: Int = .zero, originalTitle: String = "", releaseDate: String = "", posterPath: String = "", popularity: Double = .zero, voteCount: Int = .zero) {
+        self.backdropPath = backdropPath
+        self.genres = genres
+        self.genreId = genreId
+        self.id = id
+        self.originalTitle = originalTitle
+        self.releaseDate = releaseDate
+        self.posterPath = posterPath
+        self.popularity = popularity
+        self.voteCount = voteCount
+    }
+    
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case genres, id
@@ -64,7 +92,7 @@ struct Movie: Codable {
 }
 // MARK: - Genre
 struct SimilarMovies: Codable {
-    let movies: [Movie]
+    var movies: [Movie] = []
     
     enum CodingKeys: String, CodingKey {
         case movies = "results"
@@ -72,10 +100,16 @@ struct SimilarMovies: Codable {
 }
 // MARK: - Genre
 struct Genres: Codable {
-    let genres: [Genre]
+    var genres: [Genre] = []
+    
 }
 
 struct Genre: Codable {
-    let id: Int
-    let name: String
+    var id: Int
+    var name: String
+    
+    init(id: Int = .zero, name: String = "") {
+        self.id = id
+        self.name = name
+    }
 }

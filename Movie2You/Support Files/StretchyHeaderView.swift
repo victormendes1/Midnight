@@ -16,7 +16,7 @@ class StretchyHeaderView: UIView {
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill //.top
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     

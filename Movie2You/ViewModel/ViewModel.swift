@@ -5,42 +5,45 @@
 //  Created by Victor Mendes on 07/01/22.
 //
 
-import Foundation
 import UIKit
 import RxSwift
 import Moya
 import Resolver
+import RxRelay
 
 class ViewModel {
-    fileprivate let provider: MoyaProvider<MovieService> = Resolver.resolve()
+    private let provider: MoyaProvider<MovieService> = Resolver.resolve()
+    private let disposeBag = DisposeBag()
     
-    public let movie = PublishSubject<Movie>()
-    public let similarMovies = PublishSubject<SimilarMovies>()
-    public let genres = PublishSubject<Genres>()
+    let movie = BehaviorRelay<Movie>(value: Movie())
+    public let similarMovies = BehaviorRelay<SimilarMovies>(value: SimilarMovies())
+    public let genres = BehaviorRelay<Genres>(value: Genres())
     
-    public let allMovies = PublishSubject<[Movies]>()
+    public let movies = BehaviorRelay(value: [Movies]())
     public let errorDispatches = PublishSubject<ResultError>()
     var imageBackground = PublishSubject<UIImageView>()
     
-    private let disposeBag = DisposeBag()
     
     // Download all necessary content
     func requestMovies() {
         // Requesting Main Movie
         provider.rx.request(.getMovie)
             .mapTo(Movie.self)
-            .subscribe(onSuccess: { movie in
-                self.movie.onNext(movie)
+            .subscribe(onSuccess: { [weak self] movie in
+                guard let self = self else { return }
+                
+                self.movie.accept(movie)
             }, onFailure: { error in
                 self.errorDispatches.onNext(error.asResultError)
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         // Requesting Similar Movies
         provider.rx.request(.getSimilarMovies)
             .mapTo(SimilarMovies.self)
-            .subscribe(onSuccess: { movies in
-                self.similarMovies.onNext(movies)
+            .subscribe(onSuccess: { [weak self] movies in
+                guard let self = self else { return }
+                
+                self.similarMovies.accept(movies)
             }, onFailure: { error in
                 self.errorDispatches.onNext(error.asResultError)
             })
@@ -49,8 +52,9 @@ class ViewModel {
         // Requesting Genres
         provider.rx.request(.getGenres)
             .mapTo(Genres.self)
-            .subscribe(onSuccess: { genres in
-                self.genres.onNext(genres)
+            .subscribe(onSuccess: { [weak self] genres in
+                guard let self = self else { return }
+                self.genres.accept(genres)
             }, onFailure: { error in
                 self.errorDispatches.onNext(error.asResultError)
             })
@@ -58,7 +62,7 @@ class ViewModel {
         
         // Requesting Main Background
         movie
-            .subscribe(onNext:{ movie in
+            .subscribe(onNext: { movie in
                 self.provider.rx.request(.getMovieBackground(movie.posterPath))
                     .subscribe(onSuccess: { response in
                         let imageView: UIImageView = UIImageView(image: UIImage(data: response.data))
@@ -72,8 +76,10 @@ class ViewModel {
         
         // Transforming data into a single type
         Observable.combineLatest(movie, similarMovies, genres)
-            .subscribe(onNext: { value in
-                self.allMovies.onNext( mapToMovies(data: value))
+            .subscribe(onNext: { [weak self] value in
+                guard let self = self else { return }
+                
+                self.movies.accept(mapToMovies(data: value))
             })
             .disposed(by: disposeBag)
     }

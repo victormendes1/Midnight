@@ -18,7 +18,7 @@ func mapToMovies(data: (Movie, SimilarMovies, Genres)) -> [Movies] {
             mainMovie: data.0,
             backdropPath: movie.backdropPath ?? "",
             genres: data.2,
-            genreId: movie.genreId,
+            genreId: movie.genreId ?? [],
             id: movie.id,
             originalTitle: movie.originalTitle,
             releaseDate: movie.releaseDate,
