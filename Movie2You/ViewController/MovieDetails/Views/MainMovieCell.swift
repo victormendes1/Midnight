@@ -29,10 +29,18 @@ class MainMovieCell: UITableViewCell {
     
     private lazy var likeButton: UIButton = {
         let button = UIButton()
+        button.tintColor = .systemRed
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
         button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
-        button.tintColor = .white
         return button
+    }()
+    
+    private lazy var customBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 0.5 * 40
+        view.backgroundColor = .white.withAlphaComponent(0.8)
+        return view
     }()
     
     private var numberOfLikesLabel: UILabel = {
@@ -102,21 +110,27 @@ class MainMovieCell: UITableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(numberOfLikesLabel)
         contentView.addSubview(likeView)
-        contentView.addSubview(likeButton)
+        contentView.addSubview(customBackgroundView)
         contentView.addSubview(numberOfViewsLabel)
         contentView.addSubview(previewIconView)
+        customBackgroundView.addSubview(likeButton)
         
         titleLabel.snp.makeConstraints { title in
             title.top.equalToSuperview().inset(10)
             title.leading.equalToSuperview().inset(16)
-            title.trailing.equalTo(likeButton.snp_leadingMargin).inset(-10)
+            title.trailing.equalTo(customBackgroundView.snp_leadingMargin).inset(-20)
             title.height.greaterThanOrEqualTo(15)
         }
         
         likeButton.snp.makeConstraints { button in
-            button.top.equalToSuperview().inset(10)
-            button.trailing.equalToSuperview().inset(10)
-            button.width.height.equalTo(30)
+            button.centerY.centerX.equalTo(customBackgroundView)
+            button.width.equalTo(30)
+            button.height.equalTo(25)
+        }
+        
+        customBackgroundView.snp.makeConstraints { button in
+            button.top.right.equalToSuperview().inset(10)
+            button.width.height.equalTo(40)
         }
         
         numberOfLikesLabel.snp.makeConstraints { likes in

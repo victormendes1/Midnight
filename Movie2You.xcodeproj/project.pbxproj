@@ -20,6 +20,7 @@
 		576B4173278DDF0B004D01C7 /* likedAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 576B4172278DDF0B004D01C7 /* likedAnimation.json */; };
 		57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57753274278C828E00921D77 /* StretchyHeaderView.swift */; };
 		577F32E22913FCF4000504BA /* Extension + UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32E12913FCF4000504BA /* Extension + UIFont.swift */; };
+		577F32E429140C7C000504BA /* LikeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32E329140C7C000504BA /* LikeButtonView.swift */; };
 		57942929291007CF00A1CBC9 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57942928291007CF00A1CBC9 /* MovieDetailsViewController.swift */; };
 		5794292B29100ADB00A1CBC9 /* MainMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5794292A29100ADB00A1CBC9 /* MainMovieCell.swift */; };
 		5794292D2910155800A1CBC9 /* SimilarMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5794292C2910155800A1CBC9 /* SimilarMoviesCell.swift */; };
@@ -47,6 +48,7 @@
 		576B4172278DDF0B004D01C7 /* likedAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = likedAnimation.json; sourceTree = "<group>"; };
 		57753274278C828E00921D77 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StretchyHeaderView.swift; path = "Movie2You/Support Files/StretchyHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		577F32E12913FCF4000504BA /* Extension + UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIFont.swift"; sourceTree = "<group>"; };
+		577F32E329140C7C000504BA /* LikeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonView.swift; sourceTree = "<group>"; };
 		57942928291007CF00A1CBC9 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		5794292A29100ADB00A1CBC9 /* MainMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovieCell.swift; sourceTree = "<group>"; };
 		5794292C2910155800A1CBC9 /* SimilarMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesCell.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				574A11E3278B399A00C41201 /* Support Functions.swift */,
 				574A11C8278A129800C41201 /* NetworkConstants.swift */,
 				57753274278C828E00921D77 /* StretchyHeaderView.swift */,
+				577F32E329140C7C000504BA /* LikeButtonView.swift */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				57DF21F62911AFB900BE74D5 /* Extension + Double.swift in Sources */,
 				57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */,
 				5794292D2910155800A1CBC9 /* SimilarMoviesCell.swift in Sources */,
+				577F32E429140C7C000504BA /* LikeButtonView.swift in Sources */,
 				572C173B2788F119009D442F /* Service.swift in Sources */,
 				574A11BB278901BE00C41201 /* Extension + Single.swift in Sources */,
 				572C17362788EEF6009D442F /* ViewModel.swift in Sources */,

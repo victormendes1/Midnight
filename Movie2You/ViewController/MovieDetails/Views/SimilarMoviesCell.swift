@@ -75,7 +75,7 @@ class SimilarMoviesCell: UITableViewCell {
             line.left.equalToSuperview().inset(90)
             line.right.equalToSuperview()
             line.bottom.equalToSuperview()
-            line.height.equalTo(0.3)
+            line.height.equalTo(0.7)
         }
         
         movieBackgroundImage.snp.makeConstraints { image in
