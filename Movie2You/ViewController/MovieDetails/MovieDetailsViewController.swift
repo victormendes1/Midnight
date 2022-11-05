@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class MovieDetailsViewController: UIViewController {
+final class MovieDetailsViewController: UIViewController, Alert {
     private let disposeBag = DisposeBag()
     private var viewModel: ViewModel = Resolver.resolve()
     
@@ -32,30 +32,31 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.requestMovies()
-        initialSetting()
-        configureBindings()
+        setupBindings()
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.barTintColor = .init(white: .zero, alpha: 3)
+        setNavigationController()
     }
     
-    // MARK: - Bindings
-    func configureBindings() {
-        viewModel
-            .imageBackground
+    // MARK: - Private Functions
+    private func setupBindings() {
+        viewModel.requestMovies()
+        
+        viewModel.imageBackground
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: configureHeaderView(_:))
             .disposed(by: disposeBag)
         
-        viewModel
-            .errorDispatches
-            .subscribe(onNext: { error in
-                showAlert(error.title, error.message, self)
-            })
-            .disposed(by: disposeBag)
+        viewModel.errorDispatches
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] error in
+                guard let self = self else { return }
+                
+                self.showAlert(error.title, error.message, self)
+            }).disposed(by: disposeBag)
         
         viewModel.similarMovies
             .observe(on: MainScheduler.instance)
@@ -65,8 +66,8 @@ class MovieDetailsViewController: UIViewController {
                 self.tableView.reloadData()
             }).disposed(by: disposeBag)
     }
-    // MARK: - Private Functions
-    private func initialSetting() {
+    
+    private func setupViews() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { tableView in
             tableView.width.height.equalToSuperview()
@@ -85,7 +86,7 @@ class MovieDetailsViewController: UIViewController {
         })
     }
 }
-// MARK: - Extension
+// MARK: - Extension UITableView
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.movies.value.count
@@ -106,6 +107,7 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
+// MARK: - Extension ScrollView
 extension MovieDetailsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let headerView = self.tableView.tableHeaderView as? StretchyHeaderView else { return }

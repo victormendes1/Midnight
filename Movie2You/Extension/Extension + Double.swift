@@ -18,20 +18,20 @@ extension Double {
         return Double(noPunctuation) ?? .zero
     }
     
-    func shortening(numbers of: String = "") -> String {
+    func shortening(previous text: String = "") -> String {
         var thousandNum = self/1000
         var millionNum = self/1000000
         if self >= 1000 && self < 1000000{
             if floor(thousandNum) == thousandNum {
                 return "\(Int(thousandNum))k"
             }
-            return "\(thousandNum.roundToPlaces(places: 1))k \(of)"
+            return "\(thousandNum.roundToPlaces(places: 1))k \(text)"
         }
         if self > 1000000 {
             if floor(millionNum) == millionNum {
                 return "\(Int(thousandNum))k"
             }
-            return "\(millionNum.roundToPlaces(places: 1))M \(of)"
+            return "\(millionNum.roundToPlaces(places: 1))M \(text)"
         }
         else {
             if floor(self) == self {

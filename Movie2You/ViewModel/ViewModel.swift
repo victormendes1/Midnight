@@ -11,7 +11,17 @@ import Moya
 import Resolver
 import RxRelay
 
-class ViewModel {
+protocol MovieDetailsViewModel: Transformable {
+    var similarMovies: BehaviorRelay<SimilarMovies> { get }
+    var genres: BehaviorRelay<Genres> { get }
+    var movies: BehaviorRelay<[Movies]> { get }
+    var errorDispatches: PublishSubject<ResultError> { get }
+    var imageBackground: PublishSubject<UIImageView> { get set }
+    
+    func requestMovies()
+}
+
+class ViewModel: MovieDetailsViewModel {
     private let provider: MoyaProvider<MovieService> = Resolver.resolve()
     private let disposeBag = DisposeBag()
     
@@ -26,7 +36,6 @@ class ViewModel {
     
     // Download all necessary content
     func requestMovies() {
-        // Requesting Main Movie
         provider.rx.request(.getMovie)
             .mapTo(Movie.self)
             .subscribe(onSuccess: { [weak self] movie in
@@ -78,8 +87,8 @@ class ViewModel {
         Observable.combineLatest(movie, similarMovies, genres)
             .subscribe(onNext: { [weak self] value in
                 guard let self = self else { return }
-                
-                self.movies.accept(mapToMovies(data: value))
+                let movie = self.mapToMovies(value)
+                self.movies.accept(movie)
             })
             .disposed(by: disposeBag)
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571DDCFB2915F33D004692A4 /* Exetension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */; };
 		572C17362788EEF6009D442F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C17352788EEF6009D442F /* ViewModel.swift */; };
 		572C173B2788F119009D442F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C173A2788F119009D442F /* Service.swift */; };
 		5734206B278D3952005FAA4B /* Extension + Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734206A278D3952005FAA4B /* Extension + Error.swift */; };
@@ -20,6 +21,8 @@
 		576B4173278DDF0B004D01C7 /* likedAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 576B4172278DDF0B004D01C7 /* likedAnimation.json */; };
 		57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57753274278C828E00921D77 /* StretchyHeaderView.swift */; };
 		577F32E22913FCF4000504BA /* Extension + UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32E12913FCF4000504BA /* Extension + UIFont.swift */; };
+		577F32F229156ABF000504BA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32F129156ABF000504BA /* Alert.swift */; };
+		577F32F429156BD2000504BA /* Transformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32F329156BD2000504BA /* Transformable.swift */; };
 		57942929291007CF00A1CBC9 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57942928291007CF00A1CBC9 /* MovieDetailsViewController.swift */; };
 		5794292B29100ADB00A1CBC9 /* MainMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5794292A29100ADB00A1CBC9 /* MainMovieCell.swift */; };
 		5794292D2910155800A1CBC9 /* SimilarMoviesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5794292C2910155800A1CBC9 /* SimilarMoviesCell.swift */; };
@@ -34,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exetension + UIViewController.swift"; sourceTree = "<group>"; };
 		572C17352788EEF6009D442F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		572C173A2788F119009D442F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5734206A278D3952005FAA4B /* Extension + Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Error.swift"; sourceTree = "<group>"; };
@@ -47,6 +51,8 @@
 		576B4172278DDF0B004D01C7 /* likedAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = likedAnimation.json; sourceTree = "<group>"; };
 		57753274278C828E00921D77 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StretchyHeaderView.swift; path = "Movie2You/Support Files/StretchyHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		577F32E12913FCF4000504BA /* Extension + UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIFont.swift"; sourceTree = "<group>"; };
+		577F32F129156ABF000504BA /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		577F32F329156BD2000504BA /* Transformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformable.swift; sourceTree = "<group>"; };
 		57942928291007CF00A1CBC9 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		5794292A29100ADB00A1CBC9 /* MainMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMovieCell.swift; sourceTree = "<group>"; };
 		5794292C2910155800A1CBC9 /* SimilarMoviesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesCell.swift; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				574A11B72788FBC200C41201 /* Extension + Resolver.swift */,
+				571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */,
 				577F32E12913FCF4000504BA /* Extension + UIFont.swift */,
 				574A11BA278901BE00C41201 /* Extension + Single.swift */,
 				5734206A278D3952005FAA4B /* Extension + Error.swift */,
@@ -126,6 +133,7 @@
 		574A11C7278A124200C41201 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				577F32F029156A8D000504BA /* Protocols */,
 				57F96DE42788DAF40009794A /* LaunchScreen.storyboard */,
 				57F96DD92788DAF20009794A /* AppDelegate.swift */,
 				57F96DDB2788DAF20009794A /* SceneDelegate.swift */,
@@ -143,6 +151,15 @@
 				5742A48D278DA1280013472C /* Poppins-ExtraBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		577F32F029156A8D000504BA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				577F32F129156ABF000504BA /* Alert.swift */,
+				577F32F329156BD2000504BA /* Transformable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		57DF21F129101D2200BE74D5 /* MovieDetails */ = {
@@ -360,6 +377,7 @@
 				574A11C9278A129900C41201 /* NetworkConstants.swift in Sources */,
 				5794292B29100ADB00A1CBC9 /* MainMovieCell.swift in Sources */,
 				57942929291007CF00A1CBC9 /* MovieDetailsViewController.swift in Sources */,
+				577F32F229156ABF000504BA /* Alert.swift in Sources */,
 				5734206B278D3952005FAA4B /* Extension + Error.swift in Sources */,
 				57DF21F62911AFB900BE74D5 /* Extension + Double.swift in Sources */,
 				57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */,
@@ -367,11 +385,13 @@
 				572C173B2788F119009D442F /* Service.swift in Sources */,
 				574A11BB278901BE00C41201 /* Extension + Single.swift in Sources */,
 				572C17362788EEF6009D442F /* ViewModel.swift in Sources */,
+				571DDCFB2915F33D004692A4 /* Exetension + UIViewController.swift in Sources */,
 				57F96DEF2788E1BE0009794A /* Movie.swift in Sources */,
 				57DF21F429101D5400BE74D5 /* MovieListViewController.swift in Sources */,
 				57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */,
 				574A11BE278904B700C41201 /* ResultError.swift in Sources */,
 				57F96DDC2788DAF20009794A /* SceneDelegate.swift in Sources */,
+				577F32F429156BD2000504BA /* Transformable.swift in Sources */,
 				574A11B82788FBC200C41201 /* Extension + Resolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -496,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -522,7 +542,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +572,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

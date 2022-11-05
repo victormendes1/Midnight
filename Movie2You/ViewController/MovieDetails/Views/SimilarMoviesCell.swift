@@ -13,18 +13,12 @@ import UIKit
 import SnapKit
 
 class SimilarMoviesCell: UITableViewCell {
-    static let identifier = "SimilarMoviesCell"
+    private let movieBackgroundImage = UIImageView()
+    private let separatorView = UIView()
     
-    private let movieBackgroundImage = UIImageView ()
-   
-    private var separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondaryLabel
-        return view
-    }()
-    
-    private var titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.7
         label.textColor = .white
@@ -32,15 +26,10 @@ class SimilarMoviesCell: UITableViewCell {
         return label
     }()
     
-    private var releaseLabel: UILabel = {
+    private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        return label
-    }()
-    
-    private let genreLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
+        label.font = .systemFont(ofSize: 14, weight: .light)
+        label.textColor = .opaqueSeparator
         return label
     }()
     
@@ -57,25 +46,25 @@ class SimilarMoviesCell: UITableViewCell {
         })
         movieBackgroundImage.kf.setImage(with: movie.posterURL())
         titleLabel.text = movie.originalTitle
-        releaseLabel.text = movie.releaseYear
-        genreLabel.text = movie.getGenres()
+        subTitleLabel.text = "\(movie.releaseYear) - \(movie.getGenres())"
         
         setupViews()
     }
     
     // MARK: - Private Functions
     private func setupViews() {
+        separatorView.backgroundColor = .secondaryLabel
+        
         contentView.addSubview(movieBackgroundImage)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(releaseLabel)
-        contentView.addSubview(genreLabel)
+        contentView.addSubview(subTitleLabel)
         contentView.addSubview(separatorView)
         
         separatorView.snp.makeConstraints { line in
             line.left.equalToSuperview().inset(90)
             line.right.equalToSuperview()
             line.bottom.equalToSuperview()
-            line.height.equalTo(0.3)
+            line.height.equalTo(0.7)
         }
         
         movieBackgroundImage.snp.makeConstraints { image in
@@ -93,14 +82,14 @@ class SimilarMoviesCell: UITableViewCell {
             title.trailing.equalToSuperview().inset(10)
         }
         
-        releaseLabel.snp.makeConstraints { subTitle in
+        subTitleLabel.snp.makeConstraints { subTitle in
             subTitle.top.equalTo(titleLabel.snp_bottomMargin).inset(-10)
-            subTitle.leading.equalTo(titleLabel)
-        }
-        
-        genreLabel.snp.makeConstraints { genre in
-            genre.left.equalTo(releaseLabel.snp_rightMargin).inset(-15)
-            genre.centerY.equalTo(releaseLabel)
+            subTitle.left.equalTo(titleLabel)
         }
     }
+}
+
+// MARK: - Extension ID
+extension SimilarMoviesCell {
+    static let identifier = "SimilarMoviesCell"
 }
