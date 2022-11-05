@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (5.5.0)
-  - Kingfisher (7.1.2)
-  - lottie-ios (3.3.0)
+  - Alamofire (5.6.2)
+  - Kingfisher (7.4.1)
+  - lottie-ios (3.5.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (15.0.0):
@@ -39,9 +39,9 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
-  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Resolver: 68984624572763018fd8ec7b8e3e8df0e3b6bba5
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
