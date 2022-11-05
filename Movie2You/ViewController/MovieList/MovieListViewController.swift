@@ -13,9 +13,10 @@ class MovieListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     private var nextScreen: UIButton = {
-        let button = UIButton(frame: CGRect(x: 50, y: 100, width: 100, height: 80))
+        let button = UIButton(frame: CGRect(x: 100, y: 400, width: 200, height: 60))
         button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
-        
+        button.setTitle("Tela de detalhes", for: .normal)
+        button.semanticContentAttribute = .forceRightToLeft
         return button
     }()
     
