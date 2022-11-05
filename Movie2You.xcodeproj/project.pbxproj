@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		571DDCF72915AAE8004692A4 /* TransparentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DDCF62915AAE8004692A4 /* TransparentNavigationBar.swift */; };
 		571DDCFB2915F33D004692A4 /* Exetension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */; };
 		572C17362788EEF6009D442F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C17352788EEF6009D442F /* ViewModel.swift */; };
 		572C173B2788F119009D442F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C173A2788F119009D442F /* Service.swift */; };
@@ -38,7 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		571DDCF62915AAE8004692A4 /* TransparentNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentNavigationBar.swift; sourceTree = "<group>"; };
 		571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exetension + UIViewController.swift"; sourceTree = "<group>"; };
 		572C17352788EEF6009D442F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		572C173A2788F119009D442F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			children = (
 				577F32F129156ABF000504BA /* Alert.swift */,
 				577F32F329156BD2000504BA /* Transformable.swift */,
-				571DDCF62915AAE8004692A4 /* TransparentNavigationBar.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -383,7 +380,6 @@
 				577F32F229156ABF000504BA /* Alert.swift in Sources */,
 				5734206B278D3952005FAA4B /* Extension + Error.swift in Sources */,
 				57DF21F62911AFB900BE74D5 /* Extension + Double.swift in Sources */,
-				571DDCF72915AAE8004692A4 /* TransparentNavigationBar.swift in Sources */,
 				57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */,
 				5794292D2910155800A1CBC9 /* SimilarMoviesCell.swift in Sources */,
 				572C173B2788F119009D442F /* Service.swift in Sources */,
