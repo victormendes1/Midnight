@@ -29,7 +29,3 @@ Ao abrir o projeto para adicionar a chave, é só clicar no ícone de "Run" + te
 ```
 Name = "api_key" Value = "Sua chave da API" 
 ```
-
-## Resultado final 
-No momento não adicionei testes, estou estudando o assunto e futuramente adicionarei como melhoria.
-O nome do app é referência a Mobile2You que propôs esse projeto como desafio e gostaria demostrar como curti esse projeto, adicionei uma animação ao ícone de like. 👀
