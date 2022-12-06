@@ -40,6 +40,7 @@
 		57B4006A292CFD900017419C /* PopularMoviesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B40069292CFD900017419C /* PopularMoviesModels.swift */; };
 		57C30099293D55AF005B5E24 /* SceneConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C30098293D55AF005B5E24 /* SceneConfigurator.swift */; };
 		57C3009C293E1FB2005B5E24 /* MovieDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3009B293E1FB2005B5E24 /* MovieDetailsModels.swift */; };
+		57C300A3293EC46B005B5E24 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 57C300A2293EC46B005B5E24 /* README.md */; };
 		57DF21F429101D5400BE74D5 /* PopularMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF21F329101D5400BE74D5 /* PopularMoviesViewController.swift */; };
 		57DF21F62911AFB900BE74D5 /* Extension + Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF21F52911AFB900BE74D5 /* Extension + Double.swift */; };
 		57ECF3DE292BAD9C007E57C8 /* PopularMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57ECF3DD292BAD9C007E57C8 /* PopularMoviesInteractor.swift */; };
@@ -86,6 +87,7 @@
 		57B40069292CFD900017419C /* PopularMoviesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesModels.swift; sourceTree = "<group>"; };
 		57C30098293D55AF005B5E24 /* SceneConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfigurator.swift; sourceTree = "<group>"; };
 		57C3009B293E1FB2005B5E24 /* MovieDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsModels.swift; sourceTree = "<group>"; };
+		57C300A2293EC46B005B5E24 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		57DF21F329101D5400BE74D5 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
 		57DF21F52911AFB900BE74D5 /* Extension + Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Double.swift"; sourceTree = "<group>"; };
 		57ECF3DD292BAD9C007E57C8 /* PopularMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesInteractor.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				57F96DF02788E6930009794A /* Additional */,
 				57F96DF12788E6AD0009794A /* Assets */,
 				57F96DE72788DAF40009794A /* Info.plist */,
+				57C300A2293EC46B005B5E24 /* README.md */,
 			);
 			path = Movie2You;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57C300A3293EC46B005B5E24 /* README.md in Resources */,
 				5742A48F278DA2470013472C /* Poppins-Bold.ttf in Resources */,
 				57F96DE62788DAF40009794A /* LaunchScreen.storyboard in Resources */,
 				5742A490278DA24B0013472C /* Poppins-ExtraBold.ttf in Resources */,
