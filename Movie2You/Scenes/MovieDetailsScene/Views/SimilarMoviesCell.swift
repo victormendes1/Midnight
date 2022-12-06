@@ -39,14 +39,14 @@ class SimilarMoviesCell: UITableViewCell {
     }
     
     // MARK: - Configure
-    func configure(_ movie: Movies) {
+    func configure(_ movie: Movie) {
         backgroundColor = .clear
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
             self.movieBackgroundImage.alpha = 1
         })
-        movieBackgroundImage.kf.setImage(with: movie.posterURL())
+        movieBackgroundImage.kf.setImage(with: movie.posterURL)
         titleLabel.text = movie.originalTitle
-        subTitleLabel.text = "\(movie.releaseYear) - \(movie.getGenres())"
+        subTitleLabel.text = "\(movie.releaseDate) - \(movie.organizedGenres)"
         
         setupViews()
     }

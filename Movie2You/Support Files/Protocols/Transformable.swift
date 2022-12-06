@@ -6,27 +6,28 @@
 //
 
 import Foundation
+import RxRelay
 
 protocol Transformable {
-    func mapToMovies(_ data: (Movie, SimilarMovies, Genres)) -> [Movies]
+    var movies: BehaviorRelay<[Movie]> { get }
+    
+    func addGenres(genres: [Genre]) -> [Movie]
 }
 
 extension Transformable {
-    //To handle multiple objects in tableview + rx i needed to merge all types into just one.
-    func mapToMovies(_ data: (Movie, SimilarMovies, Genres)) -> [Movies] {
-        let movies = data.1.movies.map { movie -> Movies in
-            Movies(
-                mainMovie: data.0,
+    func addGenres(genres: [Genre]) -> [Movie] {
+        let transformedMovies: [Movie] = movies.value.map { movie in
+            Movie(
                 backdropPath: movie.backdropPath ?? "",
-                genres: data.2,
+                genres: genres,
                 genreId: movie.genreId ?? [],
                 id: movie.id,
                 originalTitle: movie.originalTitle,
-                releaseDate: movie.releaseDate,
+                release: movie.releaseDate,
                 posterPath: movie.posterPath,
                 popularity: movie.popularity,
                 voteCount: movie.voteCount)
         }
-        return movies
+        return transformedMovies
     }
 }

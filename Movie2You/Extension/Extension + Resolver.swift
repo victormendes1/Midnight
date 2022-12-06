@@ -13,6 +13,5 @@ import Moya
 extension Resolver: ResolverRegistering {
     public static func registerAllServices() {
         register { MoyaProvider<MovieService>() }
-        register { ViewModel() }
     }
 }

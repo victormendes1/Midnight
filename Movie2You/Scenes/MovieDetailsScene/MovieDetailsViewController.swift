@@ -6,15 +6,27 @@
 //
 
 import UIKit
-import Moya
-import Resolver
-import RxSwift
-import RxCocoa
 import SnapKit
 
+// MARK: - Protocol
+protocol MovieDetailsViewControllerIntput: AnyObject {
+    func getMovieDetails(request: MovieDetailsModels.Request)
+}
+
+protocol MovieDetailsViewControllerOutput: AnyObject {
+    func showMainMovie(movie: Movie)
+    func showPoster(poster: UIImageView)
+    func showSimilarMovies(movies: [Movie])
+}
+
+// MARK: - Class
 final class MovieDetailsViewController: UIViewController, Alert {
-    private let disposeBag = DisposeBag()
-    private var viewModel: ViewModel = Resolver.resolve()
+    private var similarMovies: [Movie] = []
+    private var selectedMovie: Movie = Movie()
+    
+    var selectedMovieId: String = ""
+    
+    var interactor: MovieDetailsViewControllerIntput?
     
     private lazy var tableView: UITableView = {
         var tableView = UITableView()
@@ -32,8 +44,8 @@ final class MovieDetailsViewController: UIViewController, Alert {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBindings()
         setupViews()
+        interactor?.getMovieDetails(request: MovieDetailsModels.Request(movieID: selectedMovieId))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,38 +54,13 @@ final class MovieDetailsViewController: UIViewController, Alert {
     }
     
     // MARK: - Private Functions
-    private func setupBindings() {
-        viewModel.requestMovies()
-        
-        viewModel.imageBackground
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: configureHeaderView(_:))
-            .disposed(by: disposeBag)
-        
-        viewModel.errorDispatches
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] error in
-                guard let self = self else { return }
-                
-                self.showAlert(error.title, error.message, self)
-            }).disposed(by: disposeBag)
-        
-        viewModel.similarMovies
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                
-                self.tableView.reloadData()
-            }).disposed(by: disposeBag)
-    }
-    
     private func setupViews() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { tableView in
             tableView.width.height.equalToSuperview()
         }
     }
-    
+
     private func configureHeaderView(_ imageView: UIImageView) {
         let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 2.1))
         headerView.alpha = 0
@@ -86,10 +73,11 @@ final class MovieDetailsViewController: UIViewController, Alert {
         })
     }
 }
+
 // MARK: - Extension UITableView
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.movies.value.count
+        similarMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,11 +85,11 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
         
         switch indexPath.row {
         case .zero:
-            mainCell.configure(viewModel.movie.value)
+            mainCell.configure(selectedMovie)
             return mainCell
             
         default:
-            similarCell.configure(viewModel.movies.value[indexPath.row])
+            similarCell.configure(similarMovies[indexPath.row])
             return similarCell
         }
     }
@@ -112,5 +100,23 @@ extension MovieDetailsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let headerView = self.tableView.tableHeaderView as? StretchyHeaderView else { return }
         headerView.scrollViewDidScroll(scrollView: tableView)
+    }
+}
+
+// MARK: - Extension Ouput
+extension MovieDetailsViewController: MovieDetailsViewControllerOutput {
+    func showMainMovie(movie: Movie) {
+        self.selectedMovie = movie
+        self.tableView.reloadData()
+    }
+    
+    func showPoster(poster: UIImageView) {
+        self.configureHeaderView(poster)
+        self.tableView.reloadData()
+    }
+    
+    func showSimilarMovies(movies: [Movie]) {
+        self.similarMovies = movies
+        self.tableView.reloadData()
     }
 }

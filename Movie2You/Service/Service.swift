@@ -5,21 +5,21 @@
 //  Created by Victor Mendes on 07/01/22.
 //
 
-import Foundation
 import Moya
 
 public enum MovieService {
-    case getMovie
-    case getSimilarMovies
+    case getMovie(String)
+    case getSimilarMovies(String)
     case getMovieBackground(String)
     case getSimilarMoviesBackgrounds(String)
     case getGenres
+    case popularMovies
 }
 // MARK: - Extension
 extension MovieService: TargetType {
     public var baseURL: URL {
         switch self {
-        case .getMovie, .getSimilarMovies, .getGenres:
+        case .getMovie, .getSimilarMovies, .getGenres, .popularMovies:
             guard let url = URL(string: NetworkConstants.baseURL) else { fatalError() }
             return url
         case .getMovieBackground, .getSimilarMoviesBackgrounds:
@@ -30,20 +30,26 @@ extension MovieService: TargetType {
     
     public var path: String {
         switch self {
-        case .getMovie:
-            return "movie/634649"
-        case .getSimilarMovies:
-            return "movie/634649/similar"
+        case .getMovie(let id):
+            return "movie/\(id)"
+        
+        case .getSimilarMovies(let id):
+            return "movie/\(id)/similar"
+        
         case let .getMovieBackground(backdropPath), let .getSimilarMoviesBackgrounds(backdropPath):
             return backdropPath
+        
         case .getGenres:
             return "genre/movie/list"
+            
+        case .popularMovies:
+            return "movie/popular"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .getMovie, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
+        case .getMovie, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres, .popularMovies:
             return .get
         }
     }
@@ -52,14 +58,15 @@ extension MovieService: TargetType {
         var params: [String: Any] = [:]
         
         switch self {
-        case .getMovie, .getSimilarMovies, .getGenres:
+        case .getMovie, .getSimilarMovies, .getGenres, .popularMovies:
             params = NetworkConstants.defaultRequestParams
+       
         case .getMovieBackground(_), .getSimilarMoviesBackgrounds(_):
             params = [:]
         }
         
         switch self {
-        case .getMovie, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres:
+        case .getMovie, .getSimilarMovies, .getMovieBackground(_), .getSimilarMoviesBackgrounds(_), .getGenres, .popularMovies:
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
