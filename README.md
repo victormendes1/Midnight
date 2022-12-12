@@ -7,7 +7,7 @@ O Movie2You consome a API do The Movie BD para mostrar a tela de detalhe contend
 
 Em ```develop``` possui o desenvolvimento da tela de inicio (utilizando o endpoint getPopular), também fiz a transição de arquitetura para VIP, entendo que essa arquitetura é mais aplicada em grandes projetos, mas essa escolha é em pró aos estudos, conhecimento próprio e pensando em adicionar novas features futuramente. 
 Com a mudança de arquitetura, estou dispensando o Resolver de alguns lugares, a intenção é remover por completo.
-Comecei a migrar de RxSwift para Combine, esta sendo um desafio, pois é um framework novo para mim. Fazendo algumas pesquisas vi que o Combine tem um melhor desempenho em relação ao RxSwift, isso agrega na mudança, mas o objetivo maior é pelos estudos.
+Migrarção de RxSwift para Combine concluída. Fazendo algumas pesquisas vi que o Combine tem um melhor desempenho em relação ao RxSwift, isso agrega na mudança, mas o objetivo maior é pelos estudos.
 
 
 ## Especificações de desenvolvimento
@@ -15,10 +15,6 @@ Comecei a migrar de RxSwift para Combine, esta sendo um desafio, pois é um fram
 - VIP
 
 #### Bibliotecas 
-- RxSwift -> Combine
-- Alamofire
-- Moya
-- Resolver
 - Kingfisher
 - Lottie
 
