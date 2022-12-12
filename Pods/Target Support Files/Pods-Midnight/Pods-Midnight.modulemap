@@ -1,0 +1,6 @@
+framework module Pods_Midnight {
+  umbrella header "Pods-Midnight-umbrella.h"
+
+  export *
+  module * { export * }
+}
