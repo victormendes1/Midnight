@@ -44,7 +44,7 @@ class SimilarMoviesCell: UITableViewCell {
         })
         movieBackgroundImage.kf.setImage(with: movie.posterURL)
         titleLabel.text = movie.originalTitle
-        subTitleLabel.text = "\(movie.releaseDate) - \(movie.organizedGenres)"
+        subTitleLabel.text = "\(movie.releaseDate) - \(GenresAccessObject.organizedGenres(movie.genreId))"
         
         setupViews()
     }

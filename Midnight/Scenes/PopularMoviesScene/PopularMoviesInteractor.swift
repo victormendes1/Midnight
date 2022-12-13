@@ -27,7 +27,7 @@ final class PopularMoviesInteractor {
 
 // MARK: - Extension
 extension PopularMoviesInteractor: PopularMoviesViewControllerInput {
-    func getMovies() {
+    func loadMovies() {
         cancelable = worker.performLoadPopularMovies()
             .sink { completion in
                 guard case let .failure(error) = completion else { return }
@@ -35,5 +35,17 @@ extension PopularMoviesInteractor: PopularMoviesViewControllerInput {
             } receiveValue: { response in
                 self.presenter?.showPopularMovies(response: response)
             }
+    }
+    
+    func loadGenres() {
+        if GenresAccessObject.loadData() == nil {
+            cancelable = worker.performLoadGenres()
+                .sink { completion in
+                    guard case let .failure(error) = completion else { return }
+                    self.presenter?.showError(wih: error.message)
+                } receiveValue: { response in
+                    GenresAccessObject.saveData(response.genres)
+                }
+        }
     }
 }

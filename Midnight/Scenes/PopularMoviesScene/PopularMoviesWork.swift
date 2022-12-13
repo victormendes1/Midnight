@@ -9,6 +9,7 @@ import Combine
 
 protocol PopularMoviesWorkProtocol {
     func performLoadPopularMovies() -> AnyPublisher<PopularMoviesModels.Response, ServiceError>
+    func performLoadGenres() -> AnyPublisher<Genres, ServiceError>
 }
 
 final class PopularMoviesWork {
@@ -22,5 +23,9 @@ final class PopularMoviesWork {
 extension PopularMoviesWork: PopularMoviesWorkProtocol {
     func performLoadPopularMovies() -> AnyPublisher<PopularMoviesModels.Response, ServiceError> {
         service.request(.popularMovies)
+    }
+    
+    func performLoadGenres() -> AnyPublisher<Genres, ServiceError> {
+        service.request(.genres)
     }
 }

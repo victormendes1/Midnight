@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 protocol PopularMoviesViewControllerInput: AnyObject {
-    func getMovies()
+    func loadMovies()
+    func loadGenres()
 }
 
 protocol PopularMoviesViewControllerOutput: AnyObject , Alert {
@@ -41,7 +42,8 @@ final class PopularMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        interactor?.getMovies()
+        interactor?.loadMovies()
+        interactor?.loadGenres()
     }
     
     override func viewWillAppear(_ animated: Bool) {
