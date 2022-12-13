@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		571DDCFB2915F33D004692A4 /* Exetension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */; };
+		571DDCFB2915F33D004692A4 /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DDCFA2915F33D004692A4 /* Extension + UIViewController.swift */; };
 		571DDD0129181ECD004692A4 /* PopularMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571DDD0029181ECD004692A4 /* PopularMovieCell.swift */; };
 		572C173B2788F119009D442F /* EndpointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C173A2788F119009D442F /* EndpointManager.swift */; };
 		5742A48F278DA2470013472C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5742A48E278DA1280013472C /* Poppins-Bold.ttf */; };
@@ -53,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		4927270EE297422AA77D5324 /* Pods-Midnight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midnight.release.xcconfig"; path = "Target Support Files/Pods-Midnight/Pods-Midnight.release.xcconfig"; sourceTree = "<group>"; };
-		571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exetension + UIViewController.swift"; sourceTree = "<group>"; };
+		571DDCFA2915F33D004692A4 /* Extension + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIViewController.swift"; sourceTree = "<group>"; };
 		571DDD0029181ECD004692A4 /* PopularMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieCell.swift; sourceTree = "<group>"; };
 		572C173A2788F119009D442F /* EndpointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointManager.swift; sourceTree = "<group>"; };
 		5742A48D278DA1280013472C /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		574A11B92789019C00C41201 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				571DDCFA2915F33D004692A4 /* Exetension + UIViewController.swift */,
+				571DDCFA2915F33D004692A4 /* Extension + UIViewController.swift */,
 				577F32E12913FCF4000504BA /* Extension + UIFont.swift */,
 				57DF21F52911AFB900BE74D5 /* Extension + Double.swift */,
 			);
@@ -454,7 +454,7 @@
 				5794292D2910155800A1CBC9 /* SimilarMoviesCell.swift in Sources */,
 				572C173B2788F119009D442F /* EndpointManager.swift in Sources */,
 				57C300A5293F79A0005B5E24 /* NetworkManager.swift in Sources */,
-				571DDCFB2915F33D004692A4 /* Exetension + UIViewController.swift in Sources */,
+				571DDCFB2915F33D004692A4 /* Extension + UIViewController.swift in Sources */,
 				57F96DEF2788E1BE0009794A /* Movie.swift in Sources */,
 				57DF21F429101D5400BE74D5 /* PopularMoviesViewController.swift in Sources */,
 				57F96DDA2788DAF20009794A /* AppDelegate.swift in Sources */,

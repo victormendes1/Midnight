@@ -1,5 +1,5 @@
 //
-//  Exetension + UIViewController.swift
+//  Extension + UIViewController.swift
 //  Movie2You
 //
 //  Created by Victor Mendes on 04/11/22.
@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+// TODO: - Refatorar..
 protocol Pop {
     func backToPrevious()
 }
@@ -45,9 +46,13 @@ extension UIViewController {
     }
     
     func setNavigationController(title: String) {
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        
-        navigationController?.navigationBar.barStyle = .black
         self.title = title
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = .black.withAlphaComponent(0.95)
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
     }
 }
