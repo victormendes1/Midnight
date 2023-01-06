@@ -1,23 +1,19 @@
-# Movie2You
+# Midnight
 
-### Sobre o projeto
+#### Sobre o projeto
 
-Criei esse projeto com base no App [TodoMovies](https://apps.apple.com/br/app/todomovies-4/id792499896), este projeto contém somente a tela de detalhe. 
-O Movie2You consome a API do The Movie BD para mostrar a tela de detalhe contendo um filme principal (utilizei o endpoint getDetails), e uma lista de filmes semelhantes (utilizei o endpoint getSimilarMovies).
-
-Em ```develop``` possui o desenvolvimento da tela de inicio (utilizando o endpoint getPopular), também estou mudando a arquitetura do projeto para VIP, entendo que essa arquitetura é mais aplicada em grandes projetos, mas essa escolha é em pró aos estudos, conhecimento próprio e pensando em adicionar novas features futuramente. 
+Um App onde você pode ver os filmes mais populares no momento, os filmes que serão lançados, seus detalhes e assistir os trailer.
+O App consome a API do [The Movie BD](https://www.themoviedb.org) para mostrar todas as informações.
+Em ```develop``` possui o desenvolvimento de novas features.
 
 ## Especificações de desenvolvimento
-#### Design Pattern
-- MVVM -> VIP
+#### Padrão de arquitetura
+- VIP (Clean Architecture) 
 
 #### Bibliotecas 
-- RxSwift
-- Alamofire
-- Moya
-- Resolver
 - Kingfisher
 - Lottie
+- Youtube iOS Helper
 
 #### Ambiente 
 - Xcode 13.2.1

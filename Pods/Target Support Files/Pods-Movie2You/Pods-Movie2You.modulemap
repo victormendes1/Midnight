@@ -1,6 +1,0 @@
-framework module Pods_Movie2You {
-  umbrella header "Pods-Movie2You-umbrella.h"
-
-  export *
-  module * { export * }
-}
