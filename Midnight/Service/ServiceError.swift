@@ -1,6 +1,6 @@
 //
 //  ServiceError.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 07/01/22.
 //

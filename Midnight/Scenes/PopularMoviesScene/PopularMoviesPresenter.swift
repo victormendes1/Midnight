@@ -1,16 +1,16 @@
 //
 //  PopularMoviesPresenter.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 21/11/22.
 //
 
 
 typealias PopularMoviesScenePresenterInput = PopularMoviesInteractorOutput
-typealias PopularMoviesScenePresenterOuput = PopularMoviesViewControllerOutput
+typealias PopularMoviesScenePresenterOutput = PopularMoviesViewControllerOutput
 
 final class PopularMoviesPresenter {
-    weak var viewController: PopularMoviesScenePresenterOuput?
+    weak var viewController: PopularMoviesScenePresenterOutput?
 }
 
 // MARK: - Extension

@@ -1,6 +1,6 @@
 //
 //  Movie.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 07/01/22.
 //
@@ -8,57 +8,86 @@
 import UIKit
 
 struct Movie: Codable {
-    private let release: String
-    var posterImage: UIImageView?
+    private let posterPath: String?
+    let release: String
     let backdropPath: String?
     var genres: [Genre]?
     let genreId: [Int]?
     let id: Int
-    let originalTitle: String
-    let posterPath: String
+    let title: String
+    let overview: String
+    var duration: Int?
     let popularity: Double
     let voteCount: Int
+    var posterImageData: UIImage?
+    var trailerID: String?
     
-    init(backdropPath: String = "", genres: [Genre] = [], genreId: [Int] = [], id: Int = .zero, originalTitle: String = "", release: String = "", posterPath: String = "", popularity: Double = .zero, voteCount: Int = .zero) {
+    init(backdropPath: String = "",
+         genres: [Genre] = [],
+         genreId: [Int] = [],
+         id: Int = .zero,
+         title: String = "",
+         overview: String = "",
+         release: String = "",
+         posterPath: String = "",
+         duration: Int = .zero,
+         popularity: Double = .zero,
+         voteCount: Int = .zero) {
         self.backdropPath = backdropPath
         self.genres = genres
         self.genreId = genreId
         self.id = id
-        self.originalTitle = originalTitle
+        self.title = title
+        self.overview = overview
         self.release = release
         self.posterPath = posterPath
+        self.duration = duration
         self.popularity = popularity
         self.voteCount = voteCount
     }
+}
+
+// MARK: - Properties
+extension Movie {
+    var posterURL: URL? {
+        URL(string: NetworkConstants.posterBaseURL + posterPathUnwrapped)
+    }
     
+    var backdropURL: URL? {
+        guard let backdropPath = backdropPath else { return nil }
+        return URL(string: NetworkConstants.backdropBaseURL + backdropPath)
+    }
+    
+    var posterPathUnwrapped: String {
+        guard let posterPath = posterPath else { return "" }
+        return posterPath
+    }
+    
+    var releaseYearOnly: String {
+        self.release.split(separator: "-").map({ String($0) }).first ?? ""
+    }
+    
+    var longReleaseDate: Date {
+        release.toDate() ?? Date()
+    }
+    
+    var releaseDate: Date {
+        releaseYearOnly.toDate() ?? Date()
+    }
+}
+
+// MARK: - Extension CodingKeys
+extension Movie {
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case genres, id
         case genreId = "genre_ids"
-        case originalTitle = "original_title"
+        case title
+        case overview
         case popularity
         case posterPath = "poster_path"
+        case duration = "runtime"
         case release = "release_date"
         case voteCount = "vote_count"
-    }
-}
-
-extension Movie {
-    var posterURL: URL? {
-        URL(string: NetworkConstants.posterBaseURL + posterPath)
-    }
-    
-    var organizedGenres: String {
-        genreId?.compactMap { number -> String in
-            self.genres?.filter({ $0.id == number }).map({ $0.name}).joined() ?? ""
-        }.filter({ $0 != "" }).prefix(2).sorted(by: <).joined(separator: ", ") ?? ""
-    }
-    
-    var releaseDate: String {
-        self.release.split(separator: "-").map({ String($0) }).first ?? ""
-    }
-    
-    func setPosterImage(_ image: UIImage) {
-        self.posterImage?.image = image
     }
 }

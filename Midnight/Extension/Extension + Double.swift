@@ -1,6 +1,6 @@
 //
 //  Extension + Double.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 01/11/22.
 //

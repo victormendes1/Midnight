@@ -1,6 +1,6 @@
 //
 //  PopularMoviesViewController.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 31/10/22.
 //
@@ -8,16 +8,18 @@
 import UIKit
 import SnapKit
 
+// MARK: - Protocol
 protocol PopularMoviesViewControllerInput: AnyObject {
     func loadMovies()
     func loadGenres()
 }
 
-protocol PopularMoviesViewControllerOutput: AnyObject , Alert {
-    func showError(title: String, message: String)
+protocol PopularMoviesViewControllerOutput: AnyObject, Alert {
     func showMovies(viewModel: PopularMoviesModels.ViewModel)
+    func showError(title: String, message: String)
 }
 
+// MARK: - Class
 final class PopularMoviesViewController: UIViewController {
     var interactor: PopularMoviesViewControllerInput?
     var router: PopularMoviesSceneRouter?
@@ -26,7 +28,7 @@ final class PopularMoviesViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: 123, height: 175)
+        layout.itemSize = .init(width: view.frame.size.width * 0.315, height: view.frame.size.height * 0.22)
         layout.minimumLineSpacing = 10
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -48,7 +50,7 @@ final class PopularMoviesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationController(title: "Popular")
+        setNavigationControllerDark(title: "Popular")
     }
     
     // MARK: - Private Functions
@@ -57,7 +59,8 @@ final class PopularMoviesViewController: UIViewController {
         
         collectionView.snp.makeConstraints { collectionView in
             collectionView.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            collectionView.width.bottom.equalToSuperview()
+            collectionView.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            collectionView.width.equalToSuperview()
         }
     }
 }
@@ -81,8 +84,8 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
 
 extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
     func showMovies(viewModel: PopularMoviesModels.ViewModel) {
-        self.movies = viewModel.movies
         DispatchQueue.main.async {
+            self.movies = viewModel.movies
             self.collectionView.reloadData()
         }
     }
@@ -91,6 +94,5 @@ extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
         DispatchQueue.main.async {
             self.showAlert(title, message, self)
         }
-        
     }
 }

@@ -1,6 +1,6 @@
 //
 //  EndpointManager.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 07/01/22.
 //
@@ -8,15 +8,18 @@
 import Foundation
 
 enum EndpointManager {
-   case singleMovie(String)
-   case popularMovies
-   case similarMovies(String)
-   case moviePoster(String)
-   case genres
+    case singleMovie(String)
+    case popularMovies
+    case similarMovies(String)
+    case moviePoster(String)
+    case genres
+    case upcomingMovies
+    case imagens(String)
+    case trailer(String)
     
-   private var baseURL: String {
+    private var baseURL: String {
         switch self {
-        case .singleMovie, .popularMovies, .similarMovies, .genres:
+        case .singleMovie, .popularMovies, .similarMovies, .genres, .upcomingMovies, .imagens, .trailer:
             return NetworkConstants.baseURL
         case .moviePoster:
             return NetworkConstants.backdropBaseURL
@@ -39,6 +42,15 @@ enum EndpointManager {
             
         case .genres:
             return "/genre/movie/list"
+            
+        case .upcomingMovies:
+            return "/movie/upcoming"
+            
+        case .imagens(let filePath):
+            return "/movie/\(filePath)/images"
+            
+        case .trailer(let id):
+            return "/movie/\(id)/videos"
         }
     }
     
@@ -46,15 +58,15 @@ enum EndpointManager {
         var params: [String: String] = [:]
         
         switch self {
-        case .singleMovie, .popularMovies, .similarMovies, .genres:
+        case .singleMovie, .popularMovies, .similarMovies, .genres, .upcomingMovies, .imagens, .trailer:
             params = NetworkConstants.defaultRequestParams
-       
+            
         case .moviePoster:
             params = [:]
         }
         
         switch self {
-        case .singleMovie, .popularMovies, .similarMovies, .moviePoster, .genres:
+        case .singleMovie, .popularMovies, .similarMovies, .moviePoster, .genres, .upcomingMovies, .imagens, .trailer:
             return params
         }
     }

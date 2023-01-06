@@ -1,13 +1,14 @@
 //
 //  MovieDetailsWorker.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 21/11/22.
 //
 
-import UIKit
+import Foundation
 import Combine
 
+// MARK: - Protocol
 protocol MovieDetailsWorkerProtocol {
     func performLoadMovieDetails(_ movie: MovieDetailsModels.Request) -> AnyPublisher<MovieDetailsModels.Response, ServiceError>
     func fetchSimilarMovies(_ movieID: String) -> AnyPublisher<MovieDetailsModels.Response, ServiceError>
@@ -22,9 +23,11 @@ final class MovieDetailsWorker {
     }
 }
 
+// MARK: - Extension
 extension MovieDetailsWorker: MovieDetailsWorkerProtocol {
     func performLoadMovieDetails(_ request: MovieDetailsModels.Request) -> AnyPublisher<MovieDetailsModels.Response, ServiceError> {
-        Publishers.Zip(fetchSimilarMovies(request.movie.id.description), fetchPoster(request.movie.posterPath))
+        Publishers.Zip(fetchSimilarMovies(request.movie.id.description),
+                       fetchPoster(request.movie.posterPathUnwrapped))
             .map { similar, poster in
                 return MovieDetailsModels.Response.init(movies: similar.movies, posterData: poster)
             }

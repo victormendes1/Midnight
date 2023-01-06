@@ -1,6 +1,6 @@
 //
 //  MovieDetailsViewController.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 31/10/22.
 //
@@ -27,7 +27,7 @@ final class MovieDetailsViewController: UIViewController, Alert {
     
     private lazy var tableView: UITableView = {
         var tableView = UITableView()
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 2.1))
+        tableView.tableHeaderView = UIView()
         tableView.register(MainMovieCell.self, forCellReuseIdentifier: MainMovieCell.identifier)
         tableView.register(SimilarMoviesCell.self, forCellReuseIdentifier: SimilarMoviesCell.identifier)
         tableView.contentInsetAdjustmentBehavior = .never
@@ -42,12 +42,12 @@ final class MovieDetailsViewController: UIViewController, Alert {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        interactor?.loadMovieDetails(request: MovieDetailsModels.Request(movie: selectedMovie))
+        interactor?.loadMovieDetails(request: .init(movie: selectedMovie))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationController()
+        setNavigationControllerTransparent()
     }
     
     // MARK: - Private Functions
@@ -59,7 +59,7 @@ final class MovieDetailsViewController: UIViewController, Alert {
     }
     
     private func configureHeaderView(_ imageView: UIImageView) {
-        let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 2.1))
+        let headerView = StretchyHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height / 1.5))
         headerView.alpha = 0
         headerView.imageView.image = imageView.image
         addShadowTop(place: self.view)

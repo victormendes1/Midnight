@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 07/01/22.
 //
@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         let sceneFactory = SceneFactory()
         sceneFactory.configurator = SceneConfigurator(sceneFactory: sceneFactory)
-        let navigationController = UINavigationController(rootViewController: sceneFactory.makePopularMoviesScene())
+        let navigationController = UINavigationController(rootViewController: sceneFactory.makeHomeScene())
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

@@ -1,6 +1,6 @@
 //
 //  NetworkManager.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 06/12/22.
 //

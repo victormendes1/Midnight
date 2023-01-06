@@ -1,6 +1,6 @@
 //
 //  MovieDetailsModels.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 05/12/22.
 //

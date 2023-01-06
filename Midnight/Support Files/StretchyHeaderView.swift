@@ -1,6 +1,6 @@
 //
 //  StretchyHeaderView.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 10/01/22.
 //

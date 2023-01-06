@@ -1,18 +1,19 @@
 //
 //  MovieDetailsConfigurator.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 21/11/22.
 //
 
 import UIKit
 
+// MARK: - Protocol
 protocol MovieDetailsConfiguratorProtocol {
     func configured(_ viewController: MovieDetailsViewController, with movie: Movie) -> UIViewController
 }
 
+// MARK: - Extension SceneConfigurator
 extension SceneConfigurator: MovieDetailsConfiguratorProtocol {
-    @discardableResult
     func configured(_ viewController: MovieDetailsViewController, with movie: Movie) -> UIViewController {
         sceneFactory.configurator = self
         let interactor = MovieDetailsInteractor(worker: MovieDetailsWorker())
@@ -21,11 +22,6 @@ extension SceneConfigurator: MovieDetailsConfiguratorProtocol {
         interactor.presenter = presenter
         viewController.interactor = interactor
         viewController.selectedMovie = movie
-        // TODO: Adicionar roteador.
-        //let router = MovieDetailsRou (sceneFactory: sceneFactory)
-        // router.source = viewController
-        //viewController.router
-        //viewController.router = router
         return viewController
     }
 }

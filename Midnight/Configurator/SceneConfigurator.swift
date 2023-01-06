@@ -1,6 +1,6 @@
 //
 //  SceneConfigurator.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 04/12/22.
 //

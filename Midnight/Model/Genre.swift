@@ -1,6 +1,6 @@
 //
 //  Genre.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 07/11/22.
 //

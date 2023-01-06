@@ -1,6 +1,6 @@
 //
 //  MovieDetailsInteractor.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 21/11/22.
 //
@@ -9,6 +9,7 @@ import Combine
 
 typealias MovieDetailsInteractorInput = MovieDetailsViewControllerOutput
 
+// MARK: - Protocol
 protocol MovieDetialInteractorOutput: AnyObject {
     func showDetails(response: MovieDetailsModels.Response)
     func showError(with error: ErrorRepresentation)

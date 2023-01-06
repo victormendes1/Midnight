@@ -1,6 +1,6 @@
 //
 //  MainMovieCell.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 31/10/22.
 //
@@ -9,7 +9,8 @@ import UIKit
 import Lottie
 import SnapKit
 
-class MainMovieCell: UITableViewCell {
+final class MainMovieCell: UITableViewCell {
+    // MARK: - Properties
     private let likeView = LottieAnimationView(name: "likedAnimation")
     
     private var titleLabel: UILabel = {
@@ -86,7 +87,7 @@ class MainMovieCell: UITableViewCell {
     
     // MARK: - Configure
     func configure(_ movie: Movie) {
-        titleLabel.text = movie.originalTitle
+        titleLabel.text = movie.title
         numberOfLikesLabel.text = Double(movie.voteCount).shortening()
         numberOfViewsLabel.text = movie.popularity.removeFloatingPoint().shortening()
     }
@@ -149,7 +150,7 @@ class MainMovieCell: UITableViewCell {
         }
         
         likesLabel.snp.makeConstraints { likes in
-            likes.left.equalTo(numberOfLikesLabel.snp_rightMargin).inset(-8)
+            likes.left.equalTo(numberOfLikesLabel.snp_rightMargin).offset(10)
             likes.centerY.equalTo(numberOfLikesLabel)
         }
         

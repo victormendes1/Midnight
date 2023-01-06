@@ -1,6 +1,6 @@
 //
 //  SimilarMoviesCell.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 31/10/22.
 //
@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class SimilarMoviesCell: UITableViewCell {
+final class SimilarMoviesCell: UITableViewCell {
     private let movieBackgroundImage = UIImageView()
     private let separatorView = UIView()
     
@@ -31,22 +31,25 @@ class SimilarMoviesCell: UITableViewCell {
         return label
     }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    // MARK: - Init
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         movieBackgroundImage.alpha = 0
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Configure
     func configure(_ movie: Movie) {
         backgroundColor = .clear
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
-            self.movieBackgroundImage.alpha = 1
-        })
-        movieBackgroundImage.kf.setImage(with: movie.posterURL)
-        titleLabel.text = movie.originalTitle
-        subTitleLabel.text = "\(movie.releaseDate) - \(GenresAccessObject.organizedGenres(movie.genreId))"
-        
-        setupViews()
+        titleLabel.text = movie.title
+        subTitleLabel.text = "\(movie.releaseYearOnly) - \(GenresAccessObject.organizedGenres(movie.genreId))"
+        movieBackgroundImage.kf.setImage(with: movie.posterURL) { _ in
+            self.starAnimaton()
+        }
     }
     
     // MARK: - Private Functions
@@ -84,6 +87,12 @@ class SimilarMoviesCell: UITableViewCell {
             subTitle.top.equalTo(titleLabel.snp_bottomMargin).inset(-10)
             subTitle.left.equalTo(titleLabel)
         }
+    }
+    
+    private func starAnimaton() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+            self.movieBackgroundImage.alpha = 1
+        })
     }
 }
 

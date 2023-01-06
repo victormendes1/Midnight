@@ -1,6 +1,6 @@
 //
 //  MovieDetailsPresenter.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 21/11/22.
 //
@@ -14,6 +14,7 @@ final class MovieDetailsPresenter {
     weak var viewController: MovieDetailsScenePresenterOutput?
 }
 
+// MARK: - Extension
 extension MovieDetailsPresenter: MovieDetailsScenePresenterInput {
     func showError(with error: ErrorRepresentation) {
         viewController?.showError(title: error.title, message: error.message)

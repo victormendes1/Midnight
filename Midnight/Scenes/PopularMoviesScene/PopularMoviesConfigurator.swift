@@ -1,18 +1,19 @@
 //
 //  PopularMoviesConfigurator.swift
-//  Movie2You
+//  Midnight
 //
 //  Created by Victor Mendes on 02/12/22.
 //
 
 import UIKit
 
+// MARK: - Protocol
 protocol PopularMovieSceneConfiguratorProtocol {
     func configured(_ viewController: PopularMoviesViewController) -> UIViewController
 }
 
+// MARK: - Extension SceneConfigurator
 extension SceneConfigurator: PopularMovieSceneConfiguratorProtocol {
-    @discardableResult
     func configured(_ viewController: PopularMoviesViewController) -> UIViewController {
         sceneFactory.configurator = self
         let interactor = PopularMoviesInteractor(worker: PopularMoviesWork())

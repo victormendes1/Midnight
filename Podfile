@@ -16,4 +16,7 @@ target 'Midnight' do
   # Animation
   pod 'lottie-ios'
 
+  # Media
+  pod 'youtube-ios-player-helper'
+  
 end
