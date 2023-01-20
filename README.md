@@ -11,7 +11,7 @@ O Midnight é onde você pode encontrar os filmes mais populares do momento e as
 
 <p align="left">
 Quer mais detalhes?</br>
-Assita ao trailer do seu filme tão esperado ou veja os filmes similares.
+Assista ao trailer do seu filme tão esperado ou veja os filmes similares.
 </p>
 
 <p align="left">
