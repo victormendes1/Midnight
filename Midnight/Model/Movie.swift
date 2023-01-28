@@ -9,7 +9,7 @@ import UIKit
 
 struct Movie: Codable {
     private let posterPath: String?
-    let release: String
+    let release: String /// "2022-12-21"
     let backdropPath: String?
     var genres: [Genre]?
     let genreId: [Int]?
@@ -67,16 +67,13 @@ extension Movie {
         return posterPath
     }
     
+    /// e.g. "2023"
     var releaseYearOnly: String {
         self.release.split(separator: "-").map({ String($0) }).first ?? ""
     }
-    
+    /// e.g. 2022-12-21 03:00:00 UTC
     var longReleaseDate: Date {
         release.toDate() ?? Date()
-    }
-    
-    var releaseDate: Date {
-        releaseYearOnly.toDate() ?? Date()
     }
 }
 

@@ -83,6 +83,13 @@ final class MainMovieCell: UITableViewCell {
         return label
     }()
     
+    private let releaseDateLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font =  .systemFont(ofSize: 14, weight: .medium)
+        return label
+    }()
+    
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -97,6 +104,7 @@ final class MainMovieCell: UITableViewCell {
     func configure(_ movie: Movie) {
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview
+        releaseDateLabel.text = "Released in \(movie.release.longFormattedDate())"
         numberOfLikesLabel.text = Double(movie.voteCount).shortening()
         numberOfViewsLabel.text = movie.popularity.removeFloatingPoint().shortening()
     }
@@ -130,6 +138,7 @@ final class MainMovieCell: UITableViewCell {
         contentView.addSubview(viewsLabel)
         contentView.addSubview(previewIconView)
         contentView.addSubview(overviewLabel)
+        contentView.addSubview(releaseDateLabel)
         customBackgroundView.addSubview(likeButton)
         
         titleLabel.snp.makeConstraints { title in
@@ -188,7 +197,13 @@ final class MainMovieCell: UITableViewCell {
             details.top.equalTo(numberOfLikesLabel.snp_bottomMargin).inset(-14)
             details.left.equalToSuperview().inset(16)
             details.right.equalToSuperview().inset(16)
-            details.bottom.equalToSuperview().inset(10)
+        }
+        
+        releaseDateLabel.snp.makeConstraints { date in
+            date.top.equalTo(overviewLabel.snp_bottomMargin).inset(-12)
+            date.left.equalToSuperview().inset(16)
+            date.right.equalToSuperview().inset(16)
+            date.bottom.equalToSuperview().inset(10)
         }
     }
 }
