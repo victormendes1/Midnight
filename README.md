@@ -1,64 +1,46 @@
-# inChurch Recruitment Process - iOS Developer
+# Midnight
 
-Nessa parte do processo de recrutamento você desenvolverá uma aplicação iOS. O desafio deve ser desenvolvido em Swift e utilizando libs conhecidas de mercado. A aplicação será um catálogo dos filmes populares, utilizando a [API](https://developers.themoviedb.org/3/getting-started/introduction) do [TheMovieDB](https://www.themoviedb.org/).
+<p align="left">
+O Midnight Ã© onde vocÃª pode encontrar os filmes mais populares do momento e as novidades que estÃ£o para chegar.
 
-* * *
+<p align="left">
+<img width="240" alt="home" src="https://user-images.githubusercontent.com/44198473/211101240-15115ddb-6e26-43c5-b309-bd3d05869533.png">
+<img width="240" alt="upcoming" src="https://user-images.githubusercontent.com/44198473/211101531-e22d205e-d799-44ee-8af9-ec409c7f6a7a.png">  
+</p>
+</p>
 
-## Requisitos
+<p align="left">
+Quer mais detalhes?</br>
+Assista ao trailer do seu filme tÃ£o esperado ou veja os filmes similares.
+</p>
 
-+ ### O que deve ter:
-	* Tela de Home com duas abas:
-		- **Filmes:** Um grid exibindo os filmes melhores classificados. Utilizar esse [endpoint](https://developers.themoviedb.org/3/movies/get-popular-movies).
-		- **Favoritos:** Uma listagem dos filmes marcados como favorito.
-	* Loading no carregamento da listagem de filmes.
-	* Tela de tratamento de erros(falta de internet e erro na api) na tela de Filmes.
-	* Tela de detalhe do filme. Para as informações de gêneros do filme, utilize esse [endpoint](https://developers.themoviedb.org/3/genres/get-movie-list).
-	* Ação de favoritar um filme na tela de detalhe. Todo o controle será em armazenamento local.
-	
-#
-+ ### Pontos extras:
-	* Paginação com scroll infinito na tela de filmes.
-	* Filtro de busca pelo nome do filme na tela de Favoritos. Exibir uma tela diferente para quando não houver resultado na busca.
-	* Ação de remover o filme da lista de Favoritos.
-	* Testes unitários.
-	* Testes funcionais.
-	
-#
-* * *
+<p align="left">
+<img width="240" alt="details2" src="https://user-images.githubusercontent.com/44198473/211102916-be4bb3ed-dc2b-467e-b626-ebf3cbe23dd3.png">  
+<img width="252" alt="detail" src="https://user-images.githubusercontent.com/44198473/211101223-17ee9b8a-db61-44ed-9e2d-b7b028058a02.png">
+</p>
 
-## Sugestão de layout
+## Sobre o projeto  
+Este app consome a API do [The Movie BD](https://www.themoviedb.org) para mostrar todas as informaÃ§Ãµes.
 
-Para facilitar a sua vida, padronizar e explorar algumas habilidades suas, estamos disponibilizando um mockup para que você possa segui-lo. Lembre-se, você pode(e deve) mudar cor, tipo e tamanho de fonte, ícones e outras coisa que fizerem sentido, mas não esqueça de seguir a estrutura proposta.  
+Em ```develop``` possui o desenvolvimento de novas features.
 
-![Alt text](https://bitbucket.org/inradar/inchurch-ios-challenge/raw/16a4cbc5d6a811d1ed9659c50e465273a593a3a0/images/home_movies_loading.png) ![Alt text](https://bitbucket.org/inradar/inchurch-ios-challenge/raw/16a4cbc5d6a811d1ed9659c50e465273a593a3a0/images/home_movies.png) ![Alt text](https://bitbucket.org/inradar/inchurch-ios-challenge/raw/16a4cbc5d6a811d1ed9659c50e465273a593a3a0/images/home_movies_error.png)
+## EspecificaÃ§Ãµes de desenvolvimento
+#### PadrÃ£o de arquitetura
+- VIP (Clean Architecture) 
 
-![Alt text](https://bitbucket.org/inradar/inchurch-ios-challenge/raw/16a4cbc5d6a811d1ed9659c50e465273a593a3a0/images/home_favorites_empty.png) ![Alt text](https://bitbucket.org/inradar/inchurch-ios-challenge/raw/16a4cbc5d6a811d1ed9659c50e465273a593a3a0/images/home_favorites.png) ![Alt text](https://bitbucket.org/inradar/inchurch-ios-challenge/raw/16a4cbc5d6a811d1ed9659c50e465273a593a3a0/images/home_favorites_search_not_found.png) 
+#### Bibliotecas 
+- Kingfisher
+- Lottie
+- Youtube iOS Helper
 
-![Alt text](https://bitbucket.org/inradar/inchurch-ios-challenge/raw/16a4cbc5d6a811d1ed9659c50e465273a593a3a0/images/movie_detail.png)
+#### Ambiente 
+- Xcode 13.2.1
+- iOS 15
 
-* * *
+#### OBS
+- Para rodar o projeto Ã© necessario adicionar a [chave](https://www.themoviedb.org/settings/api) da API The Movie DB no Xcode. 
+Ao abrir o projeto para adicionar a chave, Ã© sÃ³ clicar no Ã­cone de "Run" + tecla Option, ir em "Arguments" e adicionar uma nova propriedade em "Environment Variables".
 
-## O que devo fazer?
-
-* Realizar o fork desse repositório.
-* Desenvolver a aplicação usando as melhores práticas de desenvolvimento e totalmente em inglês. 
-* Sobrescreva o README falando sobre o que foi utilizado na arquitetura e libs - com uma pequena explicação das decisões adotadas.
-* Enviar seu pull request para o nosso repositório quando finalizar.
-
-* * *
-
-## O que será avaliado?
-
-* Qualidade do código.
-* Organização do projeto.
-* Arquitetura utilizada.
-* Boas práticas de desenvolvimento iOS.
-* Crash-safe code, consumo de memória e desempenho. 
-
-***É uma avaliação, desenvolva o projeto com qualidade de produção. ;)**
-
-* * *
-
-## Alguma dúvida?
-
-* E-mail: fernando.lima@inchurch.com.br
+```
+Name = "api_key" Value = "Sua chave da API" 
+```
