@@ -28,8 +28,6 @@ final class MovieDetailsInteractor {
 
 // MARK: - Extension
 extension MovieDetailsInteractor: MovieDetailsViewControllerIntput {
-    func getMovieDetails(request: MovieDetailsModels.Request) { }
-    
     func loadMovieDetails(request: MovieDetailsModels.Request) {
         cancelable = worker.performLoadMovieDetails(request)
             .sink { completion in
@@ -38,5 +36,9 @@ extension MovieDetailsInteractor: MovieDetailsViewControllerIntput {
             } receiveValue: { response in
                 self.presenter?.showDetails(response: response)
             }
+    }
+    
+    func changeStateOfSelectedMovie(_ liked: Bool, _ movieID: Int) {
+        liked ? LikeListAccessObject.saveData(movieID) : LikeListAccessObject.removeItem(movieID)
     }
 }

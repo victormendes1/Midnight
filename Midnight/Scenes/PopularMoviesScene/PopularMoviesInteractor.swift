@@ -11,8 +11,9 @@ typealias PopularMoviesSceneInteractorInput = PopularMoviesViewControllerOutput
 
 // MARK: - Protocol
 protocol PopularMoviesInteractorOutput: AnyObject {
-    func showPopularMovies(response: PopularMoviesModels.Response)
+    func showPopularMovies(response: PopularMoviesModels.Response, ids: [Int]?)
     func showError(wih error: ErrorRepresentation)
+    func changeStateOfSelectedMovie(_ liked: Bool, _ movieID: Int?)
 }
 
 final class PopularMoviesInteractor {
@@ -34,7 +35,7 @@ extension PopularMoviesInteractor: PopularMoviesViewControllerInput {
                 guard case let .failure(error) = completion else { return }
                 self.presenter?.showError(wih: error.message)
             } receiveValue: { response in
-                self.presenter?.showPopularMovies(response: response)
+                self.presenter?.showPopularMovies(response: response, ids: LikeListAccessObject.loadData())
             }
             .store(in: &cancelables)
     }
@@ -50,5 +51,10 @@ extension PopularMoviesInteractor: PopularMoviesViewControllerInput {
                 }
                 .store(in: &cancelables)
         }
+    }
+    
+    func updateListFavoriteMovies() {
+        let lastItemChanged = LikeListAccessObject.lastItemChanged
+        self.presenter?.changeStateOfSelectedMovie(lastItemChanged.liked, lastItemChanged.id)
     }
 }

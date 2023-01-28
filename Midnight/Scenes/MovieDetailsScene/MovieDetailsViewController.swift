@@ -11,6 +11,7 @@ import SnapKit
 // MARK: - Protocol
 protocol MovieDetailsViewControllerIntput: AnyObject {
     func loadMovieDetails(request: MovieDetailsModels.Request)
+    func changeStateOfSelectedMovie(_ liked: Bool, _ movieID: Int)
 }
 
 protocol MovieDetailsViewControllerOutput: AnyObject {
@@ -80,6 +81,8 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let mainCell = tableView.dequeueReusableCell(withIdentifier: MainMovieCell.identifier, for: indexPath) as? MainMovieCell, let similarCell = tableView.dequeueReusableCell(withIdentifier: SimilarMoviesCell.identifier, for: indexPath) as? SimilarMoviesCell else { return UITableViewCell() }
         
+        mainCell.delegate = self
+        
         switch indexPath.row {
         case .zero:
             mainCell.configure(selectedMovie)
@@ -114,5 +117,11 @@ extension MovieDetailsViewController: MovieDetailsViewControllerOutput {
         DispatchQueue.main.async {
             self.showAlert(title, message, self)
         }
+    }
+}
+
+extension MovieDetailsViewController: MovieFavoriteEventDelegate {
+    func favoriteMovie(liked: Bool) {
+        self.interactor?.changeStateOfSelectedMovie(liked, selectedMovie.id)
     }
 }

@@ -11,7 +11,7 @@ struct Genres: Codable {
     var genres: [Genre] = []
 }
 
-class Genre: NSObject, NSCoding, Codable {
+final class Genre: NSObject, NSCoding, Codable {
     var id: Int
     var name: String
     

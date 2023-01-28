@@ -9,9 +9,17 @@ import UIKit
 import Lottie
 import SnapKit
 
+protocol MovieFavoriteEventDelegate: AnyObject {
+    func favoriteMovie(liked: Bool)
+}
+
 final class MainMovieCell: UITableViewCell {
     // MARK: - Properties
+    weak var delegate: MovieFavoriteEventDelegate?
+    
     private let likeView = LottieAnimationView(name: "likedAnimation")
+    private let heartFill = UIImage(systemName: "heart.fill")
+    private let heartEmpty = UIImage(systemName: "heart")
     
     private var titleLabel: UILabel = {
         let label = UILabel()
@@ -107,18 +115,21 @@ final class MainMovieCell: UITableViewCell {
         releaseDateLabel.text = "Released in \(movie.release.longFormattedDate())"
         numberOfLikesLabel.text = Double(movie.voteCount).shortening()
         numberOfViewsLabel.text = movie.popularity.removeFloatingPoint().shortening()
+        
+        movie.liked ? likeButton.setImage(heartFill, for: .normal) : likeButton.setImage(heartEmpty, for: .normal)
+        movie.liked ? likeView.play() : likeView.play(fromFrame: 3, toFrame: 0)
     }
     
     // MARK: - Private Functions
     private func changeLikeButtonState() {
-        let heartFill = UIImage(systemName: "heart.fill")
-        let heartEmpty = UIImage(systemName: "heart")
         if likeButton.currentImage == heartFill {
             likeButton.setImage(heartEmpty, for: .normal)
             likeView.play(fromFrame: 3, toFrame: 0)
+            delegate?.favoriteMovie(liked: false)
         } else {
             likeButton.setImage(heartFill, for: .normal)
             likeView.play()
+            delegate?.favoriteMovie(liked: true)
         }
     }
     

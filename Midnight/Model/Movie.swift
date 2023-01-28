@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Movie: Codable {
+final class Movie: Codable {
     private let posterPath: String?
     let release: String /// "2022-12-21"
     let backdropPath: String?
@@ -21,7 +21,7 @@ struct Movie: Codable {
     let voteCount: Int
     var posterImageData: UIImage?
     var trailerID: String?
-    var liked: Bool?
+    var liked: Bool = false
     
     init(backdropPath: String = "",
          genres: [Genre] = [],
@@ -90,5 +90,11 @@ extension Movie {
         case duration = "runtime"
         case release = "release_date"
         case voteCount = "vote_count"
+    }
+}
+
+extension Movie {
+    struct PropertyKey {
+        static let id = "id"
     }
 }

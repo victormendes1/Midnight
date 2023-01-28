@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GenresAccessObject {
+final class GenresAccessObject {
     static func saveData(_ object: [Genre]) {
         do {
             let encodedData = try NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: false)

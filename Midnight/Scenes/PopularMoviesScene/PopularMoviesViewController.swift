@@ -12,11 +12,13 @@ import SnapKit
 protocol PopularMoviesViewControllerInput: AnyObject {
     func loadMovies()
     func loadGenres()
+    func updateListFavoriteMovies()
 }
 
 protocol PopularMoviesViewControllerOutput: AnyObject, Alert {
     func showMovies(viewModel: PopularMoviesModels.ViewModel)
     func showError(title: String, message: String)
+    func changeStateOfSelectedMovie(_ liked: Bool, _ id: Int?)
 }
 
 // MARK: - Class
@@ -51,6 +53,7 @@ final class PopularMoviesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationControllerDark(title: "Popular")
+        interactor?.updateListFavoriteMovies()
     }
     
     // MARK: - Private Functions
@@ -93,6 +96,14 @@ extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
     func showError(title: String, message: String) {
         DispatchQueue.main.async {
             self.showAlert(title, message, self)
+        }
+    }
+    
+    func changeStateOfSelectedMovie(_ liked: Bool, _ id: Int?) {
+        self.movies.forEach { movie in
+            if movie.id == id {
+                movie.liked = liked
+            }
         }
     }
 }
