@@ -75,6 +75,14 @@ final class MainMovieCell: UITableViewCell {
         return label
     }()
     
+    private let overviewLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.numberOfLines = 10
+        label.font =  .systemFont(ofSize: 14, weight: .light)
+        return label
+    }()
+    
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -88,6 +96,7 @@ final class MainMovieCell: UITableViewCell {
     // MARK: - Configure
     func configure(_ movie: Movie) {
         titleLabel.text = movie.title
+        overviewLabel.text = movie.overview
         numberOfLikesLabel.text = Double(movie.voteCount).shortening()
         numberOfViewsLabel.text = movie.popularity.removeFloatingPoint().shortening()
     }
@@ -120,6 +129,7 @@ final class MainMovieCell: UITableViewCell {
         contentView.addSubview(numberOfViewsLabel)
         contentView.addSubview(viewsLabel)
         contentView.addSubview(previewIconView)
+        contentView.addSubview(overviewLabel)
         customBackgroundView.addSubview(likeButton)
         
         titleLabel.snp.makeConstraints { title in
@@ -137,7 +147,7 @@ final class MainMovieCell: UITableViewCell {
         }
         
         customBackgroundView.snp.makeConstraints { button in
-            button.centerY.equalToSuperview()
+            button.centerY.equalTo(titleLabel)
             button.right.equalToSuperview().inset(20)
             button.width.height.equalTo(35)
         }
@@ -145,7 +155,6 @@ final class MainMovieCell: UITableViewCell {
         numberOfLikesLabel.snp.makeConstraints { likes in
             likes.top.equalTo(titleLabel.snp_bottomMargin).inset(-20)
             likes.leading.equalTo(likeView.snp_trailingMargin).inset(20)
-            likes.bottom.equalToSuperview().inset(10)
             likes.height.greaterThanOrEqualTo(15)
         }
         
@@ -173,6 +182,13 @@ final class MainMovieCell: UITableViewCell {
         viewsLabel.snp.makeConstraints { views in
             views.left.equalTo(numberOfViewsLabel.snp_rightMargin).inset(-8)
             views.centerY.equalTo(numberOfViewsLabel)
+        }
+        
+        overviewLabel.snp.makeConstraints { details in
+            details.top.equalTo(numberOfLikesLabel.snp_bottomMargin).inset(-14)
+            details.left.equalToSuperview().inset(16)
+            details.right.equalToSuperview().inset(16)
+            details.bottom.equalToSuperview().inset(10)
         }
     }
 }

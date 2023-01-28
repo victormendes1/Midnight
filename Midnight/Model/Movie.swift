@@ -21,6 +21,7 @@ struct Movie: Codable {
     let voteCount: Int
     var posterImageData: UIImage?
     var trailerID: String?
+    var liked: Bool?
     
     init(backdropPath: String = "",
          genres: [Genre] = [],
@@ -32,7 +33,10 @@ struct Movie: Codable {
          posterPath: String = "",
          duration: Int = .zero,
          popularity: Double = .zero,
-         voteCount: Int = .zero) {
+         voteCount: Int = .zero,
+         posterImageData: UIImage = UIImage(),
+         trailerID: String = "",
+         liked: Bool = false) {
         self.backdropPath = backdropPath
         self.genres = genres
         self.genreId = genreId
