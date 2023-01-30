@@ -11,7 +11,6 @@ final class HomeTabController: UITabBarController {
     // MARK: - Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.barStyle = .black
         delegate = self
     }
     
@@ -31,7 +30,19 @@ final class HomeTabController: UITabBarController {
         tabBarItems[1].image = UIImage(systemName: "rectangle.stack.badge.play")
         tabBarItems[2].image = UIImage(systemName: "star")
         
-        tabBar.tintColor = .orange
+        setTabBarColor()
+    }
+    
+    private func setTabBarColor() {
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundColor = .black.withAlphaComponent(0.9)
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = appearance
+            tabBar.tintColor = .orange
+        } else {
+            // TODO: In the future add code for iOS < 15
+        }
     }
     
     // MARK: - Private Function

@@ -13,6 +13,7 @@ protocol FavoriteMoviesViewControllerInput: AnyObject {
     func loadFavoriteMovies()
     func updateFavoriteMoviesList(_ moviesCount: Int)
     func updateSceneBackground(_ moviesCount: Int)
+    func removeSelectedMovieFromFavorites(id: Int, count: Int)
 }
 
 protocol FavoriteMoviesViewControllerOutput: AnyObject, Alert {
@@ -53,7 +54,6 @@ final class FavotireMoviesViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         interactor?.loadFavoriteMovies()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +99,17 @@ extension FavotireMoviesViewController: UITableViewDelegate, UITableViewDataSour
         cell.selectionStyle = .none
         cell.configure(movies[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextItem = UIContextualAction(style: .destructive, title: "Remove") { [weak self] _, _, _ in
+            if let self = self {
+                self.interactor?.removeSelectedMovieFromFavorites(id: self.movies[indexPath.row].id, count: self.movies.count)
+                self.movies.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+        return UISwipeActionsConfiguration(actions: [contextItem])
     }
 }
 
