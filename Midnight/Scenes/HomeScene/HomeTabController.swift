@@ -30,6 +30,8 @@ final class HomeTabController: UITabBarController {
         tabBarItems[0].image = UIImage(systemName: "play.tv")
         tabBarItems[1].image = UIImage(systemName: "rectangle.stack.badge.play")
         tabBarItems[2].image = UIImage(systemName: "star")
+        
+        tabBar.tintColor = .orange
     }
     
     // MARK: - Private Function
