@@ -55,7 +55,8 @@ final class MovieDetailsViewController: UIViewController, Alert {
     private func setupViews() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { tableView in
-            tableView.width.height.equalToSuperview()
+            tableView.top.bottom.equalToSuperview()
+            tableView.left.right.equalToSuperview()
         }
     }
     

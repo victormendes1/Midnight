@@ -35,7 +35,8 @@ final class PopularMovieCell: UICollectionViewCell {
         contentView.addSubview(posterView)
         
         posterView.snp.makeConstraints { view in
-            view.width.height.equalToSuperview()
+            view.left.right.equalToSuperview()
+            view.top.bottom.equalToSuperview()
         }
     }
     

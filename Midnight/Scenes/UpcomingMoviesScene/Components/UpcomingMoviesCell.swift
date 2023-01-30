@@ -82,6 +82,7 @@ final class UpcomingMoviesCell: UITableViewCell {
         titleLabel.snp.makeConstraints { title in
             title.centerY.equalToSuperview().offset(-20)
             title.left.equalTo(moviePosterImage.snp_rightMargin).offset(20)
+            title.right.equalToSuperview().inset(16)
         }
         
         genresLabel.snp.makeConstraints { genres in
@@ -97,7 +98,7 @@ final class UpcomingMoviesCell: UITableViewCell {
         }
         
         separatorView.snp.makeConstraints { line in
-            line.width.equalToSuperview()
+            line.left.right.equalToSuperview()
             line.bottom.equalToSuperview()
             line.height.equalTo(0.7)
         }

@@ -62,8 +62,8 @@ final class PopularMoviesViewController: UIViewController {
         
         collectionView.snp.makeConstraints { collectionView in
             collectionView.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            collectionView.left.right.equalToSuperview()
             collectionView.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            collectionView.width.equalToSuperview()
         }
     }
 }
