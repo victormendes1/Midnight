@@ -26,6 +26,7 @@ protocol FavoriteMoviesViewControllerOutput: AnyObject, Alert {
 final class FavotireMoviesViewController: UIViewController {
     private let emptyListBackgroundView = LottieAnimationView(name: "emptyListAnimation")
     private var movies = [Movie]()
+    private var openingAnimation = true
     
     private let emptyListLabel: UILabel = {
         let label = UILabel()
@@ -128,13 +129,26 @@ extension FavotireMoviesViewController: FavoriteMoviesViewControllerOutput {
     }
     
     func showSceneEmpty(has content: Bool) {
-        if content {
-            emptyListBackgroundView.isHidden = true
-            emptyListLabel.isHidden = true
+        if openingAnimation && !content {
+            emptyListBackgroundView.alpha = 1
+            emptyListLabel.alpha = 1
+            emptyListBackgroundView.play(fromFrame: 0, toFrame: 190, loopMode: .playOnce) { [weak self] _ in
+                guard let self = self else { return }
+                self.emptyListBackgroundView.animationSpeed = 0.8
+                self.emptyListBackgroundView.play(fromFrame: 190, toFrame: 310, loopMode: .autoReverse)
+            }
+        } else if !content {
+            UIView.animate(withDuration: 0.7, delay: .zero, options: .curveEaseInOut) {
+                self.emptyListBackgroundView.alpha = 1
+                self.emptyListLabel.alpha = 1
+            }
+            emptyListBackgroundView.animationSpeed = 0.8
+            emptyListBackgroundView.play(fromFrame: 190, toFrame: 310, loopMode: .autoReverse)
+            
         } else {
-            emptyListBackgroundView.isHidden = false
-            emptyListLabel.isHidden = false
-            emptyListBackgroundView.play()
+            emptyListBackgroundView.alpha = 0
+            emptyListLabel.alpha = 0
         }
+        openingAnimation = false
     }
 }

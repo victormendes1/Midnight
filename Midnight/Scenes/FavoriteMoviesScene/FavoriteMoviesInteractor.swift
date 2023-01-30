@@ -52,8 +52,6 @@ extension FavoriteMoviesInteractor: FavoriteMoviesViewControllerInput {
     
     func removeSelectedMovieFromFavorites(id: Int, count: Int) {
         LikeListAccessObject.removeItem(id)
-        if count == 1 {
-            self.presenter?.updateSceneBackground(has: false)
-        }
+        self.presenter?.updateSceneBackground(has: count != 1)
     }
 }
