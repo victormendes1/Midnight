@@ -20,17 +20,33 @@ final class HomeTabController: UITabBarController {
         setNavigationControllerDark(title: "Popular")
     }
     
-    func setTabBarImage() {
-        tabBar.items?.first?.image = UIImage(systemName: "play.tv")
-        tabBar.items?.last?.image = UIImage(systemName: "rectangle.stack.badge.play")
-        tabBar.items?.first?.title = "Popular"
-        tabBar.items?.last?.title = "Upcoming"
+    func setTabBar() {
+        guard let tabBarItems = tabBar.items, tabBarItems.count <= 3 else { return }
+        //Title
+        tabBarItems[0].title = "Popular"
+        tabBarItems[1].title = "Upcoming"
+        tabBarItems[2].title = "Favotites"
+        //Icon
+        tabBarItems[0].image = UIImage(systemName: "play.tv")
+        tabBarItems[1].image = UIImage(systemName: "rectangle.stack.badge.play")
+        tabBarItems[2].image = UIImage(systemName: "star")
+    }
+    
+    // MARK: - Private Function
+    private func configureNavigationBy(type: UIViewController) {
+        if type is PopularMoviesViewController {
+            setNavigationControllerDark(title: "Popular")
+        } else if type is UpcomingMoviesViewController {
+            setNavigationControllerDark(title: "Upcoming")
+        } else {
+            setNavigationControllerDark(title: "Favorites")
+        }
     }
 }
 
 // MARK: - Extension
 extension HomeTabController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        viewController is UpcomingMoviesViewController ? setNavigationControllerDark(title: "Upcoming") : setNavigationControllerDark(title: "Popular")
+        configureNavigationBy(type: viewController)
     }
 }

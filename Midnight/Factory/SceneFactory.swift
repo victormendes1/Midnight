@@ -14,6 +14,7 @@ protocol SceneFactoryProtocol {
     func makePopularMoviesScene() -> UIViewController
     func makeUpcomingMoviesScene() -> UIViewController
     func makeMovieDetailsScene(with movie: Movie) -> UIViewController
+    func makeFavotireMoviesScene() -> UIViewController
 }
 
 // MARK: - Class
@@ -25,7 +26,10 @@ final class SceneFactory {
 extension SceneFactory: SceneFactoryProtocol {
     func makeHomeScene() -> UIViewController {
         let viewController = HomeTabController()
-        return configurator.configured(viewController, viewControllers: [makePopularMoviesScene(), makeUpcomingMoviesScene()])
+        return configurator.configured(viewController, viewControllers:
+                                        [makePopularMoviesScene(),
+                                         makeUpcomingMoviesScene(),
+                                         makeFavotireMoviesScene()])
     }
     
     func makePopularMoviesScene() -> UIViewController {
@@ -46,6 +50,11 @@ extension SceneFactory: SceneFactoryProtocol {
     func makUpcomingDetailsScene(with movie: Movie) -> UIViewController {
         let viewController = UpcomingDetailsViewController()
         return configurator.configured(viewController, with: movie)
+    }
+    
+    func makeFavotireMoviesScene() -> UIViewController {
+        let viewController = FavotireMoviesViewController()
+        return configurator.configured(viewController)
     }
 }
 

@@ -22,7 +22,6 @@ protocol UpcomingMoviesSceneOutput: AnyObject, Alert {
 final class UpcomingMoviesViewController: UIViewController {
     var interactor: UpcomingMoviesSceneInput?
     var router: UpcomingMoviesSceneRouter?
-    var notification: Bool = false
     
     private var movies: [Movie] = []
     

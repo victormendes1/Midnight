@@ -16,7 +16,7 @@ protocol HomeSceneConfiguratorProtocol {
 extension SceneConfigurator: HomeSceneConfiguratorProtocol {
     func configured(_ tabViewController: HomeTabController, viewControllers: [UIViewController]) -> UIViewController {
         tabViewController.setViewControllers(viewControllers, animated: true)
-        tabViewController.setTabBarImage()
+        tabViewController.setTabBar()
         return tabViewController
     }
 }
