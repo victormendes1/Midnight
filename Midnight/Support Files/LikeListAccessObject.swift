@@ -9,7 +9,8 @@ import Foundation
 
 final class LikeListAccessObject {
     static var lastItemChanged: (id: Int?, liked: Bool) = (id: nil, liked: false)
-
+    static var favoriteMovies: [Int]?
+    
     static func saveData(_ object: Int) {
         var listObjects: [Int] = []
         
@@ -26,6 +27,7 @@ final class LikeListAccessObject {
         } catch {
             debugPrint(error.localizedDescription)
         }
+        favoriteMovies = listObjects
         lastItemChanged = (id: object, liked: true)
     }
     
@@ -39,6 +41,7 @@ final class LikeListAccessObject {
         } catch {
             print(error.localizedDescription)
         }
+        favoriteMovies = decodedData
         lastItemChanged = (id: nil, liked: false)
         return decodedData
     }
@@ -54,6 +57,7 @@ final class LikeListAccessObject {
         } catch {
             debugPrint(error.localizedDescription)
         }
+        favoriteMovies = updatedList
         lastItemChanged = (id: item, liked: false)
     }
 }

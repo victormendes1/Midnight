@@ -83,12 +83,19 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         router?.showMovieDetails(movie: movies[indexPath.row])
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == (movies.count - 7) {
+            interactor?.loadMovies()
+        }
+    }
 }
 
+// MARK: - Output
 extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
     func showMovies(viewModel: PopularMoviesModels.ViewModel) {
         DispatchQueue.main.async {
-            self.movies = viewModel.movies
+            self.movies += viewModel.movies
             self.collectionView.reloadData()
         }
     }

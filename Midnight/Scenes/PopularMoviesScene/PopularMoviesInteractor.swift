@@ -19,6 +19,8 @@ protocol PopularMoviesInteractorOutput: AnyObject {
 final class PopularMoviesInteractor {
     private var cancelables: Set<AnyCancellable> = []
     private var worker: PopularMoviesWork
+    private var requestedPages: Int = .zero
+    private var likesList = LikeListAccessObject.favoriteMovies
     
     var presenter: PopularMoviesScenePresenterInput?
     
@@ -30,19 +32,21 @@ final class PopularMoviesInteractor {
 // MARK: - Extension
 extension PopularMoviesInteractor: PopularMoviesViewControllerInput {
     func loadMovies() {
-        worker.performLoadPopularMovies()
+        requestedPages += 1
+        debugPrint(requestedPages)
+        worker.performLoadPopularMovies(requestedPages)
             .sink { completion in
                 guard case let .failure(error) = completion else { return }
                 self.presenter?.showError(wih: error.message)
             } receiveValue: { response in
-                self.presenter?.showPopularMovies(response: response, ids: LikeListAccessObject.loadData())
+                self.presenter?.showPopularMovies(response: response, ids: self.likesList)
             }
             .store(in: &cancelables)
     }
     
     func loadGenres() {
         if GenresAccessObject.loadData() == nil {
-             worker.performLoadGenres()
+            worker.performLoadGenres()
                 .sink { completion in
                     guard case let .failure(error) = completion else { return }
                     self.presenter?.showError(wih: error.message)

@@ -9,7 +9,7 @@ import Combine
 
 // MARK: - Protocol
 protocol PopularMoviesWorkProtocol {
-    func performLoadPopularMovies() -> AnyPublisher<PopularMoviesModels.Response, ServiceError>
+    func performLoadPopularMovies(_ page: Int) -> AnyPublisher<PopularMoviesModels.Response, ServiceError>
     func performLoadGenres() -> AnyPublisher<Genres, ServiceError>
 }
 
@@ -23,8 +23,9 @@ final class PopularMoviesWork {
 
 // MARK: - Extension
 extension PopularMoviesWork: PopularMoviesWorkProtocol {
-    func performLoadPopularMovies() -> AnyPublisher<PopularMoviesModels.Response, ServiceError> {
-        service.request(.popularMovies)
+    func performLoadPopularMovies(_ page: Int = 1) -> AnyPublisher<PopularMoviesModels.Response, ServiceError> {
+        service.request(.popularMovies(numberPage: page))
+        
     }
     
     func performLoadGenres() -> AnyPublisher<Genres, ServiceError> {

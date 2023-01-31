@@ -15,7 +15,7 @@ final class FavoriteMoviesPresenter {
 // MARK: - Extension
 extension FavoriteMoviesPresenter: FavoriteMoviesScenePresenterInput {
     func showFavoritesMovies(response: PopularMoviesModels.Response) {
-        if let favoriteMoviesId = LikeListAccessObject.loadData() {
+        if let favoriteMoviesId = LikeListAccessObject.favoriteMovies {
             let favoriteMovies = response.movies.filter { movie in
                 favoriteMoviesId.contains(movie.id)
             }

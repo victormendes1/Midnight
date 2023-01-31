@@ -16,6 +16,7 @@ struct NetworkConstants {
     static let baseURL = "https://api.themoviedb.org/3"
     static let posterBaseURL = "https://image.tmdb.org/t/p/w300"
     static let backdropBaseURL = "https://www.themoviedb.org/t/p/original/"
+    static let pageKey = "page"
 }
 
 extension NetworkConstants {
@@ -23,4 +24,12 @@ extension NetworkConstants {
         defaultRequestKey: defaultRequestValue,
         defaultRegionKey: defaultRegionValue
     ]
+    
+    static func requestParamsWithPage(_ page: Int = 1) -> [String: String] {
+        [
+            defaultRequestKey: defaultRequestValue,
+            defaultRegionKey: defaultRegionValue,
+            pageKey: page.description
+        ]
+    }
 }

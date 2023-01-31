@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol Requestable {
-    func request<T: Codable>(_ endpoint: EndpointManager) -> AnyPublisher<T, ServiceError>
+    func request<T: Codable>(_ endpoint: EndpointManager, _ page: Int) -> AnyPublisher<T, ServiceError>
     func requestRaw(_ endpoint: EndpointManager) -> AnyPublisher<Data, ServiceError>
 }
 
@@ -23,7 +23,7 @@ final class NetworkManager {
 
 // MARK: - Extension
 extension NetworkManager: Requestable {
-    func request<T: Codable>(_ endpoint: EndpointManager) -> AnyPublisher<T, ServiceError> {
+    func request<T: Codable>(_ endpoint: EndpointManager, _ page: Int = 1) -> AnyPublisher<T, ServiceError> {
         guard let url = endpoint.url else {
             return Fail(error: ServiceError.invalidURL).eraseToAnyPublisher()
         }

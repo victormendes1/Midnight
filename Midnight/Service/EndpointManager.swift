@@ -9,7 +9,7 @@ import Foundation
 
 enum EndpointManager {
     case singleMovie(String)
-    case popularMovies
+    case popularMovies(numberPage: Int = 1)
     case similarMovies(String)
     case moviePoster(String)
     case genres
@@ -58,8 +58,11 @@ enum EndpointManager {
         var params: [String: String] = [:]
         
         switch self {
-        case .singleMovie, .popularMovies, .similarMovies, .genres, .upcomingMovies, .imagens, .trailer:
+        case .singleMovie, .similarMovies, .genres, .upcomingMovies, .imagens, .trailer:
             params = NetworkConstants.defaultRequestParams
+        
+        case .popularMovies(let numberPage):
+            params = NetworkConstants.requestParamsWithPage(numberPage)
             
         case .moviePoster:
             params = [:]

@@ -23,6 +23,6 @@ final class FavoriteMoviesWork {
 // MARK: - Extension
 extension FavoriteMoviesWork: FavoriteMoviesWorkProtocol {
     func performLoadFavoriteMovies() -> AnyPublisher<PopularMoviesModels.Response, ServiceError> {
-        service.request(.popularMovies)
+        service.request(.popularMovies())
     }
 }

@@ -40,12 +40,12 @@ extension FavoriteMoviesInteractor: FavoriteMoviesViewControllerInput {
     }
     
     func updateFavoriteMoviesList(_ movieCount: Int) {
-        guard let favoriteMoviesId = LikeListAccessObject.loadData(), favoriteMoviesId.count != movieCount else { return }
+        guard let favoriteMoviesId = LikeListAccessObject.favoriteMovies, favoriteMoviesId.count != movieCount else { return }
         loadFavoriteMovies()
     }
     
     func updateSceneBackground(_ moviesCount: Int) {
-        if let content = LikeListAccessObject.loadData()?.count {
+        if let content = LikeListAccessObject.favoriteMovies?.count {
             self.presenter?.updateSceneBackground(has: content != .zero)
         }
     }
