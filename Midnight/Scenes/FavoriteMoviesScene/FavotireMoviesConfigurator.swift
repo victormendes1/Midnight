@@ -21,6 +21,6 @@ extension SceneConfigurator: FavotireMoviesSceneConfiguratorProtocol {
         presenter.viewController = viewController
         interactor.presenter = presenter
         viewController.interactor = interactor
-        return viewController
+        return UINavigationController(rootViewController: viewController)
     }
 }

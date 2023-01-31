@@ -27,6 +27,8 @@ final class FavotireMoviesViewController: UIViewController {
     private let emptyListBackgroundView = LottieAnimationView(name: "emptyListAnimation")
     private var movies = [Movie]()
     private var openingAnimation = true
+    private var searchController = UISearchController()
+    private var filteredMovies: [Movie] = []
     
     private let emptyListLabel: UILabel = {
         let label = UILabel()
@@ -54,11 +56,13 @@ final class FavotireMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        configureSearchBar()
         interactor?.loadFavoriteMovies()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavigationControllerDark(title: "Favorites")
         interactor?.updateFavoriteMoviesList(movies.count)
         interactor?.updateSceneBackground()
     }
@@ -87,26 +91,33 @@ final class FavotireMoviesViewController: UIViewController {
             text.left.right.equalToSuperview().inset(16)
         }
     }
+    
+    private func configureSearchBar() {
+        searchController.searchBar.delegate = self
+        searchController.searchBar.keyboardAppearance = .dark
+        navigationItem.searchController = searchController
+    }
 }
 
 // MARK: - Extension
 extension FavotireMoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        filteredMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UpcomingMoviesCell.identifer, for: indexPath) as? UpcomingMoviesCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        cell.configure(movies[indexPath.row])
+        cell.configure(filteredMovies[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .destructive, title: "Remove") { [weak self] _, _, _ in
             if let self = self {
-                self.interactor?.removeSelectedMovieFromFavorites(id: self.movies[indexPath.row].id, count: self.movies.count)
-                self.movies.remove(at: indexPath.row)
+                // TODO: Corrigir ao deletar item e buscar novamente
+                self.interactor?.removeSelectedMovieFromFavorites(id: self.filteredMovies[indexPath.row].id, count: self.filteredMovies.count)
+                self.filteredMovies.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
@@ -114,10 +125,20 @@ extension FavotireMoviesViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+extension FavotireMoviesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredMovies = searchText == "" ? movies : movies.filter { (item: Movie) -> Bool in
+            return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        tableView.reloadData()
+    }
+}
+
 extension FavotireMoviesViewController: FavoriteMoviesViewControllerOutput {
     func showMovies(viewModel: PopularMoviesModels.ViewModel) {
         DispatchQueue.main.async {
             self.movies = viewModel.movies
+            self.filteredMovies = self.movies
             self.tableView.reloadData()
         }
     }

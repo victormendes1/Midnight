@@ -27,6 +27,8 @@ final class PopularMoviesViewController: UIViewController {
     var router: PopularMoviesSceneRouter?
     
     private var movies: [Movie] = []
+    private var filteredMovies: [Movie] = []
+    private var searchController = UISearchController()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -46,6 +48,7 @@ final class PopularMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        configureSearchBar()
         interactor?.loadMovies()
         interactor?.loadGenres()
     }
@@ -66,28 +69,43 @@ final class PopularMoviesViewController: UIViewController {
             collectionView.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+    
+    private func configureSearchBar() {
+        searchController.searchBar.delegate = self
+        searchController.searchBar.keyboardAppearance = .dark
+        navigationItem.searchController = searchController
+    }
 }
 
 // MARK: - Extension
 extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movies.count
+        filteredMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularMovieCell.identifer, for: indexPath) as? PopularMovieCell else { return UICollectionViewCell() }
-        cell.configure(movies[indexPath.row])
+        cell.configure(filteredMovies[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        router?.showMovieDetails(movie: movies[indexPath.row])
+        router?.showMovieDetails(movie: filteredMovies[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == (movies.count - 7) {
+        if indexPath.row == (filteredMovies.count - 7) {
             interactor?.loadMovies()
         }
+    }
+}
+
+extension PopularMoviesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredMovies = searchText == "" ? movies : movies.filter { (item: Movie) -> Bool in
+            return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        collectionView.reloadData()
     }
 }
 
@@ -96,6 +114,7 @@ extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
     func showMovies(viewModel: PopularMoviesModels.ViewModel) {
         DispatchQueue.main.async {
             self.movies += viewModel.movies
+            self.filteredMovies = self.movies
             self.collectionView.reloadData()
         }
     }

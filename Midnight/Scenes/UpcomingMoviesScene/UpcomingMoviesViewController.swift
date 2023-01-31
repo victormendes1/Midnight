@@ -24,6 +24,8 @@ final class UpcomingMoviesViewController: UIViewController {
     var router: UpcomingMoviesSceneRouter?
     
     private var movies: [Movie] = []
+    private var filteredMovies: [Movie] = []
+    private var searchController = UISearchController()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -39,7 +41,13 @@ final class UpcomingMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        configureSearchBar()
         interactor?.loadMovies()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationControllerDark(title: "Upcoming")
     }
     
     // MARK: - Private Functions
@@ -57,18 +65,24 @@ final class UpcomingMoviesViewController: UIViewController {
         let movieSortedByDate = onlyMoviesWithInformation.sorted(by: { $0.longReleaseDate < $1.longReleaseDate })
         return movieSortedByDate.filter { $0.longReleaseDate > Date() }
     }
+    
+    private func configureSearchBar() {
+        searchController.searchBar.delegate = self
+        searchController.searchBar.keyboardAppearance = .dark
+        navigationItem.searchController = searchController
+    }
 }
 
 // MARK: - Extension
 extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        filteredMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UpcomingMoviesCell.identifer, for: indexPath) as? UpcomingMoviesCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        cell.configure(movies[indexPath.row])
+        cell.configure(filteredMovies[indexPath.row])
         return cell
     }
     
@@ -77,10 +91,20 @@ extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+extension UpcomingMoviesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredMovies = searchText == "" ? movies : movies.filter { (item: Movie) -> Bool in
+            return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        tableView.reloadData()
+    }
+}
+
 extension UpcomingMoviesViewController: UpcomingMoviesSceneOutput {
     func showMovies(viewModel: UpcomingMoviesModels.ViewModel) {
         DispatchQueue.main.async {
             self.movies = self.sortFutureMovies(viewModel.movies)
+            self.filteredMovies = self.movies
             self.tableView.reloadData()
         }
     }

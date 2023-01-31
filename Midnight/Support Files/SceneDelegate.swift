@@ -18,8 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         let sceneFactory = SceneFactory()
         sceneFactory.configurator = SceneConfigurator(sceneFactory: sceneFactory)
-        let navigationController = UINavigationController(rootViewController: sceneFactory.makeHomeScene())
-        window?.rootViewController = navigationController
+        window?.rootViewController = sceneFactory.makeHomeScene()
         window?.makeKeyAndVisible()
     }
 

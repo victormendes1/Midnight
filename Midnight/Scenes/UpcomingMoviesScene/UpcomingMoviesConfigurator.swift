@@ -24,6 +24,6 @@ extension SceneConfigurator: UpcomingMoviesSceneConfiguratorProtocol {
         interactor.presenter = presenter
         viewController.interactor = interactor
         viewController.router = router
-        return viewController
+        return UINavigationController(rootViewController: viewController)
     }
 }
