@@ -33,7 +33,6 @@ final class PopularMoviesInteractor {
 extension PopularMoviesInteractor: PopularMoviesViewControllerInput {
     func loadMovies() {
         requestedPages += 1
-        debugPrint(requestedPages)
         worker.performLoadPopularMovies(requestedPages)
             .sink { completion in
                 guard case let .failure(error) = completion else { return }
