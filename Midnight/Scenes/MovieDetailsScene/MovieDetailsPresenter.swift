@@ -25,4 +25,8 @@ extension MovieDetailsPresenter: MovieDetailsScenePresenterInput {
         let viewModel = MovieDetailsModels.ViewModel(similarMovies: response.movies, posterImage: UIImageView(image: posterImage))
         viewController?.showDetails(viewModel: viewModel)
     }
+    
+    func showLoading(active: Bool) {
+        viewController?.showLoading(active: active)
+    }
 }

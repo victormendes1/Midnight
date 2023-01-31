@@ -19,6 +19,7 @@ protocol PopularMoviesViewControllerOutput: AnyObject, Alert {
     func showMovies(viewModel: PopularMoviesModels.ViewModel)
     func showError(title: String, message: String)
     func changeStateOfSelectedMovie(_ liked: Bool, _ id: Int?)
+    func showLoading(active: Bool)
 }
 
 // MARK: - Class
@@ -110,7 +111,7 @@ extension PopularMoviesViewController: UISearchBarDelegate {
 }
 
 // MARK: - Output
-extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
+extension PopularMoviesViewController: PopularMoviesViewControllerOutput {    
     func showMovies(viewModel: PopularMoviesModels.ViewModel) {
         DispatchQueue.main.async {
             self.movies += viewModel.movies
@@ -120,9 +121,7 @@ extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
     }
     
     func showError(title: String, message: String) {
-        DispatchQueue.main.async {
-            self.showAlert(title, message, self)
-        }
+        self.showAlert(title, message, self)
     }
     
     func changeStateOfSelectedMovie(_ liked: Bool, _ id: Int?) {

@@ -16,6 +16,7 @@ protocol UpcomingMoviesSceneInput: AnyObject {
 protocol UpcomingMoviesSceneOutput: AnyObject, Alert {
     func showMovies(viewModel: UpcomingMoviesModels.ViewModel)
     func showError(title: String, message: String)
+    func showLoading(active: Bool)
 }
 
 // MARK: - Class

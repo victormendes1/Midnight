@@ -34,4 +34,8 @@ extension PopularMoviesPresenter: PopularMoviesScenePresenterInput {
     func changeStateOfSelectedMovie(_ liked: Bool, _ movieID: Int?) {
         viewController?.changeStateOfSelectedMovie(liked, movieID)
     }
+    
+    func presentLoadingScene(active: Bool) {
+        viewController?.showLoading(active: active)
+    }
 }

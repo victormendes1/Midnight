@@ -13,6 +13,7 @@ typealias MovieDetailsInteractorInput = MovieDetailsViewControllerOutput
 protocol MovieDetialInteractorOutput: AnyObject {
     func showDetails(response: MovieDetailsModels.Response)
     func showError(with error: ErrorRepresentation)
+    func showLoading(active: Bool)
 }
 
 final class MovieDetailsInteractor {
@@ -29,11 +30,13 @@ final class MovieDetailsInteractor {
 // MARK: - Extension
 extension MovieDetailsInteractor: MovieDetailsViewControllerIntput {
     func loadMovieDetails(request: MovieDetailsModels.Request) {
+        self.presenter?.showLoading(active: true)
         cancelable = worker.performLoadMovieDetails(request)
             .sink { completion in
                 guard case let .failure(error) = completion else { return }
                 self.presenter?.showError(with: error.message)
             } receiveValue: { response in
+                self.presenter?.showLoading(active: false)
                 self.presenter?.showDetails(response: response)
             }
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Navigation
 extension UIViewController {
     @objc func backToPrevious() {
         self.navigationController?.popViewController(animated: true)
@@ -37,3 +38,15 @@ extension UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
     }
 }
+
+// MARK: Scene Loading
+protocol Loading {
+    func showLoading(active: Bool)
+}
+
+extension UIViewController: Loading {
+    func showLoading(active: Bool) {
+        LoadingScene.showLoadingView(active)
+    }
+}
+

@@ -22,4 +22,8 @@ extension UpcomingMoviesPresenter: UpcomingMoviesScenePresenterInput {
     func showError(wih error: ErrorRepresentation) {
         viewController?.showError(title: error.title, message: error.message)
     }
+    
+    func showLoading(active: Bool) {
+        viewController?.showLoading(active: active)
+    }
 }
