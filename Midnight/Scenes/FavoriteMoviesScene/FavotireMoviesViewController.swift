@@ -12,7 +12,7 @@ import Lottie
 protocol FavoriteMoviesViewControllerInput: AnyObject {
     func loadFavoriteMovies()
     func updateFavoriteMoviesList(_ moviesCount: Int)
-    func updateSceneBackground(_ moviesCount: Int)
+    func updateSceneBackground()
     func removeSelectedMovieFromFavorites(id: Int, count: Int)
 }
 
@@ -60,7 +60,7 @@ final class FavotireMoviesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor?.updateFavoriteMoviesList(movies.count)
-        interactor?.updateSceneBackground(movies.count)
+        interactor?.updateSceneBackground()
     }
     
     // MARK: - Private
@@ -130,6 +130,7 @@ extension FavotireMoviesViewController: FavoriteMoviesViewControllerOutput {
     
     func showSceneEmpty(has content: Bool) {
         if openingAnimation && !content {
+            tableView.isScrollEnabled = false
             emptyListBackgroundView.alpha = 1
             emptyListLabel.alpha = 1
             emptyListBackgroundView.play(fromFrame: 0, toFrame: 190, loopMode: .playOnce) { [weak self] _ in
@@ -142,10 +143,12 @@ extension FavotireMoviesViewController: FavoriteMoviesViewControllerOutput {
                 self.emptyListBackgroundView.alpha = 1
                 self.emptyListLabel.alpha = 1
             }
+            tableView.isScrollEnabled = false
             emptyListBackgroundView.animationSpeed = 0.8
             emptyListBackgroundView.play(fromFrame: 190, toFrame: 310, loopMode: .autoReverse)
             
         } else {
+            tableView.isScrollEnabled = true
             emptyListBackgroundView.alpha = 0
             emptyListLabel.alpha = 0
         }
