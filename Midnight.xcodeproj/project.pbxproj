@@ -38,6 +38,9 @@
 		576B4173278DDF0B004D01C7 /* likedAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 576B4172278DDF0B004D01C7 /* likedAnimation.json */; };
 		577233E7298973B400BDF132 /* LoadingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577233E6298973B400BDF132 /* LoadingScene.swift */; };
 		577233FB298AAC5500BDF132 /* MoviesAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577233FA298AAC5400BDF132 /* MoviesAccessObject.swift */; };
+		577233FF298B59D600BDF132 /* PopularMoviesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577233FD298B59D600BDF132 /* PopularMoviesInteractorTests.swift */; };
+		57723402298B59F500BDF132 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57723401298B59F500BDF132 /* Stub.swift */; };
+		57723406298B5BEA00BDF132 /* PopularPresenterInputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57723405298B5BEA00BDF132 /* PopularPresenterInputMock.swift */; };
 		57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57753274278C828E00921D77 /* StretchyHeaderView.swift */; };
 		577F32E22913FCF4000504BA /* Extension + UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32E12913FCF4000504BA /* Extension + UIFont.swift */; };
 		577F32F229156ABF000504BA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32F129156ABF000504BA /* Alert.swift */; };
@@ -86,6 +89,16 @@
 		99E6177D9C31346B5F0156F8 /* Pods_Midnight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2091E91AAF334CA57AB4766 /* Pods_Midnight.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		577233F02989AE4E00BDF132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57F96DCE2788DAF20009794A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57F96DD52788DAF20009794A;
+			remoteInfo = Midnight;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4927270EE297422AA77D5324 /* Pods-Midnight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midnight.release.xcconfig"; path = "Target Support Files/Pods-Midnight/Pods-Midnight.release.xcconfig"; sourceTree = "<group>"; };
 		570C5FE22985D94700869F13 /* FavotireMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavotireMoviesViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +131,11 @@
 		576A96012965CB4200ABC876 /* Trailers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailers.swift; sourceTree = "<group>"; };
 		576B4172278DDF0B004D01C7 /* likedAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = likedAnimation.json; sourceTree = "<group>"; };
 		577233E6298973B400BDF132 /* LoadingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScene.swift; sourceTree = "<group>"; };
+		577233EC2989AE4E00BDF132 /* MidnightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MidnightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		577233FA298AAC5400BDF132 /* MoviesAccessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesAccessObject.swift; sourceTree = "<group>"; };
+		577233FD298B59D600BDF132 /* PopularMoviesInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularMoviesInteractorTests.swift; sourceTree = "<group>"; };
+		57723401298B59F500BDF132 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		57723405298B5BEA00BDF132 /* PopularPresenterInputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularPresenterInputMock.swift; sourceTree = "<group>"; };
 		57753274278C828E00921D77 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StretchyHeaderView.swift; path = "Midnight/Support Files/StretchyHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		577F32E12913FCF4000504BA /* Extension + UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIFont.swift"; sourceTree = "<group>"; };
 		577F32F129156ABF000504BA /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -171,6 +188,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		577233E92989AE4E00BDF132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57F96DD32788DAF20009794A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,6 +340,32 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		577233ED2989AE4E00BDF132 /* MidnightTests */ = {
+			isa = PBXGroup;
+			children = (
+				577233F52989AFB100BDF132 /* Popular */,
+			);
+			path = MidnightTests;
+			sourceTree = "<group>";
+		};
+		577233F52989AFB100BDF132 /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+				577233FD298B59D600BDF132 /* PopularMoviesInteractorTests.swift */,
+				57723407298B6B8C00BDF132 /* Helpers */,
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
+		57723407298B6B8C00BDF132 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				57723401298B59F500BDF132 /* Stub.swift */,
+				57723405298B5BEA00BDF132 /* PopularPresenterInputMock.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		577F32F029156A8D000504BA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				57F96DD82788DAF20009794A /* Midnight */,
+				577233ED2989AE4E00BDF132 /* MidnightTests */,
 				57F96DD72788DAF20009794A /* Products */,
 				B2E79E322802DE5449E17844 /* Pods */,
 				44C441770BBD97E48D035DBF /* Frameworks */,
@@ -406,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				57F96DD62788DAF20009794A /* Midnight.app */,
+				577233EC2989AE4E00BDF132 /* MidnightTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -472,6 +524,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		577233EB2989AE4E00BDF132 /* MidnightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 577233F22989AE4E00BDF132 /* Build configuration list for PBXNativeTarget "MidnightTests" */;
+			buildPhases = (
+				577233E82989AE4E00BDF132 /* Sources */,
+				577233E92989AE4E00BDF132 /* Frameworks */,
+				577233EA2989AE4E00BDF132 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				577233F12989AE4E00BDF132 /* PBXTargetDependency */,
+			);
+			name = MidnightTests;
+			productName = MidnightTests;
+			productReference = 577233EC2989AE4E00BDF132 /* MidnightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		57F96DD52788DAF20009794A /* Midnight */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57F96DEA2788DAF40009794A /* Build configuration list for PBXNativeTarget "Midnight" */;
@@ -501,6 +571,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					577233EB2989AE4E00BDF132 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 57F96DD52788DAF20009794A;
+					};
 					57F96DD52788DAF20009794A = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -520,11 +594,19 @@
 			projectRoot = "";
 			targets = (
 				57F96DD52788DAF20009794A /* Midnight */,
+				577233EB2989AE4E00BDF132 /* MidnightTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		577233EA2989AE4E00BDF132 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57F96DD42788DAF20009794A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -587,6 +669,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		577233E82989AE4E00BDF132 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577233FF298B59D600BDF132 /* PopularMoviesInteractorTests.swift in Sources */,
+				57723406298B5BEA00BDF132 /* PopularPresenterInputMock.swift in Sources */,
+				57723402298B59F500BDF132 /* Stub.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		57F96DD22788DAF20009794A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -662,6 +754,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		577233F12989AE4E00BDF132 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 57F96DD52788DAF20009794A /* Midnight */;
+			targetProxy = 577233F02989AE4E00BDF132 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		57F96DE42788DAF40009794A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -674,6 +774,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		577233F32989AE4E00BDF132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BQD43L5A49;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.dreams.MidnightTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Midnight.app/Midnight";
+			};
+			name = Debug;
+		};
+		577233F42989AE4E00BDF132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BQD43L5A49;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.dreams.MidnightTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Midnight.app/Midnight";
+			};
+			name = Release;
+		};
 		57F96DE82788DAF40009794A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -794,10 +932,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7757DC2B69DC1A5BFA624779 /* Pods-Midnight.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					arm64,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -817,6 +952,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = mobileApp.Midnight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -829,10 +965,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4927270EE297422AA77D5324 /* Pods-Midnight.release.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					arm64,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -852,6 +985,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = mobileApp.Midnight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -863,6 +997,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		577233F22989AE4E00BDF132 /* Build configuration list for PBXNativeTarget "MidnightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				577233F32989AE4E00BDF132 /* Debug */,
+				577233F42989AE4E00BDF132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		57F96DD12788DAF20009794A /* Build configuration list for PBXProject "Midnight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

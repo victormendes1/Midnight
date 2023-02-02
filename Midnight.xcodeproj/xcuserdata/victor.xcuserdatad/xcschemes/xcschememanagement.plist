@@ -7,11 +7,21 @@
 		<key>Midnight.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>0</integer>
+		</dict>
+		<key>MidnightTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>577233EB2989AE4E00BDF132</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>57F96DD52788DAF20009794A</key>
 		<dict>
 			<key>primary</key>
