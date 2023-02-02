@@ -19,7 +19,7 @@ protocol PopularMoviesInteractorOutput: AnyObject {
 
 final class PopularMoviesInteractor {
     private var cancelables: Set<AnyCancellable> = []
-    private var worker: PopularMoviesWork
+    private var worker: PopularMoviesWorkProtocol
     private var requestedPages: Int = .zero
     private var savedFavoritesMovies: [Int] {
         MoviesAccessObject.favoriteMovies?.map { $0.id } ?? []
@@ -27,7 +27,7 @@ final class PopularMoviesInteractor {
     
     var presenter: PopularMoviesScenePresenterInput?
     
-    init(worker: PopularMoviesWork) {
+    init(worker: PopularMoviesWorkProtocol) {
         self.worker = worker
     }
 }
@@ -55,7 +55,7 @@ extension PopularMoviesInteractor: PopularMoviesViewControllerInput {
     }
     
     func loadGenres() {
-        if GenresAccessObject.loadData() == nil {
+        if GenresAccessObject.loadData() == nil || GenresAccessObject.loadData()?.count == .zero {
             worker.performLoadGenres()
                 .sink { completion in
                     guard case let .failure(error) = completion else { return }
