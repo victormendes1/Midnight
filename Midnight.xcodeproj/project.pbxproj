@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		570C5FE029854F1800869F13 /* LikeListAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C5FDF29854F1800869F13 /* LikeListAccessObject.swift */; };
 		570C5FE32985D94700869F13 /* FavotireMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C5FE22985D94700869F13 /* FavotireMoviesViewController.swift */; };
 		570C5FE52985D99C00869F13 /* FavotireMoviesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C5FE42985D99C00869F13 /* FavotireMoviesConfigurator.swift */; };
 		570C5FE72985DA4E00869F13 /* FavoriteMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570C5FE62985DA4E00869F13 /* FavoriteMoviesPresenter.swift */; };
@@ -38,6 +37,7 @@
 		576A96022965CB4200ABC876 /* Trailers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A96012965CB4200ABC876 /* Trailers.swift */; };
 		576B4173278DDF0B004D01C7 /* likedAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 576B4172278DDF0B004D01C7 /* likedAnimation.json */; };
 		577233E7298973B400BDF132 /* LoadingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577233E6298973B400BDF132 /* LoadingScene.swift */; };
+		577233FB298AAC5500BDF132 /* MoviesAccessObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577233FA298AAC5400BDF132 /* MoviesAccessObject.swift */; };
 		57753275278C828E00921D77 /* StretchyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57753274278C828E00921D77 /* StretchyHeaderView.swift */; };
 		577F32E22913FCF4000504BA /* Extension + UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32E12913FCF4000504BA /* Extension + UIFont.swift */; };
 		577F32F229156ABF000504BA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577F32F129156ABF000504BA /* Alert.swift */; };
@@ -88,7 +88,6 @@
 
 /* Begin PBXFileReference section */
 		4927270EE297422AA77D5324 /* Pods-Midnight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midnight.release.xcconfig"; path = "Target Support Files/Pods-Midnight/Pods-Midnight.release.xcconfig"; sourceTree = "<group>"; };
-		570C5FDF29854F1800869F13 /* LikeListAccessObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListAccessObject.swift; sourceTree = "<group>"; };
 		570C5FE22985D94700869F13 /* FavotireMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavotireMoviesViewController.swift; sourceTree = "<group>"; };
 		570C5FE42985D99C00869F13 /* FavotireMoviesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavotireMoviesConfigurator.swift; sourceTree = "<group>"; };
 		570C5FE62985DA4E00869F13 /* FavoriteMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesPresenter.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		576A96012965CB4200ABC876 /* Trailers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailers.swift; sourceTree = "<group>"; };
 		576B4172278DDF0B004D01C7 /* likedAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = likedAnimation.json; sourceTree = "<group>"; };
 		577233E6298973B400BDF132 /* LoadingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScene.swift; sourceTree = "<group>"; };
+		577233FA298AAC5400BDF132 /* MoviesAccessObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesAccessObject.swift; sourceTree = "<group>"; };
 		57753274278C828E00921D77 /* StretchyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StretchyHeaderView.swift; path = "Midnight/Support Files/StretchyHeaderView.swift"; sourceTree = SOURCE_ROOT; };
 		577F32E12913FCF4000504BA /* Extension + UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIFont.swift"; sourceTree = "<group>"; };
 		577F32F129156ABF000504BA /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 				574A11C8278A129800C41201 /* NetworkConstants.swift */,
 				57753274278C828E00921D77 /* StretchyHeaderView.swift */,
 				574FC85429481BD9001D9298 /* GenresAccessObject.swift */,
-				570C5FDF29854F1800869F13 /* LikeListAccessObject.swift */,
+				577233FA298AAC5400BDF132 /* MoviesAccessObject.swift */,
 				57F91109294A346D007955C1 /* VideoView.swift */,
 				577233E6298973B400BDF132 /* LoadingScene.swift */,
 			);
@@ -597,6 +597,7 @@
 				574FC8582948F20D001D9298 /* UpcomingMoviesViewController.swift in Sources */,
 				574FC85E2948F692001D9298 /* UpcomingMoviesPresenter.swift in Sources */,
 				57F91108294A17EE007955C1 /* UpcomingMoviesCell.swift in Sources */,
+				577233FB298AAC5500BDF132 /* MoviesAccessObject.swift in Sources */,
 				574A11E4278B399A00C41201 /* Support Functions.swift in Sources */,
 				570C5FE92985DB8200869F13 /* FavoriteMoviesInteractor.swift in Sources */,
 				57A092C72968576A00DED7D9 /* Extension + UIButton.swift in Sources */,
@@ -656,7 +657,6 @@
 				57C3009C293E1FB2005B5E24 /* MovieDetailsModels.swift in Sources */,
 				5755EDF8293D3FA800673265 /* PopularMoviesRouter.swift in Sources */,
 				57A092C529677E8400DED7D9 /* Extension + Int.swift in Sources */,
-				570C5FE029854F1800869F13 /* LikeListAccessObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
