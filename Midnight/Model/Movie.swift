@@ -7,11 +7,10 @@
 
 import UIKit
 
-final class Movie: Codable {
+final class Movie: NSObject, NSCoding, Codable {
     private let posterPath: String?
     let release: String /// "2022-12-21"
     let backdropPath: String?
-    var genres: [Genre]?
     let genreId: [Int]?
     let id: Int
     let title: String
@@ -23,22 +22,8 @@ final class Movie: Codable {
     var trailerID: String?
     var liked: Bool = false
     
-    init(backdropPath: String = "",
-         genres: [Genre] = [],
-         genreId: [Int] = [],
-         id: Int = .zero,
-         title: String = "",
-         overview: String = "",
-         release: String = "",
-         posterPath: String = "",
-         duration: Int = .zero,
-         popularity: Double = .zero,
-         voteCount: Int = .zero,
-         posterImageData: UIImage = UIImage(),
-         trailerID: String = "",
-         liked: Bool = false) {
+    init(backdropPath: String = "", genreId: [Int] = [], id: Int = .zero, title: String = "", overview: String = "", release: String = "", posterPath: String = "", duration: Int = .zero, popularity: Double = .zero, voteCount: Int = .zero, posterImageData: UIImage = UIImage(), trailerID: String = "", liked: Bool = false) {
         self.backdropPath = backdropPath
-        self.genres = genres
         self.genreId = genreId
         self.id = id
         self.title = title
@@ -48,6 +33,36 @@ final class Movie: Codable {
         self.duration = duration
         self.popularity = popularity
         self.voteCount = voteCount
+        self.posterImageData = posterImageData
+        self.liked = liked
+    }
+    
+    required convenience init?(coder: NSCoder) {
+        let posterPath = coder.decodeObject(forKey: PropertyKey.posterPath) as? String ?? ""
+        let release = coder.decodeObject(forKey: PropertyKey.release) as? String ?? ""
+        let backdropPath = coder.decodeObject(forKey: PropertyKey.backdropPath) as? String ?? ""
+        let genreId = coder.decodeObject(forKey: PropertyKey.genreId) as? [Int] ?? []
+        let id = coder.decodeInteger(forKey: PropertyKey.id)
+        let title = coder.decodeObject(forKey: PropertyKey.title) as? String ?? ""
+        let overview = coder.decodeObject(forKey: PropertyKey.overview) as? String ?? ""
+        let popularity = coder.decodeDouble(forKey: PropertyKey.popularity)
+        let voteCount = coder.decodeInteger(forKey: PropertyKey.voteCount)
+        let liked = coder.decodeBool(forKey: PropertyKey.liked)
+        
+        self.init(backdropPath: backdropPath, genreId: genreId, id: id, title: title, overview: overview, release: release, posterPath: posterPath, popularity: popularity, voteCount: voteCount, liked: liked)
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(posterPath, forKey: PropertyKey.posterPath)
+        coder.encode(release, forKey: PropertyKey.release)
+        coder.encode(backdropPath, forKey: PropertyKey.backdropPath)
+        coder.encode(genreId, forKey: PropertyKey.genreId)
+        coder.encode(id, forKey: PropertyKey.id)
+        coder.encode(title, forKey: PropertyKey.title)
+        coder.encode(overview, forKey: PropertyKey.overview)
+        coder.encode(popularity, forKey: PropertyKey.popularity)
+        coder.encode(voteCount, forKey: PropertyKey.voteCount)
+        coder.encode(liked, forKey: PropertyKey.liked)
     }
 }
 
@@ -81,7 +96,7 @@ extension Movie {
 extension Movie {
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
-        case genres, id
+        case id
         case genreId = "genre_ids"
         case title
         case overview
@@ -95,6 +110,18 @@ extension Movie {
 
 extension Movie {
     struct PropertyKey {
+        static let posterPath = "posterPath"
+        static let release = "release"
+        static let backdropPath = "backdropPath"
+        static let genreId = "genreId"
         static let id = "id"
+        static let title = "title"
+        static let overview = "overview"
+        static let duration = "duration"
+        static let popularity = "popularity"
+        static let voteCount = "voteCount"
+        static let posterImageData = "posterImageData"
+        static let trailerID = "trailerID"
+        static let liked = "liked"
     }
 }
