@@ -89,7 +89,7 @@ extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router?.showMovieDetails(movie: movies[indexPath.row])
+        router?.showMovieDetails(movie: filteredMovies[indexPath.row])
     }
 }
 
