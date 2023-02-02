@@ -13,13 +13,14 @@ protocol FavoriteMoviesViewControllerInput: AnyObject {
     func loadFavoriteMovies()
     func updateFavoriteMoviesList(_ moviesCount: Int)
     func updateSceneBackground()
-    func removeSelectedMovieFromFavorites(id: Int, count: Int)
+    func removeSelectedMovieFromFavorites(_ movie: Movie)
 }
 
 protocol FavoriteMoviesViewControllerOutput: AnyObject, Alert {
     func showMovies(viewModel: PopularMoviesModels.ViewModel)
     func showError(title: String, message: String)
     func showSceneEmpty(has content: Bool)
+    func setStateSearchBar(hide: Bool)
 }
 
 // MARK: - Class
@@ -115,8 +116,8 @@ extension FavotireMoviesViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let contextItem = UIContextualAction(style: .destructive, title: "Remove") { [weak self] _, _, _ in
             if let self = self {
-                // TODO: Corrigir ao deletar item e buscar novamente
-                self.interactor?.removeSelectedMovieFromFavorites(id: self.filteredMovies[indexPath.row].id, count: self.filteredMovies.count)
+                self.interactor?.removeSelectedMovieFromFavorites(self.filteredMovies[indexPath.row])
+                self.movies = self.movies.filter { $0.id != self.filteredMovies[indexPath.row].id }
                 self.filteredMovies.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
@@ -127,9 +128,16 @@ extension FavotireMoviesViewController: UITableViewDelegate, UITableViewDataSour
 
 extension FavotireMoviesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let attributes =  [NSAttributedString.Key.foregroundColor: UIColor.white]
+        searchBar.searchTextField.attributedText = NSAttributedString(string: searchText, attributes: attributes)
         filteredMovies = searchText == "" ? movies : movies.filter { (item: Movie) -> Bool in
             return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredMovies = movies
         tableView.reloadData()
     }
 }
@@ -174,5 +182,13 @@ extension FavotireMoviesViewController: FavoriteMoviesViewControllerOutput {
             emptyListLabel.alpha = 0
         }
         openingAnimation = false
+    }
+    
+    func setStateSearchBar(hide: Bool) {
+        if hide {
+            navigationItem.searchController = nil
+        } else {
+            navigationItem.searchController = searchController
+        }
     }
 }

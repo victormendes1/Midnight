@@ -31,6 +31,7 @@ final class HomeTabController: UITabBarController {
         tabBarItems[2].image = UIImage(systemName: "star")
         
         setTabBarColor()
+        setBarButtonAppearance()
     }
     
     private func setTabBarColor() {

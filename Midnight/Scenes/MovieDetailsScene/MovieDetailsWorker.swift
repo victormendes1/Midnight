@@ -11,6 +11,8 @@ import Combine
 // MARK: - Protocol
 protocol MovieDetailsWorkerProtocol {
     func performLoadMovieDetails(_ movie: MovieDetailsModels.Request) -> AnyPublisher<MovieDetailsModels.Response, ServiceError>
+    func performSaveFavoriteMovie(_ movie: Movie)
+    func performRemoveFavoriteMovie(_ movie: Movie)
     func fetchSimilarMovies(_ movieID: String) -> AnyPublisher<MovieDetailsModels.Response, ServiceError>
     func fetchPoster(_ posterPath: String) -> AnyPublisher<Data, ServiceError>
 }
@@ -40,5 +42,19 @@ extension MovieDetailsWorker: MovieDetailsWorkerProtocol {
     
     internal func fetchPoster(_ posterPath: String) -> AnyPublisher<Data, ServiceError> {
         service.requestRaw(.moviePoster(posterPath))
+    }
+    
+    func performSaveFavoriteMovie(_ movie: Movie) {
+        movie.liked = true
+        MoviesAccessObject.saveData(movie)
+    }
+    
+    func performRemoveFavoriteMovie(_ movie: Movie) {
+        movie.liked = false
+        MoviesAccessObject.removeItem(movie)
+    }
+    
+    func performLoadFavoritesMoviesSaved() -> [Movie] {
+        MoviesAccessObject.favoriteMovies ?? []
     }
 }

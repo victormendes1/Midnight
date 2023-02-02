@@ -15,9 +15,13 @@ protocol PopularMoviesWorkProtocol {
 
 final class PopularMoviesWork {
     private let service: NetworkManager
+    private var savedFavoritesMovies: [Movie] {
+        MoviesAccessObject.favoriteMovies ?? []
+    }
     
     init(service: NetworkManager = NetworkManager()) {
         self.service = service
+        _ = MoviesAccessObject.loadData()
     }
 }
 
@@ -30,5 +34,9 @@ extension PopularMoviesWork: PopularMoviesWorkProtocol {
     
     func performLoadGenres() -> AnyPublisher<Genres, ServiceError> {
         service.request(.genres)
+    }
+    
+    func performLoadSavedMovies() -> [Movie] {
+        savedFavoritesMovies
     }
 }

@@ -29,4 +29,8 @@ extension MovieDetailsPresenter: MovieDetailsScenePresenterInput {
     func showLoading(active: Bool) {
         viewController?.showLoading(active: active)
     }
+    
+    func updateMovieStatus(_ updadeScene: Bool) {
+        viewController?.currentMovieChangedStatus(liked: updadeScene)
+    }
 }

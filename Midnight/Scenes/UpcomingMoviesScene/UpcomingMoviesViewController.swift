@@ -70,6 +70,7 @@ final class UpcomingMoviesViewController: UIViewController {
     private func configureSearchBar() {
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = .dark
+        searchController.searchBar.searchTextField.textColor = .white
         navigationItem.searchController = searchController
     }
 }
@@ -94,9 +95,16 @@ extension UpcomingMoviesViewController: UITableViewDelegate, UITableViewDataSour
 
 extension UpcomingMoviesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let attributes =  [NSAttributedString.Key.foregroundColor: UIColor.white]
+        searchBar.searchTextField.attributedText = NSAttributedString(string: searchText, attributes: attributes)
         filteredMovies = searchText == "" ? movies : movies.filter { (item: Movie) -> Bool in
             return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredMovies = movies
         tableView.reloadData()
     }
 }

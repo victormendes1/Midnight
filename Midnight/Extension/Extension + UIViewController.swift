@@ -39,7 +39,7 @@ extension UIViewController {
     }
 }
 
-// MARK: Scene Loading
+// MARK: - Scene Loading
 protocol Loading {
     func showLoading(active: Bool)
 }
@@ -50,3 +50,11 @@ extension UIViewController: Loading {
     }
 }
 
+// MARK: - Search bar cancel button
+extension UIViewController {
+    func setBarButtonAppearance() {
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        UIBarButtonItem.appearance()
+            .setTitleTextAttributes(attributes, for: .normal)
+    }
+}

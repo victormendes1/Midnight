@@ -14,13 +14,12 @@ final class FavoriteMoviesPresenter {
 
 // MARK: - Extension
 extension FavoriteMoviesPresenter: FavoriteMoviesScenePresenterInput {
+    func updadeStateSearchBar(hide: Bool) {
+        viewController?.setStateSearchBar(hide: hide)
+    }
+    
     func showFavoritesMovies(response: PopularMoviesModels.Response) {
-        if let favoriteMoviesId = LikeListAccessObject.favoriteMovies {
-            let favoriteMovies = response.movies.filter { movie in
-                favoriteMoviesId.contains(movie.id)
-            }
-            viewController?.showMovies(viewModel: .init(movies: favoriteMovies))
-        }
+        viewController?.showMovies(viewModel: .init(movies: response.movies))
     }
     
     func showError(wih error: ErrorRepresentation) {

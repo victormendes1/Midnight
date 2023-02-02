@@ -10,6 +10,7 @@ import Combine
 // MARK: - Protocol
 protocol FavoriteMoviesWorkProtocol {
     func performLoadFavoriteMovies() -> AnyPublisher<PopularMoviesModels.Response, ServiceError>
+    func performRemoveFavoriteMovie(_ movie: Movie)
 }
 
 final class FavoriteMoviesWork {
@@ -23,6 +24,22 @@ final class FavoriteMoviesWork {
 // MARK: - Extension
 extension FavoriteMoviesWork: FavoriteMoviesWorkProtocol {
     func performLoadFavoriteMovies() -> AnyPublisher<PopularMoviesModels.Response, ServiceError> {
-        service.request(.popularMovies())
+        guard let favoritesMovies = MoviesAccessObject.loadData() else {
+            let error: ServiceError = .unknownError(description: "Unable to recover saved movies")
+            let response: AnyPublisher<PopularMoviesModels.Response, ServiceError> = Fail(error: error)
+                .eraseToAnyPublisher()
+            return response
+        }
+        let response = PopularMoviesModels.Response(movies: favoritesMovies)
+        return CurrentValueSubject(response)
+            .eraseToAnyPublisher()
+    }
+    
+    func performRemoveFavoriteMovie(_ movie: Movie) {
+        MoviesAccessObject.removeItem(movie)
+    }
+    
+    func favoriteMoviesCount() -> Int {
+        MoviesAccessObject.favoriteMovies?.count ?? .zero
     }
 }

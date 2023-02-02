@@ -11,13 +11,16 @@ import SnapKit
 // MARK: - Protocol
 protocol MovieDetailsViewControllerIntput: AnyObject {
     func loadMovieDetails(request: MovieDetailsModels.Request)
-    func changeStateOfSelectedMovie(_ liked: Bool, _ movieID: Int)
+    func updateMovieStatus(_ movie: Movie)
+    func addFavoriteMovieList(_ movie: Movie)
+    func removeFavoriteMovieList(_ movie: Movie)
 }
 
 protocol MovieDetailsViewControllerOutput: AnyObject {
     func showDetails(viewModel: MovieDetailsModels.ViewModel)
     func showError(title: String, message: String)
     func showLoading(active: Bool)
+    func currentMovieChangedStatus(liked: Bool)
 }
 
 // MARK: - Class
@@ -51,6 +54,7 @@ final class MovieDetailsViewController: UIViewController, Alert {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationControllerTransparent()
+        interactor?.updateMovieStatus(selectedMovie)
     }
     
     // MARK: - Private Functions
@@ -121,10 +125,15 @@ extension MovieDetailsViewController: MovieDetailsViewControllerOutput {
             self.showAlert(title, message, self)
         }
     }
+    
+    func currentMovieChangedStatus(liked: Bool) {
+        selectedMovie.liked = liked
+        self.tableView.reloadData()
+    }
 }
 
 extension MovieDetailsViewController: MovieFavoriteEventDelegate {
     func favoriteMovie(liked: Bool) {
-        self.interactor?.changeStateOfSelectedMovie(liked, selectedMovie.id)
+        liked ? self.interactor?.addFavoriteMovieList(selectedMovie) : self.interactor?.removeFavoriteMovieList(selectedMovie)
     }
 }

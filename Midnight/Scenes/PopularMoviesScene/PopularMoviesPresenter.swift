@@ -19,20 +19,13 @@ extension PopularMoviesPresenter: PopularMoviesScenePresenterInput {
         viewController?.showError(title: error.title, message: error.message)
     }
     
-    func showPopularMovies(response: PopularMoviesModels.Response, ids: [Int]?) {
-        if let favoriteMovieIds = ids {
-            response.movies.forEach { movie in
-                if favoriteMovieIds.contains(movie.id) {
-                    movie.liked = true
-                } 
-            }
-        }
+    func showPopularMovies(response: PopularMoviesModels.Response) {
         let viewModel = PopularMoviesModels.ViewModel(movies: response.movies)
         viewController?.showMovies(viewModel: viewModel)
     }
     
-    func changeStateOfSelectedMovie(_ liked: Bool, _ movieID: Int?) {
-        viewController?.changeStateOfSelectedMovie(liked, movieID)
+    func changeStateOfSelectedMovie(_ ids: [Int]) {
+        viewController?.changeStateOfSelectedMovie(ids)
     }
     
     func presentLoadingScene(active: Bool) {

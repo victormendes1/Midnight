@@ -14,6 +14,7 @@ protocol MovieDetialInteractorOutput: AnyObject {
     func showDetails(response: MovieDetailsModels.Response)
     func showError(with error: ErrorRepresentation)
     func showLoading(active: Bool)
+    func updateMovieStatus(_ updadeScene: Bool)
 }
 
 final class MovieDetailsInteractor {
@@ -41,7 +42,16 @@ extension MovieDetailsInteractor: MovieDetailsViewControllerIntput {
             }
     }
     
-    func changeStateOfSelectedMovie(_ liked: Bool, _ movieID: Int) {
-        liked ? LikeListAccessObject.saveData(movieID) : LikeListAccessObject.removeItem(movieID)
+    func updateMovieStatus(_ movie: Movie) {
+       let updadeScene =  worker.performLoadFavoritesMoviesSaved().contains(where: { $0.id == movie.id })
+        self.presenter?.updateMovieStatus(updadeScene)
+    }
+    
+    func addFavoriteMovieList(_ movie: Movie) {
+        worker.performSaveFavoriteMovie(movie)
+    }
+    
+    func removeFavoriteMovieList(_ movie: Movie) {
+        worker.performRemoveFavoriteMovie(movie)
     }
 }

@@ -12,13 +12,13 @@ import SnapKit
 protocol PopularMoviesViewControllerInput: AnyObject {
     func loadMovies()
     func loadGenres()
-    func updateListFavoriteMovies()
+    func updateListFavorite()
 }
 
 protocol PopularMoviesViewControllerOutput: AnyObject, Alert {
     func showMovies(viewModel: PopularMoviesModels.ViewModel)
     func showError(title: String, message: String)
-    func changeStateOfSelectedMovie(_ liked: Bool, _ id: Int?)
+    func changeStateOfSelectedMovie(_ ids: [Int])
     func showLoading(active: Bool)
 }
 
@@ -27,6 +27,7 @@ final class PopularMoviesViewController: UIViewController {
     var interactor: PopularMoviesViewControllerInput?
     var router: PopularMoviesSceneRouter?
     
+    private var selectedMovie = Movie()
     private var movies: [Movie] = []
     private var filteredMovies: [Movie] = []
     private var searchController = UISearchController()
@@ -57,7 +58,7 @@ final class PopularMoviesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationControllerDark(title: "Popular")
-        interactor?.updateListFavoriteMovies()
+        interactor?.updateListFavorite()  
     }
     
     // MARK: - Private Functions
@@ -74,6 +75,7 @@ final class PopularMoviesViewController: UIViewController {
     private func configureSearchBar() {
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = .dark
+        searchController.searchBar.searchTextField.textColor = .white
         navigationItem.searchController = searchController
     }
 }
@@ -103,15 +105,22 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
 
 extension PopularMoviesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let attributes =  [NSAttributedString.Key.foregroundColor: UIColor.white]
+        searchBar.searchTextField.attributedText = NSAttributedString(string: searchText, attributes: attributes)
         filteredMovies = searchText == "" ? movies : movies.filter { (item: Movie) -> Bool in
             return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         collectionView.reloadData()
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredMovies = movies
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - Output
-extension PopularMoviesViewController: PopularMoviesViewControllerOutput {    
+extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
     func showMovies(viewModel: PopularMoviesModels.ViewModel) {
         DispatchQueue.main.async {
             self.movies += viewModel.movies
@@ -124,10 +133,10 @@ extension PopularMoviesViewController: PopularMoviesViewControllerOutput {
         self.showAlert(title, message, self)
     }
     
-    func changeStateOfSelectedMovie(_ liked: Bool, _ id: Int?) {
-        self.movies.forEach { movie in
-            if movie.id == id {
-                movie.liked = liked
+    func changeStateOfSelectedMovie(_ ids: [Int]) {
+        self.filteredMovies.forEach { movie in
+            if ids.contains(movie.id) {
+                movie.liked = true
             }
         }
     }

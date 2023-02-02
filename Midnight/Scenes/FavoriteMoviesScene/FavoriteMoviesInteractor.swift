@@ -14,6 +14,7 @@ protocol FavoriteMoviesInteractorOutput: AnyObject {
     func showFavoritesMovies(response: PopularMoviesModels.Response)
     func showError(wih error: ErrorRepresentation)
     func updateSceneBackground(has content: Bool)
+    func updadeStateSearchBar(hide: Bool)
 }
 
 final class FavoriteMoviesInteractor {
@@ -40,17 +41,21 @@ extension FavoriteMoviesInteractor: FavoriteMoviesViewControllerInput {
     }
     
     func updateFavoriteMoviesList(_ movieCount: Int) {
-        guard let favoriteMoviesId = LikeListAccessObject.favoriteMovies, favoriteMoviesId.count != movieCount else { return }
-        loadFavoriteMovies()
+        let savedMovieCount = worker.favoriteMoviesCount()
+        if savedMovieCount != movieCount {
+            loadFavoriteMovies()
+        }
     }
     
     func updateSceneBackground() {
-        let content = LikeListAccessObject.favoriteMovies?.count ?? .zero
-        self.presenter?.updateSceneBackground(has: content != .zero)
+        let savedMovieCount = worker.favoriteMoviesCount()
+        presenter?.updateSceneBackground(has: savedMovieCount != .zero)
+        presenter?.updadeStateSearchBar(hide: savedMovieCount == .zero)
     }
     
-    func removeSelectedMovieFromFavorites(id: Int, count: Int) {
-        LikeListAccessObject.removeItem(id)
-        self.presenter?.updateSceneBackground(has: count != 1)
+    func removeSelectedMovieFromFavorites(_ movie: Movie) {
+        let savedMovieCount = worker.favoriteMoviesCount()
+        presenter?.updateSceneBackground(has: savedMovieCount != 1)
+        worker.performRemoveFavoriteMovie(movie)
     }
 }
