@@ -71,7 +71,10 @@ final class UpcomingMoviesViewController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = .dark
         searchController.searchBar.searchTextField.textColor = .white
-        navigationItem.searchController = searchController
+        //enable delayed searchBar
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.navigationItem.searchController = self.searchController
+        })
     }
 }
 

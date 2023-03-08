@@ -58,7 +58,7 @@ final class PopularMoviesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationControllerDark(title: "Popular")
-        interactor?.updateListFavorite()  
+        interactor?.updateListFavorite()
     }
     
     // MARK: - Private Functions
@@ -76,7 +76,10 @@ final class PopularMoviesViewController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = .dark
         searchController.searchBar.searchTextField.textColor = .white
-        navigationItem.searchController = searchController
+        //enable delayed searchBar
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.navigationItem.searchController = self.searchController
+        })
     }
 }
 

@@ -96,7 +96,6 @@ final class FavotireMoviesViewController: UIViewController {
     private func configureSearchBar() {
         searchController.searchBar.delegate = self
         searchController.searchBar.keyboardAppearance = .dark
-        navigationItem.searchController = searchController
     }
 }
 
@@ -188,7 +187,10 @@ extension FavotireMoviesViewController: FavoriteMoviesViewControllerOutput {
         if hide {
             navigationItem.searchController = nil
         } else {
-            navigationItem.searchController = searchController
+            //enable delayed searchBar
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.navigationItem.searchController = self.searchController
+            })
         }
     }
 }
