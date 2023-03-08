@@ -48,7 +48,6 @@ final class MovieDetailsViewController: UIViewController, Alert {
         super.viewDidLoad()
         setupViews()
         interactor?.loadMovieDetails(request: .init(movie: selectedMovie))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +73,7 @@ final class MovieDetailsViewController: UIViewController, Alert {
         addShadowTop(place: self.view)
         addShadowBottom(headerView)
         self.tableView.tableHeaderView = headerView
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             headerView.alpha = 1
         })
     }
