@@ -33,15 +33,16 @@ final class PopularMovieCell: UICollectionViewCell {
     // MARK: - Private Function
     private func setupViews() {
         contentView.addSubview(posterView)
-        
+        posterView.layer.cornerRadius = 6
+        posterView.layer.masksToBounds = true
+       
         posterView.snp.makeConstraints { view in
-            view.left.right.equalToSuperview()
-            view.top.bottom.equalToSuperview()
+            view.top.bottom.left.right.equalToSuperview()
         }
     }
     
     private func startAnimation() {
-        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseOut, animations: {
             self.posterView.alpha = 1
         })
     }

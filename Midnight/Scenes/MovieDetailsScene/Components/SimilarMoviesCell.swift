@@ -55,6 +55,8 @@ final class SimilarMoviesCell: UITableViewCell {
     // MARK: - Private Functions
     private func setupViews() {
         separatorView.backgroundColor = .secondaryLabel
+        movieBackgroundImage.layer.cornerRadius = 2
+        movieBackgroundImage.layer.masksToBounds = true
         
         contentView.addSubview(movieBackgroundImage)
         contentView.addSubview(titleLabel)

@@ -65,6 +65,9 @@ final class UpcomingMoviesCell: UITableViewCell {
         backgroundColor = .clear
         separatorView.backgroundColor = .secondaryLabel
         
+        moviePosterImage.layer.cornerRadius = 4
+        moviePosterImage.layer.masksToBounds = true
+        
         contentView.addSubview(moviePosterImage)
         contentView.addSubview(titleLabel)
         contentView.addSubview(genresLabel)
