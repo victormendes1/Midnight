@@ -40,7 +40,6 @@ final class PopularMoviesViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.backgroundColor = .black
         collectionView.register(PopularMovieCell.self, forCellWithReuseIdentifier: PopularMovieCell.identifer)
         return collectionView
@@ -57,8 +56,7 @@ final class PopularMoviesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Popular"
-        setNavigationControllerDark(title: "Popular")
+        setNavigationControllerDark(title: "Popular", hideBar: true)
         interactor?.updateListFavorite()
     }
     
@@ -67,9 +65,7 @@ final class PopularMoviesViewController: UIViewController {
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { collectionView in
-            collectionView.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            collectionView.left.right.equalToSuperview()
-            collectionView.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            collectionView.top.left.right.bottom.equalToSuperview()
         }
     }
     

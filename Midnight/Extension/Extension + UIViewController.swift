@@ -27,11 +27,12 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: image)
     }
     
-    func setNavigationControllerDark(title: String) {
+    func setNavigationControllerDark(title: String, hideBar: Bool = false) {
         self.title = title
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.hidesBarsOnSwipe = hideBar
     }
 }
 
