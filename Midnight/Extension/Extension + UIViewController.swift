@@ -29,13 +29,9 @@ extension UIViewController {
     
     func setNavigationControllerDark(title: String) {
         self.title = title
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = .black.withAlphaComponent(0.9)
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
@@ -54,7 +50,6 @@ extension UIViewController: Loading {
 extension UIViewController {
     func setBarButtonAppearance() {
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
-        UIBarButtonItem.appearance()
-            .setTitleTextAttributes(attributes, for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
     }
 }

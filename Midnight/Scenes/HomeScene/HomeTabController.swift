@@ -8,17 +8,6 @@
 import UIKit
 
 final class HomeTabController: UITabBarController {
-    // MARK: - Override
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNavigationControllerDark(title: "Popular")
-    }
-    
     func setTabBar() {
         guard let tabBarItems = tabBar.items, tabBarItems.count <= 3 else { return }
         //Title
@@ -35,32 +24,7 @@ final class HomeTabController: UITabBarController {
     }
     
     private func setTabBarColor() {
-        if #available(iOS 15.0, *) {
-            let appearance = UITabBarAppearance()
-            appearance.backgroundColor = .black.withAlphaComponent(0.9)
-            tabBar.standardAppearance = appearance
-            tabBar.scrollEdgeAppearance = appearance
-            tabBar.tintColor = .orange
-        } else {
-            // TODO: In the future add code for iOS < 15
-        }
-    }
-    
-    // MARK: - Private Function
-    private func configureNavigationBy(type: UIViewController) {
-        if type is PopularMoviesViewController {
-            setNavigationControllerDark(title: "Popular")
-        } else if type is UpcomingMoviesViewController {
-            setNavigationControllerDark(title: "Upcoming")
-        } else {
-            setNavigationControllerDark(title: "Favorites")
-        }
-    }
-}
-
-// MARK: - Extension
-extension HomeTabController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        configureNavigationBy(type: viewController)
+        tabBar.barStyle = .black
+        tabBar.tintColor = .orange
     }
 }

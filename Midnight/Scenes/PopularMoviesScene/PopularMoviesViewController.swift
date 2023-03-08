@@ -57,6 +57,7 @@ final class PopularMoviesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.title = "Popular"
         setNavigationControllerDark(title: "Popular")
         interactor?.updateListFavorite()
     }
