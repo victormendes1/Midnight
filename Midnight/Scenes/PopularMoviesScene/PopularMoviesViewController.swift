@@ -57,7 +57,6 @@ final class PopularMoviesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationControllerDark(title: "Popular", hideBar: true)
-        addShadowTop(place: self.view)
         interactor?.updateListFavorite()
     }
     
@@ -68,6 +67,7 @@ final class PopularMoviesViewController: UIViewController {
         collectionView.snp.makeConstraints { collectionView in
             collectionView.top.left.right.bottom.equalToSuperview()
         }
+        addShadowTop(place: self.view)
     }
     
     private func configureSearchBar() {
