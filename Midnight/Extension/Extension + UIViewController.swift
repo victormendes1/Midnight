@@ -16,7 +16,7 @@ extension UIViewController {
     func setNavigationControllerTransparent(with button: UIButton = .transparentButton) {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
+        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.hidesBarsOnSwipe = false
         button.addTarget(self, action: #selector(backToPrevious), for: .touchUpInside)
         let image = UIView.backIconView
