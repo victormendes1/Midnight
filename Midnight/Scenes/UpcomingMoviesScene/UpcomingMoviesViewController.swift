@@ -55,8 +55,7 @@ final class UpcomingMoviesViewController: UIViewController {
     private func setupViews() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { tableView in
-            tableView.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            tableView.left.right.equalToSuperview()
+            tableView.top.left.right.equalToSuperview()
             tableView.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }

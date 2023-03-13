@@ -75,9 +75,8 @@ final class FavotireMoviesViewController: UIViewController {
         tableView.addSubview(emptyListLabel)
         
         tableView.snp.makeConstraints { tableView in
-            tableView.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             tableView.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            tableView.width.equalToSuperview()
+            tableView.top.width.equalToSuperview()
         }
         
         emptyListBackgroundView.snp.makeConstraints { backgroundImage in

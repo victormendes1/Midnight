@@ -26,6 +26,7 @@ extension UIViewController {
     
     func setNavigationControllerDark(title: String, hideBar: Bool = false) {
         self.title = title
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = nil
         
