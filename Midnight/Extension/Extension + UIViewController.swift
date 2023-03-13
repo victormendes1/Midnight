@@ -14,25 +14,24 @@ extension UIViewController {
     }
     
     func setNavigationControllerTransparent(with button: UIButton = .transparentButton) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        button.addTarget(self, action: #selector(backToPrevious), for: .touchUpInside)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
+        navigationController?.hidesBarsOnSwipe = false
+        button.addTarget(self, action: #selector(backToPrevious), for: .touchUpInside)
         let image = UIView.backIconView
         image.addSubview(button)
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: image)
     }
     
     func setNavigationControllerDark(title: String, hideBar: Bool = false) {
         self.title = title
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = nil
+        
         navigationController?.hidesBarsOnSwipe = hideBar
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barStyle = .black
     }
 }
 
