@@ -1,6 +1,6 @@
 # Midnight
 
-O Midnight é onde você pode encontrar os filmes mais populares do momento e as novidades que estão para chegar.
+O Midnight é onde você pode encontrar os filmes mais populares do momento e as novidades que estão para chegar.</br>
 <img width="240" alt="home" src="https://user-images.githubusercontent.com/44198473/224747429-d741702d-6b2e-4152-931a-39bd267359e1.png">
 <img width="250" alt="popularSearch" src="https://user-images.githubusercontent.com/44198473/224748694-ed569ac1-255b-4013-ac2d-04a022fa410f.png">
 <img width="250" alt="details" src="https://user-images.githubusercontent.com/44198473/224747412-e76f4782-6735-4355-8615-83e1f492d302.png">
