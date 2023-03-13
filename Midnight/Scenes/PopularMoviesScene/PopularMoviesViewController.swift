@@ -57,7 +57,7 @@ final class PopularMoviesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationControllerDark(title: "Popular", hideBar: true)
-        //addShadowTop(place: self.view)
+        addShadowTop(place: self.view)
         interactor?.updateListFavorite()
     }
     
