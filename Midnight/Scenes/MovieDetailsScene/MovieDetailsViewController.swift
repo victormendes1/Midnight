@@ -105,8 +105,16 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
 // MARK: - Extension ScrollView
 extension MovieDetailsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let headerView = self.tableView.tableHeaderView as? StretchyHeaderView else { return }
+        guard let headerView = self.tableView.tableHeaderView as? StretchyHeaderView, let navigationBar = navigationController?.navigationBar else { return }
         headerView.scrollViewDidScroll(scrollView: tableView)
+        
+        if !navigationBar.isHidden {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
